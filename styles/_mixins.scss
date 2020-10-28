@@ -1,0 +1,45 @@
+@mixin responsive($alias) {
+  @if $alias == 'fullscreen' {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  } @else if $alias == 'desktop' {
+    @media screen and (min-width: 1000px) {
+      @content;
+    }
+  } @else if $alias == 'small' {
+    @media screen and (max-width: 1000px) {
+      @content;
+    }
+  } @else if $alias == 'tablet' {
+    @media screen and (min-width: 600px) and (max-width: 1000px) {
+      @content;
+    }
+  } @else if $alias == 'tablet-and-up' {
+    @media screen and (min-width: 600px) {
+      @content;
+    }
+  } @else if $alias == 'mobile' {
+    @media screen and (max-width: 600px) {
+      @content;
+    }
+  }
+}
+
+@mixin responsive-min($min) {
+  @media screen and (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin responsive-max($max) {
+  @media screen and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin responsive-minmax($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
