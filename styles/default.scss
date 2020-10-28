@@ -1,0 +1,25 @@
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  font-size: 10px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
+  font-size: 1.6rem;
+}
+
+::selection {
+  background-color: var(--color-selection);
+}

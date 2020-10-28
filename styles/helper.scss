@@ -1,0 +1,11 @@
+.mobile {
+  @include responsive-min(600px) {
+    display: none !important;
+  }
+}
+
+.desktop {
+  @include responsive-max(600px) {
+    display: none !important;
+  }
+}
