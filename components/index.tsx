@@ -1,5 +1,4 @@
 export * from './Box'
 export * from './Button'
 export * from './Header'
-export * from './Nav'
-export * from './NavItem'
+export * from './NavLink'

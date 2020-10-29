@@ -2,20 +2,13 @@ import Link from "next/link";
 import { FC } from "react";
 
 type NavItemProps = {
-  title: string
   href: string
-  alt?: string
-  mobile?: boolean
-  desktop?: boolean
-  className?: string
 }
 
-export const NavItem: FC<NavItemProps> = ({ title, href, alt, mobile, desktop, className = "" }) => {
-  mobile && (className += " mobile");
-  desktop && (className += " desktop");
+export const NavLink: FC<NavItemProps> = ({ children, href}) => {
   
   return <>
-    <Link href={href}><a className={className}>{title}</a></Link>
+    <Link href={href}><a>{children}</a></Link>
     <style jsx>{`
       a {
         display: flex;

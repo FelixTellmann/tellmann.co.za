@@ -1,25 +1,65 @@
-import { FC } from "react";
+import Logo from "public/logo.svg";
+import React, { FC } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
+import { Box } from "./Box";
 import { Button } from "./Button";
-import Image from 'next/image';
-
+import { NavLink } from "./NavLink";
 
 type HeaderProps = {
   theme: string
   toggleColor
 };
 
-export const Header: FC<HeaderProps> = ({ children, theme, toggleColor }) => {
+export const Header: FC<HeaderProps> = ({ theme, toggleColor }) => {
   return <>
     <header>
-      <nav>
-        {children}
-        <Button aria-label="Toggle Color Theme" onClick={toggleColor}>
-          {theme === "light-theme" ? <FiMoon style={{ filter: `drop-shadow(rgba(0, 0, 0, 0.35) 00003px)` }} /> : null}
-          {theme === "blue-theme" ? <FiSun style={{ color: `rgb(237 255 3 / 96%)` }} /> : null}
+      <Box desktop
+           d={`flex`}
+           justify={`space-between`}
+           h={`--header-height`}
+           mx={`auto`}
+           px={`--page-margin`}
+           w={`100%`}
+           maxW={`--page-width`}
+           align={`center`}>
+        <NavLink href="/"><Logo style={{ height: "var(--header-height)", padding: "4px", color: "var(--color-text)" }} /></NavLink>
+        <Box as={`nav`} d={`flex`} flex={1} justify={`center`} align={`center`}>
+          <NavLink href="/about">About</NavLink>
+          <NavLink href="/work">Work</NavLink>
+          <NavLink href="/services">Services</NavLink>
+        </Box>
+        <Button href="/contact" branded small>Contact</Button>
+        <Button aria-label="Toggle Color Theme" onClick={toggleColor} ml={3} icon>
+          {theme === "light-theme" ? <FiMoon /> : null}
+          {theme === "dark-theme" ? <FiSun /> : null}
         </Button>
-      </nav>
+      </Box>
+      
+      <Box mobile
+           d={`flex`}
+           justify={`space-between`}
+           h={`--header-height`}
+           mx={`auto`}
+           px={`--page-margin`}
+           w={`100%`}
+           maxW={`--page-width`}
+           align={`center`}>
+        <Logo style={{ height: "var(--header-height)", padding: "4px" }} />
+        <Box as={`nav`} d={`flex`} flex={1} justify={`center`} align={`center`}>
+          <NavLink title={`Home`} alt={`Hi.`} href={`/`} mobile />
+          <NavLink title={`About`} alt={`Who we are`} href={`/about`} />
+          <NavLink title={`Work`} alt={`What we've done`} href={`/about`} />
+          <NavLink title={`Services`} alt={`What we can do`} href={`/services`} />
+          <NavLink title={`Contact`} alt={`Get in touch`} href={`/contact`} mobile />
+          <Button href={`/contact`} desktop onClick={() => console.log("test")}>Contact</Button>
+        </Box>
+        <Button aria-label="Toggle Color Theme" onClick={toggleColor} ml={3} icon>
+          {theme === "light-theme" ? <FiMoon /> : null}
+          {theme === "dark-theme" ? <FiSun /> : null}
+        </Button>
+      </Box>
     </header>
+    
     <style jsx>{`
       header {
         position: sticky;
@@ -28,18 +68,6 @@ export const Header: FC<HeaderProps> = ({ children, theme, toggleColor }) => {
         background-color: var(--header-background);
         box-shadow: var(--header-border-bottom);
         transition: box-shadow .1s ease 0s;
-      }
-
-      nav {
-        width: 100%;
-        max-width: var(--container);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-right: auto;
-        margin-left: auto;
-        padding-right: var(--gutter);
-        padding-left: var(--gutter);
       }
     `}</style>
   </>;

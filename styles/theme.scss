@@ -1,18 +1,36 @@
 :root {
-  --container: 1048px;
-  --gutter: 24px;
   --header-height: 64px;
+  --page-margin: 24px;
+  --page-width: 1048px;
 }
 
 body {
-  --button-background: #e2e8f0;
-  --button-color: var(--color-text);
+  /*= =============== button ================ */
+  --button-brand-color: var(--primary);
+  --button-brand-color-background: transparent;
+  --button-brand-color-background-hover: var(--color-text);
+  --button-brand-color-hover: var(--color-background);
+  --button-brand-color-text: var(--color-text);
+  --button-color-background: #edf2f7;
+  --button-color-background-hover: #e2e8f0;
+  --button-color-text: #1a202c;
+  --button-color-text-hover: var(--primary);
+  --button-secondary-color-background: #000;
+  --button-secondary-color-background-hover: #000;
+  --button-secondary-color-text: #000;
+
+  /*= =============== color ================ */
   --color-background: #fff;
   --color-text: #000;
+
+  /*= =============== header ================ */
   --header-backdrop-filter: saturate(180%) blur(5px);
   --header-background: hsla(0, 0%, 100%, 0.8);
   --header-border-bottom: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+
   --nav-color: #666;
   --nav-font-size: 14px;
   --nav-hover-color: #000;
+
+  --primary: #0ab6ff;
 }

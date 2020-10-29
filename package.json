@@ -50,5 +50,9 @@
     "url-loader": "^4.1.1",
     "use-color-theme": "^1.1.2",
     "use-styled-system": "^3.0.0"
+  },
+  "devDependencies": {
+    "classnames": "^2.2.6",
+    "csstype": "2.6.12"
   }
 }
