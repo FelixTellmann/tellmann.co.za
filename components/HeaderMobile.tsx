@@ -1,7 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
-import Logo from "public/logo.svg";
-import React, { FC, useState } from "react";
+import React, { createElement, FC, useState } from "react";
 import { IoIosMail, IoIosCall, IoIosSunny, IoIosMoon, IoLogoFacebook, IoLogoInstagram, IoLogoGithub } from "react-icons/io";
+import { ColorTheme } from "use-color-theme";
+import Logo from "public/logo.svg";
+
+import { Address, NavButton, NavItem, SocialNav } from "./Header";
 import { NavBackground } from "./NavBackground";
 import { NavIcon } from "./NavIcon";
 import { NavLink } from "./NavLink";
@@ -11,11 +15,16 @@ import Fade from "react-reveal/Fade";
 import cn from "classnames";
 
 type HeaderMobileProps = {
+  nav: NavItem[]
+  socialNav: SocialNav[]
+  address: Address
+  email: string
+  tel: string
   theme: string
   toggleColor
 };
 
-export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
+export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, address, email, tel, socialNav }) => {
   const [show, setShowNav] = useState(false);
   
   function toggleMobileNav() { setShowNav(!show); }
@@ -23,13 +32,10 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
   return <>
     
     <div className={cn("mobile", { active: show })}>
-      <NavLink href="/" image onClick={toggleMobileNav}>
-        <Logo className="logo" style={{ height: "calc(var(--header-height) - 8px)" }} />
-      </NavLink>
-      
+      <Link href="/"><a className="logo" onClick={toggleMobileNav}><Logo width={105} height={56} /></a></Link>
       <nav className="topbar">
-        <NavIcon href="mailto:info@tellmann.co.za"><IoIosMail /></NavIcon>
-        <NavIcon href="tel:+27763934356"><IoIosCall /></NavIcon>
+        <NavIcon href={`mailto:${email}`}><IoIosMail /></NavIcon>
+        <NavIcon href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
         <NavIcon aria-label="Toggle Color Theme" onClick={toggleColor}>
           {theme === "light-theme" ? <IoIosSunny /> : null}
           {theme === "dark-theme" ? <IoIosMoon /> : null}
@@ -39,62 +45,27 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
       
       <div className="dropdown">
         <nav className="dropdown-nav">
-          
-          <Link href={`/`}>
-            <a onClick={toggleMobileNav}>
-              <Fade left delay={1 * 90} when={show}>Home</Fade>
-              <Fade delay={1 * 90 + 40} duration={500} when={show}><u /></Fade>
-              <Fade delay={1 * 90 + 40} duration={500} when={show}><span>{`Hi.`}</span></Fade>
-            </a>
-          </Link>
-          <Link href={`/about`}>
-            <a onClick={toggleMobileNav}>
-              <Fade left delay={2 * 90} when={show}>About</Fade>
-              <Fade delay={2 * 90 + 40} duration={500} when={show}><u /></Fade>
-              <Fade delay={2 * 90 + 40} duration={500} when={show}><span>{`Who we are`}</span></Fade>
-            </a>
-          </Link>
-          <Link href={`/work`}>
-            <a onClick={toggleMobileNav}>
-              <Fade left delay={3 * 90} when={show}>Work</Fade>
-              <Fade delay={3 * 90 + 40} duration={500} when={show}><u /></Fade>
-              <Fade delay={3 * 90 + 40} duration={500} when={show}><span>{`What we've done`}</span></Fade>
-            </a>
-          </Link>
-          <Link href={`/services`}>
-            <a onClick={toggleMobileNav}>
-              <Fade left delay={4 * 90} when={show}>Services</Fade>
-              <Fade delay={4 * 90 + 40} duration={500} when={show}><u /></Fade>
-              <Fade delay={4 * 90 + 40} duration={500} when={show}><span>{`What we can do`}</span></Fade>
-            </a>
-          </Link>
-          <Link href={`/contact`}>
-            <a onClick={toggleMobileNav}>
-              <Fade left delay={5 * 90} when={show}>Contact</Fade>
-              <Fade delay={5 * 90 + 40} duration={500} when={show}><u /></Fade>
-              <Fade delay={5 * 90 + 40} duration={500} when={show}><span>{`Get in touch`}</span></Fade>
-            </a>
-          </Link>
-        
+          {nav.filter(({ desktop }) => !desktop).map(({ href, title, alt }, i) => (
+            <Link href={href}>
+              <a onClick={toggleMobileNav}>
+                <Fade left delay={(i + 1) * 90} when={show}>{title}</Fade>
+                <Fade delay={(i + 1) * 90 + 40} duration={500} when={show}><u /></Fade>
+                <Fade delay={(i + 1) * 90 + 40} duration={500} when={show}><span>{alt}</span></Fade>
+              </a>
+            </Link>
+          ))}
         </nav>
         
         <Fade left delay={3 * 90} when={show}>
           <p className="address">
-            Visit our Office:<br />
-            11th Floor<br />
-            Touchstone House<br />
-            7 Bree Street<br />
-            Cape Town, 8001<br />
+            {Object.values(address).map(value => <div>{value}</div>)}
           </p>
         </Fade>
         <Fade bottom delay={4 * 90} when={show}>
           <nav className="footer">
-            <NavIcon href="tel:+27763934356" onClick={toggleMobileNav}><IoIosCall /></NavIcon>
-            <NavIcon href="https://facebook.com" target={`_blank`} onClick={toggleMobileNav}><IoLogoFacebook /></NavIcon>{/*TODO*/}
-            <NavIcon href="#" target={`_blank`} onClick={toggleMobileNav}><IoLogoInstagram /></NavIcon> {/*TODO*/}
-            <NavIcon href="#" target={`_blank`} onClick={toggleMobileNav}><IoLogoGithub /></NavIcon> {/*TODO*/}
-            
-            <NavLink href="mailto:info@tellmann.co.za">info@tellmann.co.za</NavLink>
+            <NavIcon href={`tel:${tel.replace(" ", "")}`} onClick={toggleMobileNav}><IoIosCall /></NavIcon>
+            {socialNav.map(({ href, icon }) => <NavIcon href={href} target={`_blank`} onClick={toggleMobileNav}>{icon}</NavIcon>)}
+            <Link href={`mailto:${email}`}><a className="email" onClick={toggleMobileNav}>{email}</a></Link>
           </nav>
         </Fade>
       </div>
@@ -119,7 +90,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
 
       }
 
-      :global(.logo) {
+      .logo {
         color: var(--color-text);
         transition: 0.1s ease-in-out;
         transition-delay: 1s;
@@ -173,6 +144,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
         span {
           font-size: 15px;
           font-weight: 400;
+          filter: opacity(0.7);
         }
 
         u {
@@ -195,6 +167,8 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
         border-bottom: 2px solid var(--primary);
         font-size: 13px;
         line-height: 1.6;
+        white-space: nowrap;
+        letter-spacing: -0.03em;
       }
 
       .footer {
@@ -204,7 +178,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
 
       .mobile.active {
 
-        :global(.logo) {
+        .logo {
           color: var(--color-background);
           transition-delay: 0.05s;
         }
@@ -230,6 +204,17 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
             &:hover, &:focus, &:active {
               color: var(--primary)
             }
+          }
+
+          .email {
+            font-size: var(--nav-font-size);
+            text-decoration: none;
+            transition: 0.1s ease-in color;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex: 1;
+
           }
         }
       }

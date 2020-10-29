@@ -7,8 +7,9 @@ import "reset-css/sass/_reset.scss";
 import "styles/default.scss";
 import "styles/helper.scss";
 import "styles/theme.scss";
+import { IoIosCall, IoIosMail, IoLogoFacebook, IoLogoGithub, IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io";
 import useColorTheme from "use-color-theme";
-import { HeaderDesktop, HeaderMobile } from "components";
+import { Header } from "components";
 
 export const ThemeContext = createContext({ theme: "" });
 const title = "Tellmann - E-commerce Web development Studio";
@@ -51,24 +52,39 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
         <GoogleFonts href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;500;700&display=swap" />
       </>
       <ThemeContext.Provider value={{ theme: colorTheme.value }}>
-        <header>
-          <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} />
-          <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} />
-        </header>
+        
+        <Header
+          colorTheme={colorTheme}
+          logo={{ href: "/", src: "/logo.svg", alt: "Tellmann Logo" }}
+          nav={[
+            { href: "/", title: "Home", alt: "Hi.", mobile: true },
+            { href: "/about", title: "About", alt: "Who we are" },
+            { href: "/work", title: "Work", alt: `What we've done` },
+            { href: "/services", title: "Services", alt: `What we can do` },
+            { href: "/contact", title: "Contact", alt: `Get in touch`, mobile: true }
+          ]}
+          navButton={{ href: "/contact", title: "Contact" }}
+          address={{
+            title: `Visit our Office:`,
+            address1: "11th Floor Touchstone House",
+            address2: "7 Bree Street",
+            city: "Cape Town",
+            country: "South Africa"
+          }}
+          email={`info@tellmann.co.za`}
+          tel={`076 031 3590`}
+          socialNav={[
+            { href: "#Facebook", icon: <IoLogoFacebook title="Facebook"/> },
+            { href: "#Github", icon: <IoLogoGithub title="Github"/> },
+            { href: "#Instagram", icon: <IoLogoInstagram title="Instagram"/> }
+          ]}
+          slogan="Your Partners in Online Success"
+        />
         <main>
           <Component {...pageProps} />
         </main>
       </ThemeContext.Provider>
       <style jsx>{`
-        header {
-          position: sticky;
-          top: 0;
-          display: flex;
-          background-color: var(--header-background);
-          box-shadow: var(--header-border-bottom);
-          transition: box-shadow .1s ease 0s;
-        }
-
         main {
           min-height: calc(200vh - var(--header-height));
         }

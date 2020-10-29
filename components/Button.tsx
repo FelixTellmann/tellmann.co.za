@@ -22,7 +22,7 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
   return <>
     {
       href
-      ? <Link href="">
+      ? <Link href={href}>
         <a role="button" className={cn(className, { icon, branded, small, large })} onClick={onClick} {...props}>{children}</a>
       </Link>
       : <button className={cn(className, { icon, branded, small, large })} {...props} onClick={onClick}>{children}</button>
@@ -107,6 +107,7 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
           display: block;
           background: var(--button-brand-color-background-hover);
           transition: ease-in-out 0.2s;
+          pointer-events: none;
         }
 
         &:before {

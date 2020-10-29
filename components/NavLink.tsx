@@ -27,11 +27,7 @@ export const NavLink: FC<NavItemProps> = ({ children, href, image, onClick }) =>
           color: var(--nav-hover-color);
         }
       }
-
-      .image {
-        margin: unset;
-        padding: unset;
-      }
+      
     `}</style>
   </>;
 };
