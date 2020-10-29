@@ -1,6 +1,5 @@
 import { FC } from "react";
-import cn from 'classnames';
-
+import cn from "classnames";
 
 type NavBackgroundProps = {
   active: boolean
@@ -8,7 +7,7 @@ type NavBackgroundProps = {
 
 export const NavBackground: FC<NavBackgroundProps> = ({ active }) => {
   return <>
-    <div className={cn({active})}>
+    <div className={cn({ active })}>
       <span className="left" />
       <span className="right" />
     </div>
@@ -24,6 +23,7 @@ export const NavBackground: FC<NavBackgroundProps> = ({ active }) => {
         transition: height;
         transition-delay: 1.4s;
         z-index: -2;
+        overflow: hidden;
 
         .left {
           position: absolute;
@@ -31,7 +31,7 @@ export const NavBackground: FC<NavBackgroundProps> = ({ active }) => {
           left: 0;
           width: 50%;
           height: 0;
-          border-right: solid 1px rgba(255,255,255,0.1);
+          border-right: solid 1px rgba(255, 255, 255, 0.1);
           background-color: var(--color-text);
           transition: height 0.8s ease-in-out;
           transition-delay: 0.35s;
@@ -53,6 +53,7 @@ export const NavBackground: FC<NavBackgroundProps> = ({ active }) => {
         &.active {
           height: 100vh;
           transition-delay: 0s;
+
           .left, .right {
             height: 100%;
             transition-delay: 0s;
