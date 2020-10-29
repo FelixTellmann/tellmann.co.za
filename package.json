@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "classnames": "^2.2.6",
-    "csstype": "2.6.12"
+    "csstype": "2.6.12",
+    "react-reveal": "^1.2.2"
   }
 }

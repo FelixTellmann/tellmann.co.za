@@ -9,7 +9,7 @@ import "styles/helper.scss";
 import "styles/theme.scss";
 import useColorTheme from "use-color-theme";
 import { BreakpointProvider } from "use-styled-system";
-import { Header } from "components";
+import { HeaderDesktop, HeaderMobile } from "components";
 
 export const ThemeContext = createContext({ theme: "" });
 const title = "Tellmann - E-commerce Web development Studio";
@@ -53,13 +53,25 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
       </>
       <BreakpointProvider breakPoints={[0, 600, 900, 1200]}>
         <ThemeContext.Provider value={{ theme: colorTheme.value }}>
-          <Header theme={colorTheme.value} toggleColor={colorTheme.toggle} />
+          <header>
+            <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} />
+            <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} />
+          </header>
           <main>
             <Component {...pageProps} />
           </main>
         </ThemeContext.Provider>
       </BreakpointProvider>
       <style jsx>{`
+        header {
+          position: sticky;
+          top: 0;
+          display: flex;
+          background-color: var(--header-background);
+          box-shadow: var(--header-border-bottom);
+          transition: box-shadow .1s ease 0s;
+        }
+
         main {
           min-height: calc(200vh - var(--header-height));
         }

@@ -19,9 +19,11 @@ export const NavBackground: FC<NavBackgroundProps> = ({ active }) => {
         bottom: 0;
         left: 0;
         right: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
+        width: 100%;
+        height: 0;
+        transition: height;
+        transition-delay: 1.4s;
+        z-index: -2;
 
         .left {
           position: absolute;
@@ -49,6 +51,8 @@ export const NavBackground: FC<NavBackgroundProps> = ({ active }) => {
         }
 
         &.active {
+          height: 100vh;
+          transition-delay: 0s;
           .left, .right {
             height: 100%;
             transition-delay: 0s;

@@ -21,11 +21,11 @@ body {
 
   /*= =============== color ================ */
   --color-background: #fff;
-  --color-text: #000;
+  --color-text: #171717;
 
   /*= =============== header ================ */
   --header-backdrop-filter: saturate(180%) blur(5px);
-  --header-background: hsla(0, 0%, 100%, 0.8);
+  --header-background: hsla(0, 0%, 100%, 1);
   --header-border-bottom: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 
   --nav-color: #666;
@@ -33,4 +33,7 @@ body {
   --nav-hover-color: #000;
 
   --primary: #0ab6ff;
+  @include responsive-min(600px) {
+    --header-background: hsla(0, 0%, 100%, 0.8);
+  }
 }

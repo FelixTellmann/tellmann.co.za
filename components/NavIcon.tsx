@@ -4,14 +4,16 @@ import Image from "next/image";
 
 type NavIconProps = {
   href?: string
+  target?: string
   onClick?: (e) => void
 }
 
-export const NavIcon: FC<NavIconProps> = ({ children, href, onClick }) => {
+export const NavIcon: FC<NavIconProps> = ({ children, href, onClick, target }) => {
   
   return <>
-    {href ? <Link href={href}><a>{children}</a></Link> : null}
-    {onClick ? <button onClick={onClick}>{children}</button> : null}
+    {href
+     ? <Link href={href}><a target={target} onClick={onClick}>{children}</a></Link>
+     : <button onClick={onClick}>{children}</button>}
     <style jsx>{`
       a, button {
         display: flex;

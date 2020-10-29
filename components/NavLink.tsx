@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { FC } from "react";
 import cn from "classnames";
+import { useStyledSystem } from "use-styled-system";
 
 type NavItemProps = {
   href: string
   image?: boolean
+  onClick?: (e) => void
 }
 
-export const NavLink: FC<NavItemProps> = ({ children, href, image }) => {
+export const NavLink: FC<NavItemProps> = ({ children, href, image, onClick }) => {
   
   return <>
-    <Link href={href}><a className={cn({ image })}>{children}</a></Link>
+    <Link href={href}><a className={cn({ image })} onClick={onClick}>{children}</a></Link>
     <style jsx>{`
       a {
         display: flex;
