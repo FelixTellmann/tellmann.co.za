@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from "react";
-import { CSS, useStyledSystem } from "use-styled-system";
 import cn from "classnames";
 
 type ButtonProps = {
   href?: string
+  onClick?: (e) => void
   icon?: boolean
   branded?: boolean
   small?: boolean
@@ -14,8 +14,7 @@ type ButtonProps = {
   className?: string
 }
 
-export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> & AnchorHTMLAttributes<HTMLAnchorElement>) & CSS> = ({ children, href, icon, branded, small, large, mobile, desktop, className = "", ...props }) => {
-  const { styleJsx, nonCssProps } = useStyledSystem(props, { Space: true, Layout: true, Decor: true });
+export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> & AnchorHTMLAttributes<HTMLAnchorElement>)> = ({ children, href, icon, branded, small, large, mobile, desktop, onClick, className = "", ...props }) => {
   
   mobile && (className += " mobile");
   desktop && (className += " desktop");
@@ -23,8 +22,10 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
   return <>
     {
       href
-      ? <Link href=""><a role="button" className={cn(className, { icon, branded, small, large })} {...nonCssProps}>{children}</a></Link>
-      : <button className={cn(className, { icon, branded, small, large })} {...nonCssProps}>{children}</button>
+      ? <Link href="">
+        <a role="button" className={cn(className, { icon, branded, small, large })} onClick={onClick} {...props}>{children}</a>
+      </Link>
+      : <button className={cn(className, { icon, branded, small, large })} {...props} onClick={onClick}>{children}</button>
     }
     <style jsx>{`
       button, a {
@@ -143,9 +144,6 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
         }
       }
     `}</style>
-    <style jsx>{`
-      button, a {
-        ${styleJsx}
-      }`}</style>
+    
   </>;
 };

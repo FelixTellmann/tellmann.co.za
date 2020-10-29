@@ -2,26 +2,25 @@ import { FC } from "react";
 import React from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import Logo from "../public/logo.svg";
-import { Box } from "./Box";
 import { Button } from "./Button";
 import { NavLink } from "./NavLink";
 
 type HeaderDesktopProps = {
   theme: string
-  toggleColor: (e) => void
+  toggleColor
 };
 
 export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor }) => {
   return <>
     <div className="desktop">
       <NavLink href="/" image><Logo style={{ height: "calc(var(--header-height) - 8px)", color: "var(--color-text)" }} /></NavLink>
-      <Box as={`nav`} d={`flex`} flex={1} justify={`center`} align={`center`}>
+      <nav>
         <NavLink href="/about">About</NavLink>
         <NavLink href="/work">Work</NavLink>
         <NavLink href="/services">Services</NavLink>
-      </Box>
+      </nav>
       <Button href="/contact" branded small>Contact</Button>
-      <Button aria-label="Toggle Color Theme" onClick={toggleColor} ml={3} icon>
+      <Button aria-label="Toggle Color Theme" onClick={toggleColor} icon>
         {theme === "light-theme" ? <FiMoon /> : null}
         {theme === "dark-theme" ? <FiSun /> : null}
       </Button>
@@ -38,6 +37,17 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor }) =>
         margin-left: auto;
         padding-right: var(--page-margin);
         padding-left: var(--page-margin);
+
+        :global(button:last-of-type) {
+          margin-left: 16px;
+        }
+      }
+
+      nav {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
       }
     `}</style>
   </>;

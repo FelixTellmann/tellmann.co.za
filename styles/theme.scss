@@ -33,6 +33,7 @@ body {
   --nav-hover-color: #000;
 
   --primary: #0ab6ff;
+  --secondary: #00DFD8;
   @include responsive-min(600px) {
     --header-background: hsla(0, 0%, 100%, 0.8);
   }

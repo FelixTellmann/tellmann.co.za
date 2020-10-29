@@ -8,7 +8,6 @@ import "styles/default.scss";
 import "styles/helper.scss";
 import "styles/theme.scss";
 import useColorTheme from "use-color-theme";
-import { BreakpointProvider } from "use-styled-system";
 import { HeaderDesktop, HeaderMobile } from "components";
 
 export const ThemeContext = createContext({ theme: "" });
@@ -51,17 +50,15 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
         />
         <GoogleFonts href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;500;700&display=swap" />
       </>
-      <BreakpointProvider breakPoints={[0, 600, 900, 1200]}>
-        <ThemeContext.Provider value={{ theme: colorTheme.value }}>
-          <header>
-            <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} />
-            <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} />
-          </header>
-          <main>
-            <Component {...pageProps} />
-          </main>
-        </ThemeContext.Provider>
-      </BreakpointProvider>
+      <ThemeContext.Provider value={{ theme: colorTheme.value }}>
+        <header>
+          <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} />
+          <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} />
+        </header>
+        <main>
+          <Component {...pageProps} />
+        </main>
+      </ThemeContext.Provider>
       <style jsx>{`
         header {
           position: sticky;

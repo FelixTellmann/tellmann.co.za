@@ -1,17 +1,15 @@
 import React, { FC } from "react";
 import cn from "classnames";
-import { CSS, useStyledSystem } from "use-styled-system";
 
 type NavToggleProps = {
   toggleNav: (e) => void
   active: boolean
 };
 
-export const NavToggle: FC<NavToggleProps & CSS> = ({ toggleNav, active, ...props }) => {
-  const { styleJsx, nonCssProps } = useStyledSystem(props, { Space: true, Layout: true, Decor: true });
+export const NavToggle: FC<NavToggleProps > = ({ toggleNav, active, ...props }) => {
   
   return <>
-    <button className={cn({ active })} onClick={toggleNav} {...nonCssProps}><span /></button>
+    <button className={cn({ active })} onClick={toggleNav} {...props}><span /></button>
     <style jsx>{`
       button {
         --nav-icon-size: 2.4rem;
@@ -78,11 +76,6 @@ export const NavToggle: FC<NavToggleProps & CSS> = ({ toggleNav, active, ...prop
             }
           }
         }
-      }
-    `}</style>
-    <style jsx>{`
-      button {
-        ${styleJsx}
       }
     `}</style>
   </>;

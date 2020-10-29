@@ -1,4 +1,4 @@
-export * from './Box'
+
 export * from './Button'
 export * from './HeaderDesktop'
 export * from './HeaderMobile'

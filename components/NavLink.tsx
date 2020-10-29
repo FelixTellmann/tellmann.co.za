@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
 import cn from "classnames";
-import { useStyledSystem } from "use-styled-system";
 
 type NavItemProps = {
   href: string

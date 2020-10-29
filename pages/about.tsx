@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-const Index: FC = (props) => {
+const About: FC = (props) => {
   return (
     <>
       test2
@@ -8,4 +8,4 @@ const Index: FC = (props) => {
   );
 };
 
-export default Index;
+export default About;

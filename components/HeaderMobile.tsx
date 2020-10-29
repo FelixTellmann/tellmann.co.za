@@ -2,12 +2,11 @@ import Link from "next/link";
 import Logo from "public/logo.svg";
 import React, { FC, useState } from "react";
 import { IoIosMail, IoIosCall, IoIosSunny, IoIosMoon, IoLogoFacebook, IoLogoInstagram, IoLogoGithub } from "react-icons/io";
-import { Box } from "./Box";
 import { NavBackground } from "./NavBackground";
 import { NavIcon } from "./NavIcon";
 import { NavLink } from "./NavLink";
 import { NavToggle } from "./NavToggle";
-import Fade from "react-reveal/fade";
+import Fade from "react-reveal/Fade";
 
 import cn from "classnames";
 
@@ -35,7 +34,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
           {theme === "light-theme" ? <IoIosSunny /> : null}
           {theme === "dark-theme" ? <IoIosMoon /> : null}
         </NavIcon>
-        <NavToggle active={show} toggleNav={toggleMobileNav} ml={2} />
+        <NavToggle active={show} toggleNav={toggleMobileNav} />
       </nav>
       
       <div className="dropdown">
@@ -94,7 +93,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
             <NavIcon href="https://facebook.com" target={`_blank`} onClick={toggleMobileNav}><IoLogoFacebook /></NavIcon>{/*TODO*/}
             <NavIcon href="#" target={`_blank`} onClick={toggleMobileNav}><IoLogoInstagram /></NavIcon> {/*TODO*/}
             <NavIcon href="#" target={`_blank`} onClick={toggleMobileNav}><IoLogoGithub /></NavIcon> {/*TODO*/}
-            <Box flex={1} />
+            
             <NavLink href="mailto:info@tellmann.co.za">info@tellmann.co.za</NavLink>
           </nav>
         </Fade>
@@ -135,6 +134,10 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
         :global(a), :global(button:not(:last-of-type)) {
           transition: opacity 0.1s ease-in-out;
           transition-delay: 0.4s;
+        }
+
+        :global(button:last-of-type) {
+          margin-left: 8px;
         }
       }
 
@@ -186,8 +189,8 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
 
       .address {
         width: 40%;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 16px;
+        padding-bottom: 16px;
         border-top: 2px solid var(--primary);
         border-bottom: 2px solid var(--primary);
         font-size: 13px;
@@ -233,5 +236,5 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor }) => {
     
     `}</style>
   </>;
-  ;
+  
 };
