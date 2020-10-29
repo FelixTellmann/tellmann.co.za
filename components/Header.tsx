@@ -1,8 +1,9 @@
 import Logo from "public/logo.svg";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { Box } from "./Box";
 import { Button } from "./Button";
+import { NavIcon } from "./NavIcon";
 import { NavLink } from "./NavLink";
 
 type HeaderProps = {
@@ -11,6 +12,10 @@ type HeaderProps = {
 };
 
 export const Header: FC<HeaderProps> = ({ theme, toggleColor }) => {
+  const [showMobileNav, setShowMobileNav] = useState(false);
+  
+  function toggleMobileNav() { setShowMobileNav(!showMobileNav); }
+  
   return <>
     <header>
       <Box desktop
@@ -45,18 +50,13 @@ export const Header: FC<HeaderProps> = ({ theme, toggleColor }) => {
            maxW={`--page-width`}
            align={`center`}>
         <Logo style={{ height: "var(--header-height)", padding: "4px" }} />
-        <Box as={`nav`} d={`flex`} flex={1} justify={`center`} align={`center`}>
-          <NavLink title={`Home`} alt={`Hi.`} href={`/`} mobile />
-          <NavLink title={`About`} alt={`Who we are`} href={`/about`} />
-          <NavLink title={`Work`} alt={`What we've done`} href={`/about`} />
-          <NavLink title={`Services`} alt={`What we can do`} href={`/services`} />
-          <NavLink title={`Contact`} alt={`Get in touch`} href={`/contact`} mobile />
-          <Button href={`/contact`} desktop onClick={() => console.log("test")}>Contact</Button>
+        <Box d={`flex`} flex={1} justify={`flex-end`} align={`center`}>
+          <Button aria-label="Toggle Color Theme" onClick={toggleColor} ml={3} icon>
+            {theme === "light-theme" ? <FiMoon /> : null}
+            {theme === "dark-theme" ? <FiSun /> : null}
+          </Button>
+          <NavIcon active={showMobileNav} toggleNav={toggleMobileNav} ml={3}/>
         </Box>
-        <Button aria-label="Toggle Color Theme" onClick={toggleColor} ml={3} icon>
-          {theme === "light-theme" ? <FiMoon /> : null}
-          {theme === "dark-theme" ? <FiSun /> : null}
-        </Button>
       </Box>
     </header>
     
@@ -72,3 +72,13 @@ export const Header: FC<HeaderProps> = ({ theme, toggleColor }) => {
     `}</style>
   </>;
 };
+
+
+/*
+*  <NavLink title={`Home`} alt={`Hi.`} href={`/`} mobile />
+          <NavLink title={`About`} alt={`Who we are`} href={`/about`} />
+          <NavLink title={`Work`} alt={`What we've done`} href={`/about`} />
+          <NavLink title={`Services`} alt={`What we can do`} href={`/services`} />
+          <NavLink title={`Contact`} alt={`Get in touch`} href={`/contact`} mobile />
+          <Button href={`/contact`} desktop onClick={() => console.log("test")}>Contact</Button>
+          * */

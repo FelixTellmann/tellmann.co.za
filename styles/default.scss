@@ -23,3 +23,10 @@ body {
 ::selection {
   background-color: var(--color-selection);
 }
+
+button {
+  border: unset;
+  background: unset;
+  outline: unset;
+  padding: unset;
+}
