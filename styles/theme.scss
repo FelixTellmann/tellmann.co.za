@@ -22,6 +22,7 @@ body {
   /*= =============== color ================ */
   --color-background: #fff;
   --color-text: #171717;
+  --color-text-faded: #666;
 
   /*= =============== header ================ */
   --header-backdrop-filter: saturate(180%) blur(5px);
@@ -32,8 +33,12 @@ body {
   --nav-font-size: 14px;
   --nav-hover-color: #000;
 
+  /*= =============== section ================ */
   --primary: #0ab6ff;
-  --secondary: #00DFD8;
+  --secondary: #00dfd8;
+
+  --section-x-padding: 24px;
+  --section-y-padding: 128px;
   @include responsive-min(600px) {
     --header-background: hsla(0, 0%, 100%, 0.8);
   }
