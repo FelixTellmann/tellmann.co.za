@@ -46,7 +46,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
       <div className="dropdown">
         <nav className="dropdown-nav">
           {nav.filter(({ desktop }) => !desktop).map(({ href, title, alt }, i) => (
-            <Link href={href}>
+            <Link key={href} href={href}>
               <a onClick={toggleMobileNav}>
                 <Fade left delay={(i + 1) * 90} when={show}>{title}</Fade>
                 <Fade delay={(i + 1) * 90 + 40} duration={500} when={show}><u /></Fade>
@@ -58,13 +58,16 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
         
         <Fade left delay={3 * 90} when={show}>
           <p className="address">
-            {Object.values(address).map(value => <div>{value}</div>)}
+            {Object.values(address).map(value => <span key={value}>{value}</span>)}
           </p>
         </Fade>
         <Fade bottom delay={4 * 90} when={show}>
           <nav className="footer">
             <NavIcon href={`tel:${tel.replace(" ", "")}`} onClick={toggleMobileNav}><IoIosCall /></NavIcon>
-            {socialNav.map(({ href, icon }) => <NavIcon href={href} target={`_blank`} onClick={toggleMobileNav}>{icon}</NavIcon>)}
+            {socialNav.map(({ href, icon }) => <NavIcon key={href}
+                                                        href={href}
+                                                        target={`_blank`}
+                                                        onClick={toggleMobileNav}>{icon}</NavIcon>)}
             <Link href={`mailto:${email}`}><a className="email" onClick={toggleMobileNav}>{email}</a></Link>
           </nav>
         </Fade>
@@ -169,6 +172,10 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
         line-height: 1.6;
         white-space: nowrap;
         letter-spacing: -0.03em;
+
+        span {
+          display: block;
+        }
       }
 
       .footer {
@@ -176,8 +183,18 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
         justify-content: space-between;
       }
 
-      .mobile.active {
+      .email {
+        font-size: var(--nav-font-size);
+        text-decoration: none;
+        transition: 0.1s ease-in color;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex: 1;
 
+      }
+
+      .mobile.active {
         .logo {
           color: var(--color-background);
           transition-delay: 0.05s;
@@ -204,17 +221,6 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
             &:hover, &:focus, &:active {
               color: var(--primary)
             }
-          }
-
-          .email {
-            font-size: var(--nav-font-size);
-            text-decoration: none;
-            transition: 0.1s ease-in color;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            flex: 1;
-
           }
         }
       }

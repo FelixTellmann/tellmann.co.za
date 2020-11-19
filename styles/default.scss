@@ -21,8 +21,8 @@ body {
 }
 
 ::selection {
-  background-color: var(--secondary);
   opacity: 0.8;
+  background-color: var(--secondary);
 }
 
 button {
@@ -36,6 +36,14 @@ a {
   color: inherit;
 }
 
+p, .p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: unset;
+  margin: 14px 0;
+}
+
 .h0 {
   margin-left: -8px;
   font-size: 220px;
@@ -47,33 +55,35 @@ a {
 h1, .h1 {
   font-size: 60px;
   font-weight: 700;
-  letter-spacing: -.05em;
   line-height: calc(0.2rem + 2ex + 0.2rem);
+  letter-spacing: -.05em;
 }
 
 h2, .h2 {
   font-size: 36px;
   font-weight: 700;
-  letter-spacing: unset;
   line-height: calc(0.2rem + 2ex + 0.2rem);
+  letter-spacing: unset;
 }
 
 h3, .h3 {
   font-size: 24px;
   font-weight: 400;
-  letter-spacing: unset;
   line-height: calc(0.2rem + 2ex + 0.2rem);
+  letter-spacing: unset;
 }
+
 h4, .h4 {
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: unset;
+  font-size: 20px;
+  font-weight: 600;
   line-height: calc(0.2rem + 2ex + 0.2rem);
+  letter-spacing: unset;
 }
+
 h5, .h5 {
   font-size: 18px;
   font-weight: 400;
-  letter-spacing: -.02em;
   line-height: calc(0.2rem + 2ex + 0.2rem);
-
+  letter-spacing: -.02em;
 }
+

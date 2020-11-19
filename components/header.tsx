@@ -51,17 +51,26 @@ export const Header: FC<HeaderProps> = ({ colorTheme, ...props }) => {
     <header>
       <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props} />
       <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props} />
+      <div className="header__background" />
     </header>
     <style jsx>{`
       header {
         position: sticky;
-        top: 0;
         z-index: 10;
+        top: 0;
         display: flex;
-        background-color: var(--header-background);
-       /* box-shadow: var(--header-border-bottom);*/
+        /* box-shadow: var(--header-border-bottom);*/
         transition: box-shadow .1s ease 0s;
-        
+      }
+
+      .header__background {
+        position: absolute;
+        z-index: -3;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--header-background);
         backdrop-filter: saturate(180%) blur(20px);
       }
     `}</style>

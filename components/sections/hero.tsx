@@ -21,8 +21,8 @@ export const Hero: FC = () => {
       <div className="hero__content">
         {
           Array.isArray(title)
-          ? title.map((title, i) => <h1 className={`h0 bp-${i}`}>{title}</h1>)
-          : <h1 className="h0">{title}</h1>
+          ? title.map((title, i) => <h1 key={title} className={`h0 bp-${i}`}>{title}</h1>)
+          : <h1 key={title}  className="h0">{title}</h1>
         }
         <h2 className="h3">{subtitle}</h2>
         <Button href={cta.href} secondary branded medium style={{ marginTop: `16px` }}>{cta.title}</Button>

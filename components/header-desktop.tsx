@@ -25,7 +25,7 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, logo
     <div className="desktop">
       <Link href={logo.href}><a><Image src={logo.src} alt={logo.alt} height={56} width={105} /></a></Link>
       <nav>
-        {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => <Link href={href}><a>{title}</a></Link>)}
+        {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => <Link key={href} href={href}><a>{title}</a></Link>)}
       </nav>
       <Button href={navButton.href} branded small>{navButton.title}</Button>
       <Button aria-label="Toggle Color Theme" onClick={toggleColor} icon>
@@ -35,7 +35,7 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, logo
       <aside className="left">
         <Link href={`mailto:${email}`}><a className="email">{email}</a></Link>
         <NavIcon href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
-        {socialNav.map(({ href, icon }) => <NavIcon href={href}>{icon}</NavIcon>)}
+        {socialNav.map(({ href, icon }) => <NavIcon key={href} href={href}>{icon}</NavIcon>)}
       </aside>
       <aside className="right">
         <Link href="#"><a className="slogan">{slogan}</a></Link>

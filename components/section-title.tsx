@@ -40,7 +40,7 @@ export const SectionTitle: FC<SectionTitleProps> = ({ title, subtitle, align = "
         flex-direction: column;
         text-align: var(--align-section-title);
         align-items: var(--align-section-title-flex);
-        margin-bottom: 24px;
+        margin-bottom: 36px;
 
         & > * {
           max-width: 720px;

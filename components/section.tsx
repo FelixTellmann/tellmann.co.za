@@ -3,15 +3,17 @@ import { SectionScrollTo } from "./section-scroll-to";
 
 type SectionProps = {
   background?: string
+  backgroundOpacity?: number
   overlay?: string
   id: string
   jumpTo?: { href: string, title: string }
   style?: CSSProperties
 };
 
-export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, children, style = {} }) => {
-  style["--hero-image"] = background;
-  style["--hero-overlay"] = overlay;
+export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, children, backgroundOpacity, style = {} }) => {
+  style["--section-bg"] = background;
+  style["--section-bg-opacity"] = backgroundOpacity;
+  style["--section-overlay"] = overlay;
   return <>
     <section id={id} style={style}>
       {children}
@@ -43,7 +45,8 @@ export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, chi
         width: 100%;
         height: 100%;
         background: center / cover no-repeat;
-        background-image: var(--hero-image);
+        background-image: var(--section-bg);
+        opacity: var(--section-bg-opacity);
 
         &:before {
           position: absolute;
@@ -53,7 +56,7 @@ export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, chi
           width: 100%;
           height: 100%;
           opacity: 0.8;
-          background-image: var(--hero-overlay);
+          background-image: var(--section-overlay);
         }
       }
     `}</style>
