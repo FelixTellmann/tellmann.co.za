@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { ColorTheme } from "use-color-theme";
-import { HeaderDesktop } from "./HeaderDesktop";
-import { HeaderMobile } from "./HeaderMobile";
+import { HeaderDesktop } from "./header-desktop";
+import { HeaderMobile } from "./header-mobile";
 
 export type Logo = {
   href: string,
@@ -49,17 +49,20 @@ type HeaderProps = {
 export const Header: FC<HeaderProps> = ({ colorTheme, ...props }) => {
   return <>
     <header>
-      <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props}/>
-      <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props}/>
+      <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props} />
+      <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props} />
     </header>
     <style jsx>{`
       header {
         position: sticky;
         top: 0;
+        z-index: 10;
         display: flex;
         background-color: var(--header-background);
-        box-shadow: var(--header-border-bottom);
+       /* box-shadow: var(--header-border-bottom);*/
         transition: box-shadow .1s ease 0s;
+        
+        backdrop-filter: saturate(180%) blur(20px);
       }
     `}</style>
   </>;

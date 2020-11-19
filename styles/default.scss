@@ -1,4 +1,4 @@
-*,*::before,*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -22,14 +22,45 @@ body {
 
 ::selection {
   background-color: var(--secondary);
+  opacity: 0.8;
 }
 
 button {
-  border: unset;
-  background: unset;
-  outline: unset;
   padding: unset;
+  border: unset;
+  outline: unset;
+  background: unset;
 }
+
 a {
   color: inherit;
+}
+
+.h0 {
+  margin-left: -8px;
+  font-size: 220px;
+  font-weight: 700;
+  line-height: calc(0.2rem + 2ex + 0.2rem);
+  letter-spacing: -16.5px;
+}
+
+h1, .h1 {
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: -.05em;
+  line-height: calc(0.2rem + 2ex + 0.2rem);
+}
+
+h2, .h2 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: calc(0.2rem + 2ex + 0.2rem);
+}
+
+h3, .h3 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: unset;
+  line-height: calc(0.2rem + 2ex + 0.2rem);
 }

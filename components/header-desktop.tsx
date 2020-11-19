@@ -3,10 +3,10 @@ import { FC } from "react";
 import React from "react";
 import { IoIosCall } from "react-icons/io";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { Button } from "./Button";
-import { NavButton, NavItem, Logo, SocialNav, Address } from "./Header";
+import { Button } from "./button";
+import { NavButton, NavItem, Logo, SocialNav, Address } from "./header";
 import Image from "next/image";
-import { NavIcon } from "./NavIcon";
+import { NavIcon } from "./nav-icon";
 
 type HeaderDesktopProps = {
   logo: Logo
@@ -87,7 +87,7 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, logo
         height: 100vh;
         width: var(--header-height);
         display: none;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         padding-top: var(--header-height);
         padding-bottom: var(--page-margin);

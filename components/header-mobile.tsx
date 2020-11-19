@@ -5,11 +5,11 @@ import { IoIosMail, IoIosCall, IoIosSunny, IoIosMoon, IoLogoFacebook, IoLogoInst
 import { ColorTheme } from "use-color-theme";
 import Logo from "public/logo.svg";
 
-import { Address, NavButton, NavItem, SocialNav } from "./Header";
-import { NavBackground } from "./NavBackground";
-import { NavIcon } from "./NavIcon";
-import { NavLink } from "./NavLink";
-import { NavToggle } from "./NavToggle";
+import { Address, NavButton, NavItem, SocialNav } from "./header";
+import { NavBackground } from "./nav-background";
+import { NavIcon } from "./nav-icon";
+import { NavLink } from "./nav-link";
+import { NavToggle } from "./nav-toggle";
 import Fade from "react-reveal/Fade";
 
 import cn from "classnames";
