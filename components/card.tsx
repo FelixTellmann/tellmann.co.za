@@ -60,7 +60,7 @@ export const Card: FC<CardProps> = ({ title, content, icon, link, clickable, sty
         &.clickable {
           &:hover, &:focus, &:active {
             border: 1px solid transparent;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 30px rgba(var(--color-text-rgb), 0.12);
             transition: box-shadow .2s ease;
 
             .card__link {

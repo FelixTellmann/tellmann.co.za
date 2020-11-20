@@ -22,7 +22,11 @@ body {
   /*= =============== color ================ */
   --color-background: #fff;
   --color-text: #171717;
-  --color-text-faded: #666;
+  --color-text-rgb: 23, 23, 23;
+  --color-text-faded: #2d3748;
+  --color-text-faded-rgb: 45, 55, 72;
+  --color-background-rgb: 255, 255, 255;
+
 
   /*= =============== header ================ */
   --header-backdrop-filter: saturate(180%) blur(5px);
@@ -42,4 +46,13 @@ body {
   @include responsive-min(600px) {
     --header-background: hsla(0, 0%, 100%, 0.8);
   }
+}
+
+.dark-theme {
+  --color-background: #171717;
+  --color-background-rgb: 23, 23, 23;
+  --color-text: #fff;
+  --color-text-rgb: 255, 255, 255;
+  --color-text-faded: #a0aec0;
+  --color-text-faded-rgb: 160, 174, 192;
 }
