@@ -1,8 +1,10 @@
+import back from "node-html-parser/dist/back";
 import React, { CSSProperties, FC } from "react";
 import { SectionScrollTo } from "./section-scroll-to";
+import Image from "next/image";
 
 type SectionProps = {
-  background?: string
+  background?: string | JSX.Element
   backgroundOpacity?: number
   overlay?: string
   id: string
@@ -17,7 +19,7 @@ export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, chi
   return <>
     <section id={id} style={style}>
       {children}
-      {background || overlay ? <picture className="background" /> : null}
+      {background || overlay ? <picture className="background">{typeof background !== "string" ? background : null}</picture> : null}
       {jumpTo ? <SectionScrollTo href={jumpTo.href} title={jumpTo.title} /> : null}
     </section>
     <style jsx>{`
@@ -47,6 +49,13 @@ export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, chi
         background: center / cover no-repeat;
         background-image: var(--section-bg);
         opacity: var(--section-bg-opacity);
+        overflow: hidden;
+
+        :global(svg) {
+          height: auto;
+          width: 100%;
+          min-height: 100%;
+        }
 
         &:before {
           position: absolute;
