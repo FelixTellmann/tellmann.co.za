@@ -58,7 +58,7 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
           logo={{ href: "/", src: "/logo.svg", alt: "Tellmann Logo" }}
           nav={[
             { href: "/", title: "Home", alt: "Hi.", mobile: true },
-            { href: "/about", title: "About", alt: "Who we are" },
+            { href: "#/about", title: "About", alt: "Who we are" },
             { href: "/work", title: "Work", alt: `What we've done` },
             { href: "/services", title: "Services", alt: `What we can do` },
             { href: "/contact", title: "Contact", alt: `Get in touch`, mobile: true }

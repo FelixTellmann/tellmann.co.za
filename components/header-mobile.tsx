@@ -1,18 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import React, { createElement, FC, useState } from "react";
-import { IoIosMail, IoIosCall, IoIosSunny, IoIosMoon, IoLogoFacebook, IoLogoInstagram, IoLogoGithub } from "react-icons/io";
-import { ColorTheme } from "use-color-theme";
+import cn from "classnames";
+import { Link } from "components";
 import Logo from "public/logo.svg";
-
-import { Address, NavButton, NavItem, SocialNav } from "./header";
-import { NavBackground } from "./nav-background";
-import { NavIcon } from "./nav-icon";
-import { NavLink } from "./nav-link";
-import { NavToggle } from "./nav-toggle";
+import React, { FC, useState } from "react";
+import { IoIosCall, IoIosMail, IoIosMoon, IoIosSunny } from "react-icons/io";
 import Fade from "react-reveal/Fade";
 
-import cn from "classnames";
+import { Address, NavItem, SocialNav } from "./header";
+import { NavBackground } from "./nav-background";
+import { NavIcon } from "./nav-icon";
+import { NavToggle } from "./nav-toggle";
 
 type HeaderMobileProps = {
   nav: NavItem[]

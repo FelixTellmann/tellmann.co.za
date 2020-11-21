@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "components";
 import { FC } from "react";
 import { FiChevronDown } from "react-icons/fi";
 
@@ -10,7 +10,10 @@ type SectionScrollToProps = {
 export const SectionScrollTo: FC<SectionScrollToProps> = ({ href, title }) => {
   return <>
     <div className="scroll-to">
-      <Link href={href}><a className="scroll-to__link">{title}<FiChevronDown style={{ position: "absolute", right: "-24px" }} /></a></Link>
+      <Link href={href} scrollDuration={800}><a className="scroll-to__link">{title}<FiChevronDown style={{
+        position: "absolute",
+        right: "-24px"
+      }} /></a></Link>
     </div>
     <style jsx>{`
       .scroll-to {

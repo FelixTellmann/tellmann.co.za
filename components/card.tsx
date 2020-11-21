@@ -1,6 +1,6 @@
 import { CSSProperties, FC } from "react";
 import cn from "classnames";
-import Link from "next/link";
+import { Link } from "components";
 import { FiChevronRight } from "react-icons/fi";
 
 type CardProps = {
@@ -26,41 +26,45 @@ export const Card: FC<CardProps> = ({ title, content, icon, link, clickable, sty
       link
       ? <Link href={link.href}>
         <a className={cn("card", { clickable })} style={style}>
-          <div className="card__header">
-            {icon ? <i className="card__icon">{icon.src}</i> : null}
-            <h3 className="h4 card__title">{title}</h3>
+          <div className="card__wrapper">
+            <div className="card__header">
+              {icon ? <i className="card__icon">{icon.src}</i> : null}
+              <h3 className="h4 card__title">{title}</h3>
+            </div>
+            <p className="card__content">{content}</p>
+            {link.title ? <span className="card__link">{link.title} <FiChevronRight /></span> : null}
           </div>
-          <p className="card__content">{content}</p>
-          {link.title ? <span className="card__link">{link.title} <FiChevronRight /></span> : null}
         </a>
       </Link>
       : <div className={cn("card", { clickable })} style={style}>
-        <div className="card__header">
+        <div className="card__wrapper"> <div className="card__header">
           {icon ? <i className="card__icon">{icon.src}</i> : null}
           <h3 className="h4 card__title">{title}</h3>
         </div>
-        <p className="card__content">{content}</p>
+          <p className="card__content">{content}</p>
+        </div>
+      
       </div>
     }
     
     <style jsx>{`
       .card {
-        display: flex;
-        flex: 1 1;
-        flex-direction: column;
-        padding: 24px;
-        border: 1px solid #eaeaea;
+        padding: 1px;
+        border: var(--card-border);
         border-radius: 5px;
-        background-color: var(--color-background);
+        background: var(--card-background);
+        background-clip: content-box, border-box;
         cursor: var(--card-cursor);
         text-align: left;
         text-decoration: none;
-        transition: box-shadow .2s ease, border .2s ease;
+        transition: box-shadow .2s ease,border .2s ease;
 
         &.clickable {
           &:hover, &:focus, &:active {
-            border: 1px solid transparent;
-            box-shadow: 0 8px 30px rgba(var(--color-text-rgb), 0.12);
+            border: var(--card-border-hover);
+            outline: none;
+            background: var(--card-background-hover);
+            box-shadow: 0 8px 30px var(--card-shadow-hover);
             transition: box-shadow .2s ease;
 
             .card__link {
@@ -68,6 +72,17 @@ export const Card: FC<CardProps> = ({ title, content, icon, link, clickable, sty
             }
           }
         }
+      }
+
+      .card__wrapper {
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        padding: 23px;
+        border-radius: 5px;
+        cursor: var(--card-cursor);
+        text-align: left;
+        text-decoration: none;
       }
 
       .card__header {
@@ -103,10 +118,10 @@ export const Card: FC<CardProps> = ({ title, content, icon, link, clickable, sty
 
       .card__link {
         display: flex;
-        text-decoration: none;
         align-items: center;
-        font-size: 14px;
         color: var(--primary);
+        font-size: 14px;
+        text-decoration: none;
 
         :global(svg) {
           margin-left: 4px;
