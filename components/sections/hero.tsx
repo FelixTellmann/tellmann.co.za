@@ -31,7 +31,10 @@ export const Hero: FC = () => {
     <style jsx>{`
       .hero {
         position: relative;
-        height: calc(100vh - var(--header-height) - var(--section-y-padding) * 2);
+        height: calc(100vh - var(--section-y-padding) * 2);
+        @media screen and (min-width: 600px) {
+          height: calc(100vh - var(--header-height) - var(--section-y-padding) * 2);
+        }
       }
 
       .hero__content {

@@ -73,7 +73,6 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
     
     
     <style jsx>{`
-
       .mobile {
         width: 100%;
         max-width: var(--page-width);
@@ -151,7 +150,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
           margin-right: 8px;
           margin-bottom: 2px;
           margin-left: 8px;
-          background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5) 33%, rgba(255, 255, 255, 0) 0%);
+          background-image: linear-gradient(to right, rgba(var(--color-background-rgb), 0.5) 33%, rgba(var(--color-background-rgb), 0) 0%);
           background-repeat: repeat-x;
           background-position: bottom;
           background-size: 1rem 0.1rem;

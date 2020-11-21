@@ -50,7 +50,7 @@ export const SectionScrollTo: FC<SectionScrollToProps> = ({ href, title }) => {
         align-items: center;
         justify-content: center;
         padding-bottom: 30px;
-        color: rgba(37, 38, 39, 0.7);
+        color: rgba(var(--color-text-faded-rgb), 0.8);
         font-size: 13px;
         font-weight: 500;
         white-space: nowrap;

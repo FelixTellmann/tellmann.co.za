@@ -52,7 +52,6 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
         <GoogleFonts href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;500;700&display=swap" />
       </>
       <ThemeContext.Provider value={{ theme: colorTheme.value }}>
-        
         <Header
           colorTheme={colorTheme}
           logo={{ href: "/", src: "/logo.svg", alt: "Tellmann Logo" }}

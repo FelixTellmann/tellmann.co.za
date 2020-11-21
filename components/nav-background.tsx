@@ -31,7 +31,7 @@ export const NavBackground: FC<NavBackgroundProps> = ({ active }) => {
           left: 0;
           width: 50%;
           height: 0;
-          border-right: solid 1px rgba(255, 255, 255, 0.1);
+          border-right: solid 1px rgba(var(--color-background-rgb), 0.1);
           background-color: var(--color-text);
           transition: height 0.8s ease-in-out;
           transition-delay: 0.35s;

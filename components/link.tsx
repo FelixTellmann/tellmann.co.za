@@ -18,7 +18,6 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
     anchorElement = cloneElement(isValidElement(anchorReactElement) && anchorReactElement, {
       onClick: (e) => {
         e.preventDefault();
-        console.log("asd");
         onClick && onClick(e);
         const to = document.getElementById(href.replace(/^#/, ""))?.offsetTop;
         scrollTo(scrollDuration, to + scrollOffset);

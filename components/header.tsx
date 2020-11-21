@@ -55,12 +55,15 @@ export const Header: FC<HeaderProps> = ({ colorTheme, ...props }) => {
     </header>
     <style jsx>{`
       header {
-        position: sticky;
+        position: fixed;
         z-index: 10;
+        width: 100%;
         top: 0;
         display: flex;
-        /* box-shadow: var(--header-border-bottom);*/
         transition: box-shadow .1s ease 0s;
+        @media screen and (min-width: 600px) {
+          position: sticky;
+        }
       }
 
       .header__background {
