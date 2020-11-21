@@ -17,17 +17,17 @@ type HeaderMobileProps = {
   email: string
   tel: string
   theme: string
-  toggleColor
+  toggleColor: (e)=> void
+  toggleMobileNav: (e)=> void
+  showMobileNav: boolean
 };
 
-export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, address, email, tel, socialNav }) => {
-  const [show, setShowNav] = useState(false);
+export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor,  showMobileNav, toggleMobileNav, nav, address, email, tel, socialNav }) => {
   
-  function toggleMobileNav() { setShowNav(!show); }
   
   return <>
     
-    <div className={cn("mobile", { active: show })}>
+    <div className={cn("mobile", { active: showMobileNav })}>
       <Link href="/"><a className="logo" onClick={toggleMobileNav}><Logo width={105} height={56} /></a></Link>
       <nav className="topbar">
         <NavIcon href={`mailto:${email}`}><IoIosMail /></NavIcon>
@@ -36,7 +36,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
           {theme === "light-theme" ? <IoIosSunny /> : null}
           {theme === "dark-theme" ? <IoIosMoon /> : null}
         </NavIcon>
-        <NavToggle active={show} toggleNav={toggleMobileNav} />
+        <NavToggle active={showMobileNav} toggleNav={toggleMobileNav} />
       </nav>
       
       <div className="dropdown">
@@ -44,20 +44,20 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
           {nav.filter(({ desktop }) => !desktop).map(({ href, title, alt }, i) => (
             <Link key={href} href={href}>
               <a onClick={toggleMobileNav}>
-                <Fade left delay={(i + 1) * 90} when={show}>{title}</Fade>
-                <Fade delay={(i + 1) * 90 + 40} duration={500} when={show}><u /></Fade>
-                <Fade delay={(i + 1) * 90 + 40} duration={500} when={show}><span>{alt}</span></Fade>
+                <Fade left delay={(i + 1) * 90} when={showMobileNav}>{title}</Fade>
+                <Fade delay={(i + 1) * 90 + 40} duration={500} when={showMobileNav}><u /></Fade>
+                <Fade delay={(i + 1) * 90 + 40} duration={500} when={showMobileNav}><span>{alt}</span></Fade>
               </a>
             </Link>
           ))}
         </nav>
         
-        <Fade left delay={3 * 90} when={show}>
+        <Fade left delay={3 * 90} when={showMobileNav}>
           <p className="address">
             {Object.values(address).map(value => <span key={value}>{value}</span>)}
           </p>
         </Fade>
-        <Fade bottom delay={4 * 90} when={show}>
+        <Fade bottom delay={4 * 90} when={showMobileNav}>
           <nav className="footer">
             <NavIcon href={`tel:${tel.replace(" ", "")}`} onClick={toggleMobileNav}><IoIosCall /></NavIcon>
             {socialNav.map(({ href, icon }) => <NavIcon key={href}
@@ -68,7 +68,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
           </nav>
         </Fade>
       </div>
-      <NavBackground active={show} />
+      <NavBackground active={showMobileNav} />
     </div>
     
     
@@ -76,7 +76,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, nav, a
       .mobile {
         width: 100%;
         max-width: var(--page-width);
-        height: var(--header-height);
+        height: var(--header-nav-height);
         display: flex;
         align-items: center;
         justify-content: space-between;

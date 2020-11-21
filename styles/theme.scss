@@ -1,5 +1,7 @@
 :root {
-  --header-height: 64px;
+  --header-banner-height: 40px;
+  --header-height: calc(var(--header-nav-height) + var(--header-banner-height));
+  --header-nav-height: 64px;
   --page-margin: 24px;
   --page-width: 1048px;
 }

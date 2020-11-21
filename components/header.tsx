@@ -1,5 +1,8 @@
-import React, { FC } from "react";
+import cn from "classnames";
+import React, { FC, useEffect, useState } from "react";
+
 import { ColorTheme } from "use-color-theme";
+import { HeaderBanner } from "./header-banner";
 import { HeaderDesktop } from "./header-desktop";
 import { HeaderMobile } from "./header-mobile";
 
@@ -47,23 +50,49 @@ type HeaderProps = {
 }
 
 export const Header: FC<HeaderProps> = ({ colorTheme, ...props }) => {
+  const [showBanner, setShowBanner] = useState(true);
+  const [showMobileNav, setShowMobileNav] = useState(false);
+  
+  function toggleMobileNav() {
+    setShowMobileNav(!showMobileNav);
+  }
+  
+  useEffect(() => {
+    showBanner
+    ? document.documentElement.style.setProperty('--header-banner-height', '40px')
+    : document.documentElement.style.setProperty('--header-banner-height', '0px')
+  }, [showBanner])
+  
   return <>
-    <header>
+    <header className={cn({ showBanner })}>
+      <HeaderBanner showMobileNav={showMobileNav}
+                    onClose={() => setShowBanner(false)}
+                    title={<>Not on Shopify yet? Get a full page review and we will get you started</>}
+                    href="#contact" />
       <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props} />
-      <HeaderMobile theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props} />
+      <HeaderMobile toggleMobileNav={toggleMobileNav} showMobileNav={showMobileNav} theme={colorTheme.value} toggleColor={colorTheme.toggle} {...props} />
       <div className="header__background" />
     </header>
     <style jsx>{`
       header {
-        position: fixed;
+        position: sticky;
+        margin-bottom: calc(0px - var(--header-nav-height) - 40px);
         z-index: 10;
+        top: -40px;
         width: 100%;
-        top: 0;
         display: flex;
-        transition: box-shadow .1s ease 0s;
+        flex-direction: column;
+        margin-top: -40px;
+        transition: box-shadow .1s ease 0s, margin-top 0.1s ease 0s;
         @media screen and (min-width: 600px) {
           position: sticky;
+          margin-bottom: 0;
+          top: -40px
         }
+      }
+
+      .showBanner {
+        margin-top: 0;
       }
 
       .header__background {

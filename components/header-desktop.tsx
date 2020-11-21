@@ -44,7 +44,7 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
       .desktop {
         width: 100%;
         max-width: var(--page-width);
-        height: var(--header-height);
+        height: var(--header-nav-height);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -58,11 +58,11 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
         }
 
         @media screen and (min-width: 960px) {
-          padding-right: calc(var(--header-height) + var(--page-margin) / 2);
-          padding-left: calc(var(--header-height) + var(--page-margin) / 2);
+          padding-right: calc(var(--header-nav-height) + var(--page-margin) / 2);
+          padding-left: calc(var(--header-nav-height) + var(--page-margin) / 2);
         }
 
-        @media screen and (min-width: 1096px) {
+        @media screen and (min-width: 1196px) {
           padding-right: var(--page-margin);
           padding-left: var(--page-margin);
         }
@@ -94,11 +94,11 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
         position: fixed;
         top: 0;
         height: 100vh;
-        width: var(--header-height);
+        width: var(--header-nav-height);
         display: none;
         justify-content: center;
         align-items: center;
-        padding-top: var(--header-height);
+        padding-top: var(--header-nav-height);
         padding-bottom: var(--page-margin);
         z-index: -1;
 
