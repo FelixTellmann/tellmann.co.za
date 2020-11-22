@@ -8,7 +8,7 @@ import { NavIcon } from "../nav-icon";
 
 type FooterProps = {
   nav?
-  socialnav?
+  socialNav?
   logo?
   copyright?
   colorTheme?

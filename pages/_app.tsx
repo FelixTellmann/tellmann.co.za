@@ -17,7 +17,6 @@ const description = "Creator of things that live on the internet - Web developer
 export const Root: FC<AppProps> = ({ pageProps, Component }) => {
   const colorTheme = useColorTheme("light-theme", { classNames: ["light-theme", "dark-theme"] });
   const router = useRouter();
-  
   return (
     <>
       <>
