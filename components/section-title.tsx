@@ -1,4 +1,3 @@
-import { JustifyContentProperty, TextAlignLastProperty } from "csstype";
 import { CSSProperties, FC } from "react";
 
 type SectionTitleProps = {
@@ -11,6 +10,7 @@ type SectionTitleProps = {
 export const SectionTitle: FC<SectionTitleProps> = ({ title, subtitle, align = "center", style = {} }) => {
   
   align && (style["--align-section-title"] = align);
+  
   switch (align) {
     case "left" : {
       style["--align-section-title-flex"] = "flex-start";
