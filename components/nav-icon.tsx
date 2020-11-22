@@ -12,7 +12,7 @@ export const NavIcon: FC<NavIconProps> = ({ children, href, onClick, target }) =
   return <>
     {href
      ? <Link href={href}><a role="link" tabIndex={0} target={target} onClick={onClick}>{children}</a></Link>
-     : <button type="button" onClick={onClick}>{children}</button>}
+     : <button aria-label="Navigation Icon" type="button" onClick={onClick}>{children}</button>}
     <style jsx>{`
       a, button {
         display: flex;

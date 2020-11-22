@@ -31,7 +31,8 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
            onClick={onClick}
            {...props}>{children}</a>
       </Link>
-      : <button type="button" className={cn(className, { icon, secondary, branded, small, medium, large })}
+      : <button aria-label={typeof children === "string" ? children : "Button"}
+                type="button" className={cn(className, { icon, secondary, branded, small, medium, large })}
                 onClick={onClick}
                 {...props}>{children}</button>
     }

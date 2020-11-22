@@ -9,7 +9,7 @@ type NavToggleProps = {
 export const NavToggle: FC<NavToggleProps > = ({ toggleNav, active, ...props }) => {
   
   return <>
-    <button type="button" className={cn({ active })} onClick={toggleNav} {...props}><span /></button>
+    <button aria-label="Toggle Navigation" type="button" className={cn({ active })} onClick={toggleNav} {...props}><span /></button>
     <style jsx>{`
       button {
         --nav-icon-size: 2.4rem;
