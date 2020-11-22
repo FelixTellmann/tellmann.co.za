@@ -25,6 +25,12 @@ body {
   background-color: var(--secondary);
 }
 
+a, button {
+  &:hover, &:focus, &:active {
+    outline: none;
+  }
+}
+
 button {
   padding: unset;
   border: unset;
@@ -37,11 +43,11 @@ a {
 }
 
 p, .p {
+  margin: 14px 0;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.65;
   letter-spacing: unset;
-  margin: 14px 0;
 }
 
 .h0 {
