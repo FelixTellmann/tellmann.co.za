@@ -1,6 +1,6 @@
 import { Link } from "components";
 import Logo from "public/logo.svg";
-import { FC } from "react";
+import React, { FC } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { IoIosCall } from "react-icons/io";
 import { Button } from "./button";
@@ -23,17 +23,18 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
     <div className="desktop">
       <Link href="/"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
       <nav>
-        {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => <Link key={href} href={href}><a role="link"
-                                                                                                      tabIndex={0}>{title}</a></Link>)}
+        {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => (
+          <Link key={href} href={href}><a role="link" tabIndex={0}>{title}</a></Link>)
+        )}
       </nav>
-      <Button href={navButton.href} branded small>{navButton.title}</Button>
+      <Button aria-label={navButton.title} href={navButton.href} branded small>{navButton.title}</Button>
       <Button aria-label="Toggle Color Theme" onClick={toggleColor} icon>
         {theme === "light-theme" ? <FiMoon /> : null}
         {theme === "dark-theme" ? <FiSun /> : null}
       </Button>
       <aside className="left">
-        <Link href={`mailto:${email}`}><a role="link" tabIndex={0} className="email">{email}</a></Link>
-        <NavIcon href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
+        <Link href={`mailto:${email}`}><a aria-label="Contact us via Email" role="link" tabIndex={0} className="email">{email}</a></Link>
+        <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
         {socialNav.map(({ href, icon }) => <NavIcon key={href} href={href}>{icon}</NavIcon>)}
       </aside>
       <aside className="right">

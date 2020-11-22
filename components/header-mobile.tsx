@@ -61,12 +61,18 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
         </Fade>
         <Fade bottom delay={4 * 90} when={showMobileNav}>
           <nav className="footer">
-            <NavIcon href={`tel:${tel.replace(" ", "")}`} onClick={toggleMobileNav}><IoIosCall /></NavIcon>
+            <NavIcon ariaLabel="Contact us via Phone"
+                     href={`tel:${tel.replace(/\s/gi, "")}`}
+                     onClick={toggleMobileNav}><IoIosCall /></NavIcon>
             {socialNav.map(({ href, icon }) => <NavIcon key={href}
                                                         href={href}
                                                         target="_blank"
                                                         onClick={toggleMobileNav}>{icon}</NavIcon>)}
-            <Link href={`mailto:${email}`}><a role="link" tabIndex={0} className="email" onClick={toggleMobileNav}>{email}</a></Link>
+            <Link href={`mailto:${email}`}><a aria-label="Contact via Email"
+                                              role="link"
+                                              tabIndex={0}
+                                              className="email"
+                                              onClick={toggleMobileNav}>{email}</a></Link>
           </nav>
         </Fade>
       </div>
