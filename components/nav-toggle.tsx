@@ -1,5 +1,5 @@
-import React, { FC } from "react";
 import cn from "classnames";
+import React, { FC } from "react";
 
 type NavToggleProps = {
   toggleNav: (e) => void
@@ -9,7 +9,7 @@ type NavToggleProps = {
 export const NavToggle: FC<NavToggleProps > = ({ toggleNav, active, ...props }) => {
   
   return <>
-    <button className={cn({ active })} onClick={toggleNav} {...props}><span /></button>
+    <button type="button" className={cn({ active })} onClick={toggleNav} {...props}><span /></button>
     <style jsx>{`
       button {
         --nav-icon-size: 2.4rem;

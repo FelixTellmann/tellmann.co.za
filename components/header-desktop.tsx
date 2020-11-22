@@ -1,12 +1,11 @@
 import { Link } from "components";
-import { FC } from "react";
-import React from "react";
-import { IoIosCall } from "react-icons/io";
-import { FiMoon, FiSun } from "react-icons/fi";
-import { Button } from "./button";
-import { NavButton, NavItem, SocialNav, Address } from "./header";
-import { NavIcon } from "./nav-icon";
 import Logo from "public/logo.svg";
+import { FC } from "react";
+import { FiMoon, FiSun } from "react-icons/fi";
+import { IoIosCall } from "react-icons/io";
+import { Button } from "./button";
+import { NavButton, NavItem, SocialNav } from "./header";
+import { NavIcon } from "./nav-icon";
 
 type HeaderDesktopProps = {
   nav: NavItem[]
@@ -22,9 +21,10 @@ type HeaderDesktopProps = {
 export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav, navButton, email, tel, socialNav, slogan }) => {
   return <>
     <div className="desktop">
-      <Link href="/"><a className="logo"><Logo width={105} height={56} /></a></Link>
+      <Link href="/"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
       <nav>
-        {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => <Link key={href} href={href}><a>{title}</a></Link>)}
+        {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => <Link key={href} href={href}><a role="link"
+                                                                                                      tabIndex={0}>{title}</a></Link>)}
       </nav>
       <Button href={navButton.href} branded small>{navButton.title}</Button>
       <Button aria-label="Toggle Color Theme" onClick={toggleColor} icon>
@@ -32,12 +32,12 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
         {theme === "dark-theme" ? <FiSun /> : null}
       </Button>
       <aside className="left">
-        <Link href={`mailto:${email}`}><a className="email">{email}</a></Link>
+        <Link href={`mailto:${email}`}><a role="link" tabIndex={0} className="email">{email}</a></Link>
         <NavIcon href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
         {socialNav.map(({ href, icon }) => <NavIcon key={href} href={href}>{icon}</NavIcon>)}
       </aside>
       <aside className="right">
-        <Link href="#"><a className="slogan">{slogan}</a></Link>
+        <Link href="#"><a role="link" tabIndex={0} className="slogan">{slogan}</a></Link>
       </aside>
     </div>
     <style jsx>{`

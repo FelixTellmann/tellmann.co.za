@@ -15,56 +15,56 @@ export const WhatWeDo: FC = () => {
     <div className="grid">
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Shopify`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`}
+            title="Shopify"
+            content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <FaShopify />, background: `linear-gradient(0deg, #53A0EC, #57C84F)`, color: `#fff` }} />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Vend POS`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`}
+            title="Vend POS"
+            content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <VendLogo />, size: "32px" }} />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Shopify`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`}
+            title="Shopify"
+            content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <FaShopify />, background: `linear-gradient(0deg, #53A0EC, #57C84F)`, color: `#fff` }} />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Vend POS`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`}
+            title="Vend POS"
+            content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <VendLogo />, size: "32px" }} />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
-            title={`Image Optimization`}
-            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+            title="Image Optimization"
+            content="<Image> and Automatic Image Optimization with instant builds." />
     </div>
     <style jsx>{`
       .grid {

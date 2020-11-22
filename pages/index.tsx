@@ -1,6 +1,6 @@
-import React, { FC } from "react";
 import { Hero, Section, WhatWeDo } from "components";
 import Topography from "public/topography.svg";
+import React, { FC } from "react";
 
 const Index: FC = () => {
   return (

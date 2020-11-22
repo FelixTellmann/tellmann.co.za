@@ -1,6 +1,5 @@
 import { Link } from "components";
 import { FC } from "react";
-import Image from "next/image";
 
 type NavIconProps = {
   href?: string
@@ -12,8 +11,8 @@ export const NavIcon: FC<NavIconProps> = ({ children, href, onClick, target }) =
   
   return <>
     {href
-     ? <Link href={href}><a target={target} onClick={onClick}>{children}</a></Link>
-     : <button onClick={onClick}>{children}</button>}
+     ? <Link href={href}><a role="link" tabIndex={0} target={target} onClick={onClick}>{children}</a></Link>
+     : <button type="button" onClick={onClick}>{children}</button>}
     <style jsx>{`
       a, button {
         display: flex;

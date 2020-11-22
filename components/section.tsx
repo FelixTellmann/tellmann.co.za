@@ -1,7 +1,5 @@
-import back from "node-html-parser/dist/back";
 import React, { CSSProperties, FC } from "react";
 import { SectionScrollTo } from "./section-scroll-to";
-import Image from "next/image";
 
 type SectionProps = {
   background?: string | JSX.Element
@@ -16,6 +14,7 @@ export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, chi
   style["--section-bg"] = background;
   style["--section-bg-opacity"] = backgroundOpacity;
   style["--section-overlay"] = overlay;
+  
   return <>
     <section id={id} style={style}>
       {children}

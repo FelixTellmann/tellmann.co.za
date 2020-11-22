@@ -1,10 +1,9 @@
 import cn from "classnames";
 import { Link } from "components";
 import Logo from "public/logo.svg";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { IoIosCall, IoIosMail, IoIosMoon, IoIosSunny } from "react-icons/io";
 import Fade from "react-reveal/Fade";
-
 import { Address, NavItem, SocialNav } from "./header";
 import { NavBackground } from "./nav-background";
 import { NavIcon } from "./nav-icon";
@@ -17,18 +16,21 @@ type HeaderMobileProps = {
   email: string
   tel: string
   theme: string
-  toggleColor: (e)=> void
-  toggleMobileNav: (e)=> void
+  toggleColor: (e) => void
+  toggleMobileNav: (e) => void
   showMobileNav: boolean
 };
 
-export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor,  showMobileNav, toggleMobileNav, nav, address, email, tel, socialNav }) => {
-  
+export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMobileNav, toggleMobileNav, nav, address, email, tel, socialNav }) => {
   
   return <>
     
     <div className={cn("mobile", { active: showMobileNav })}>
-      <Link href="/"><a className="logo" onClick={toggleMobileNav}><Logo width={105} height={56} /></a></Link>
+      <Link href="/">
+        <a aria-label="Logo" role="link" tabIndex={0} className="logo" onClick={toggleMobileNav}>
+          <Logo width={105} height={56} />
+        </a>
+      </Link>
       <nav className="topbar">
         <NavIcon href={`mailto:${email}`}><IoIosMail /></NavIcon>
         <NavIcon href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
@@ -43,7 +45,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor,  showM
         <nav className="dropdown-nav">
           {nav.filter(({ desktop }) => !desktop).map(({ href, title, alt }, i) => (
             <Link key={href} href={href}>
-              <a onClick={toggleMobileNav}>
+              <a role="link" tabIndex={0} onClick={toggleMobileNav}>
                 <Fade left delay={(i + 1) * 90} when={showMobileNav}>{title}</Fade>
                 <Fade delay={(i + 1) * 90 + 40} duration={500} when={showMobileNav}><u /></Fade>
                 <Fade delay={(i + 1) * 90 + 40} duration={500} when={showMobileNav}><span>{alt}</span></Fade>
@@ -62,9 +64,9 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor,  showM
             <NavIcon href={`tel:${tel.replace(" ", "")}`} onClick={toggleMobileNav}><IoIosCall /></NavIcon>
             {socialNav.map(({ href, icon }) => <NavIcon key={href}
                                                         href={href}
-                                                        target={`_blank`}
+                                                        target="_blank"
                                                         onClick={toggleMobileNav}>{icon}</NavIcon>)}
-            <Link href={`mailto:${email}`}><a className="email" onClick={toggleMobileNav}>{email}</a></Link>
+            <Link href={`mailto:${email}`}><a role="link" tabIndex={0} className="email" onClick={toggleMobileNav}>{email}</a></Link>
           </nav>
         </Fade>
       </div>

@@ -12,10 +12,11 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
   let anchorElement = children;
   
   if (typeof href === "string" && href.charAt(0) === "#") {
-    
     const anchorReactElement = Children.only(children);
     const { onClick } = !isValidElement(anchorReactElement) || anchorReactElement.props;
     anchorElement = cloneElement(isValidElement(anchorReactElement) && anchorReactElement, {
+      tabIndex: 0,
+      role: "link",
       onClick: (e) => {
         e.preventDefault();
         onClick && onClick(e);

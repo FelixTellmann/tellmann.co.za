@@ -15,7 +15,7 @@ export const HeaderBanner: FC<HeaderBannerProps> = ({ title, href, onClose, show
     <div className={cn("banner", { showMobileNav })}>
       <div className="wrapper">
         <Link href={href}><a>{title} <FiChevronRight /></a></Link>
-        <button onClick={onClose}><FiX /></button>
+        <button aria-label="Close Banner" type="button" onClick={onClose}><FiX /></button>
       </div>
     </div>
     

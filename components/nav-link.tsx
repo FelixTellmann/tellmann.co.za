@@ -1,6 +1,6 @@
+import cn from "classnames";
 import { Link } from "components";
 import { FC } from "react";
-import cn from "classnames";
 
 type NavItemProps = {
   href: string
@@ -11,7 +11,8 @@ type NavItemProps = {
 export const NavLink: FC<NavItemProps> = ({ children, href, image, onClick }) => {
   
   return <>
-    <Link href={href}><a className={cn({ image })} onClick={onClick}>{children}</a></Link>
+    
+    <Link href={href}><a role="link" tabIndex={0} className={cn({ image })} onClick={onClick}>{children}</a></Link>
     <style jsx>{`
       a {
         display: flex;
@@ -27,7 +28,6 @@ export const NavLink: FC<NavItemProps> = ({ children, href, image, onClick }) =>
           color: var(--nav-hover-color);
         }
       }
-      
     `}</style>
   </>;
 };

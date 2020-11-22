@@ -1,6 +1,6 @@
-import { CSSProperties, FC } from "react";
 import cn from "classnames";
 import { Link } from "components";
+import { CSSProperties, FC } from "react";
 import { FiChevronRight } from "react-icons/fi";
 
 type CardProps = {

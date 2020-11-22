@@ -91,7 +91,9 @@
           }
         ],
         "@typescript-eslint/no-unused-expressions": 0,
-        "default-case": 0
+        "default-case": 0,
+        "jsx-a11y/click-events-have-key-events": 0,
+        "import/no-cycle": 0
       }
     }
   ]

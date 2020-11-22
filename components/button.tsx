@@ -1,6 +1,6 @@
-import { Link } from "components";
-import { ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from "react";
 import cn from "classnames";
+import { Link } from "components";
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, FC } from "react";
 
 type ButtonProps = {
   href?: string
@@ -26,11 +26,12 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
       href
       ? <Link href={href}>
         <a role="button"
+           tabIndex={0}
            className={cn(className, { icon, secondary, branded, small, medium, large })}
            onClick={onClick}
            {...props}>{children}</a>
       </Link>
-      : <button className={cn(className, { icon, secondary, branded, small, medium, large })}
+      : <button type="button" className={cn(className, { icon, secondary, branded, small, medium, large })}
                 onClick={onClick}
                 {...props}>{children}</button>
     }
