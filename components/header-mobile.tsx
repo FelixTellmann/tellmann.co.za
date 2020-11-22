@@ -4,10 +4,29 @@ import Logo from "public/logo.svg";
 import React, { FC } from "react";
 import { IoIosCall, IoIosMail, IoIosMoon, IoIosSunny } from "react-icons/io";
 import Fade from "react-reveal/Fade";
-import { Address, NavItem, SocialNav } from "./header";
 import { NavBackground } from "./nav-background";
 import { NavIcon } from "./nav-icon";
 import { NavToggle } from "./nav-toggle";
+
+export type NavItem = {
+  href: string,
+  title: string,
+  alt?: string,
+  mobile?: boolean,
+  desktop?: boolean
+}
+
+export type Address = {
+  title: string,
+  address1: string,
+  address2?: string,
+  city: string,
+  country: string,
+}
+export type SocialNav = {
+  href: string,
+  icon?: JSX.Element
+}
 
 type HeaderMobileProps = {
   nav: NavItem[]

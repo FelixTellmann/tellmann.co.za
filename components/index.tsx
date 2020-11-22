@@ -1,6 +1,5 @@
 export * from "./button";
 export * from "./card";
-export * from "./header";
 export * from "./link";
 export * from "./nav-link";
 export * from "./nav-icon";
@@ -11,3 +10,5 @@ export * from "./section-scroll-to";
 export * from "./section-title";
 export * from "./sections/hero";
 export * from "./sections/what-we-do";
+export * from "./sections/footer";
+export * from "./sections/header";

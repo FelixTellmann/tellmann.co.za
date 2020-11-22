@@ -4,8 +4,25 @@ import React, { FC } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { IoIosCall } from "react-icons/io";
 import { Button } from "./button";
-import { NavButton, NavItem, SocialNav } from "./header";
 import { NavIcon } from "./nav-icon";
+
+export type NavItem = {
+  href: string,
+  title: string,
+  alt?: string,
+  mobile?: boolean,
+  desktop?: boolean
+}
+
+export type SocialNav = {
+  href: string,
+  icon?: JSX.Element
+}
+
+export type NavButton = {
+  href: string
+  title: string
+}
 
 type HeaderDesktopProps = {
   nav: NavItem[]
@@ -35,7 +52,7 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
       <aside className="left">
         <Link href={`mailto:${email}`}><a aria-label="Contact us via Email" role="link" tabIndex={0} className="email">{email}</a></Link>
         <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
-        {socialNav.map(({ href, icon }) => <NavIcon key={href} href={href}>{icon}</NavIcon>)}
+        {socialNav.map(({ href, icon }) => <NavIcon key={href} target="_blank" href={href}>{icon}</NavIcon>)}
       </aside>
       <aside className="right">
         <Link href="#"><a role="link" tabIndex={0} className="slogan">{slogan}</a></Link>

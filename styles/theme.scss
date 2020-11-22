@@ -8,6 +8,7 @@
 
 body {
   /*= =============== button ================ */
+  --border: 1px solid #eaeaea;
   --button-brand-color: var(--primary);
   --button-brand-color-background: transparent;
   --button-brand-color-background-hover: var(--color-text);
@@ -19,14 +20,15 @@ body {
   --button-color-text-hover: var(--primary);
   --button-secondary-color-background: var(--color-text);
   --button-secondary-color-background-hover: var(--color-background);
-  --button-secondary-color-text: var(--color-background);
 
   /*= =============== card ================ */
+  --button-secondary-color-text: var(--color-background);
   --card-background: var(--color-background);
   --card-background-hover: var(--color-background);
-  --card-border: 1px solid #eaeaea;
+  --card-border: var(--border);
   --card-border-hover: 1px solid transparent;
   --card-shadow-hover: rgba(var(--color-text-rgb), 0.12);
+
   --card-text: var(--color-text);
 
   /*= =============== color ================ */
@@ -60,22 +62,24 @@ body {
 }
 
 .dark-theme {
+  --border: 1px solid #333;
   --card-background: linear-gradient(#111, #111) content-box, linear-gradient(90deg, #333, #333) border-box;
   --card-background-hover: linear-gradient(#111, #111) content-box, linear-gradient(90deg, #ec6192, #ec4c34, #ffbd2b, #ebde56, #57c754, #53a1eb) border-box;
   --card-border: none;
   --card-border-hover: none;
   --card-shadow-hover: none;
-  --card-text: var(--color-text);
 
+  --card-text: var(--color-text);
   --color-background: #171717;
   --color-background-rgb: 23, 23, 23;
   --color-grey-bg-1: #07080a;
   --color-grey-bg-2: #0b0d10;
   --color-text: #fff;
-  --color-text-faded: #a0aec0;
 
+  --color-text-faded: #a0aec0;
   --color-text-faded-rgb: 160, 174, 192;
   --color-text-rgb: 255, 255, 255;
-  --nav-color: #f1f1f1;
+  --nav-color: #888;
 
+  --nav-hover-color: #f1f1f1;
 }

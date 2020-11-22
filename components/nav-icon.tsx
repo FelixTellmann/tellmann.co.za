@@ -20,7 +20,7 @@ export const NavIcon: FC<NavIconProps> = ({ children, href, onClick, target, ari
      : <button aria-label={ariaLabel || "Navigation Icon"} type="button" onClick={onClick}>{children}</button>}
     <style jsx>{`
       a, button {
-        display: flex;
+        display: inline-flex;
         margin: 2px;
         padding: 4px;
         outline: none;
@@ -29,6 +29,7 @@ export const NavIcon: FC<NavIconProps> = ({ children, href, onClick, target, ari
         transition: 0.1s ease-in color;
         cursor: pointer;
         color: var(--nav-color);
+        height: 32px;
 
         &:hover, &:focus, &:active {
           color: var(--primary);

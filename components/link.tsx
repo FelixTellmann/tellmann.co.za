@@ -20,7 +20,7 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
       onClick: (e) => {
         e.preventDefault();
         onClick && onClick(e);
-        const to = document.getElementById(href.replace(/^#/, ""))?.offsetTop;
+        const to = document.getElementById(href.replace(/^#/, ""))?.offsetTop || 0;
         scrollTo(scrollDuration, to + scrollOffset);
       }
     });
