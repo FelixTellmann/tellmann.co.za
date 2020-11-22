@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-const About: FC = (props) => {
+const About: FC = () => {
   return (
     <>
       test2

@@ -55,7 +55,7 @@ body {
   --section-x-padding: 24px;
   --section-y-padding: 128px;
   @include responsive-min(600px) {
-    --header-background: rgba(var(--color-background), 0.87);
+    --header-background: rgba(var(--color-background-rgb), 0.87);
   }
 }
 

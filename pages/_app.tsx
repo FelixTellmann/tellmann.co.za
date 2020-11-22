@@ -1,15 +1,15 @@
+import { Header } from "components";
 import GoogleFonts from "next-google-fonts";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import React, { createContext, FC, useState } from "react";
+import React, { createContext, FC } from "react";
+import { IoLogoFacebook, IoLogoGithub, IoLogoInstagram } from "react-icons/io";
 import "reset-css/sass/_reset.scss";
 import "styles/default.scss";
 import "styles/helper.scss";
 import "styles/theme.scss";
-import { IoIosCall, IoIosMail, IoLogoFacebook, IoLogoGithub, IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io";
 import useColorTheme from "use-color-theme";
-import { Header } from "components";
 
 export const ThemeContext = createContext({ theme: "" });
 const title = "Tellmann - E-commerce Web development Studio";
@@ -18,7 +18,6 @@ const description = "Creator of things that live on the internet - Web developer
 export const Root: FC<AppProps> = ({ pageProps, Component }) => {
   const colorTheme = useColorTheme("light-theme", { classNames: ["light-theme", "dark-theme"] });
   const router = useRouter();
-  const [showHeader, setShowHeader] = useState(false);
   
   return (
     <>
@@ -70,12 +69,12 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
             city: "Cape Town",
             country: "South Africa"
           }}
-          email={`info@tellmann.co.za`}
-          tel={`076 031 3590`}
+          email="info@tellmann.co.za"
+          tel="076 031 3590"
           socialNav={[
-            { href: "#Facebook", icon: <IoLogoFacebook title="Facebook"/> },
-            { href: "#Github", icon: <IoLogoGithub title="Github"/> },
-            { href: "#Instagram", icon: <IoLogoInstagram title="Instagram"/> }
+            { href: "#Facebook", icon: <IoLogoFacebook title="Facebook" /> },
+            { href: "#Github", icon: <IoLogoGithub title="Github" /> },
+            { href: "#Instagram", icon: <IoLogoInstagram title="Instagram" /> }
           ]}
           slogan="Your Partners in Online Success"
         />

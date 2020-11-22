@@ -1,7 +1,7 @@
-import { FC } from "react";
 import { Card, SectionTitle } from "components";
-import { FaShopify } from "react-icons/fa";
 import VendLogo from "public/icons/vend-pos.svg";
+import { FC } from "react";
+import { FaShopify } from "react-icons/fa";
 
 const WhatWeDoData = {
   title: "What we Do",
@@ -13,6 +13,32 @@ export const WhatWeDo: FC = () => {
   return <>
     <SectionTitle title={title} subtitle={subtitle} align="center" />
     <div className="grid">
+      <Card clickable
+            link={{ href: `#hero`, title: "Read More" }}
+            title={`Shopify`}
+            content={`<Image> and Automatic Image Optimization with instant builds.`}
+            icon={{ src: <FaShopify />, background: `linear-gradient(0deg, #53A0EC, #57C84F)`, color: `#fff` }} />
+      <Card clickable
+            link={{ href: `#hero`, title: "Read More" }}
+            title={`Vend POS`}
+            content={`<Image> and Automatic Image Optimization with instant builds.`}
+            icon={{ src: <VendLogo />, size: "32px" }} />
+      <Card clickable
+            link={{ href: `#hero`, title: "Read More" }}
+            title={`Image Optimization`}
+            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+      <Card clickable
+            link={{ href: `#hero`, title: "Read More" }}
+            title={`Image Optimization`}
+            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+      <Card clickable
+            link={{ href: `#hero`, title: "Read More" }}
+            title={`Image Optimization`}
+            content={`<Image> and Automatic Image Optimization with instant builds.`} />
+      <Card clickable
+            link={{ href: `#hero`, title: "Read More" }}
+            title={`Image Optimization`}
+            content={`<Image> and Automatic Image Optimization with instant builds.`} />
       <Card clickable
             link={{ href: `#hero`, title: "Read More" }}
             title={`Shopify`}
