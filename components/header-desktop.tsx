@@ -2,9 +2,7 @@ import { Link } from "components";
 import Logo from "public/logo.svg";
 import React, { FC } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { IoIosCall } from "react-icons/io";
 import { Button } from "./button";
-import { NavIcon } from "./nav-icon";
 
 export type NavItem = {
   href: string,
@@ -49,14 +47,14 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
         {theme === "light-theme" ? <FiMoon /> : null}
         {theme === "dark-theme" ? <FiSun /> : null}
       </Button>
-      <aside className="left">
+      {/* <aside className="left">
         <Link href={`mailto:${email}`}><a aria-label="Contact us via Email" role="link" tabIndex={0} className="email">{email}</a></Link>
         <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
         {socialNav.map(({ href, icon }) => <NavIcon key={href} target="_blank" href={href}>{icon}</NavIcon>)}
       </aside>
       <aside className="right">
         <Link href="#"><a role="link" tabIndex={0} className="slogan">{slogan}</a></Link>
-      </aside>
+      </aside> */}
     </div>
     <style jsx>{`
       .desktop {

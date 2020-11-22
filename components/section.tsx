@@ -28,10 +28,7 @@ export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, chi
         padding-bottom: var(--section-y-padding);
         padding-right: var(--section-x-padding);
         padding-left: var(--section-x-padding);
-        @media screen and (min-width: 960px) {
-          margin-right: var(--header-nav-height);
-          margin-left: var(--header-nav-height);
-        }
+
         @media screen and (min-width: 1190px) {
           padding-left: calc((100% - var(--header-nav-height) * 2 - var(--page-width)) / 2 + var(--section-x-padding));
           padding-right: calc((100% - var(--header-nav-height) * 2 - var(--page-width)) / 2 + var(--section-x-padding));
@@ -49,6 +46,8 @@ export const Section: FC<SectionProps> = ({ background, overlay, id, jumpTo, chi
         background-image: var(--section-bg);
         opacity: var(--section-bg-opacity);
         overflow: hidden;
+        object-fit: cover;
+        object-position: 0;
 
         :global(svg) {
           height: auto;

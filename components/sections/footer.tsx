@@ -82,18 +82,21 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
       </nav>
       <div className="utility">
         <Logo width={105} height={56} />
-        <nav className="social-nav">
-          {colorTheme.value === "light-theme" ? <NavIcon ariaLabel="GitHub" onClick={colorTheme.toggle}><FiMoon /></NavIcon> : null}
-          {colorTheme.value === "dark-theme" ? <NavIcon ariaLabel="GitHub" onClick={colorTheme.toggle}><FiSun /></NavIcon> : null}
-          <NavIcon href="#" ariaLabel="GitHub"><IoLogoGithub /></NavIcon>
-          <NavIcon href="#" ariaLabel="GitHub"><IoLogoFacebook /></NavIcon>
-        </nav>
-        <small>{`Copyright © ${new Date().getFullYear()} Tellmann.co.za - All rights reserved.`}</small>
+        <div className="utility__group">
+          <nav className="social-nav">
+            {colorTheme.value === "light-theme" ? <NavIcon ariaLabel="GitHub" onClick={colorTheme.toggle}><FiMoon /></NavIcon> : null}
+            {colorTheme.value === "dark-theme" ? <NavIcon ariaLabel="GitHub" onClick={colorTheme.toggle}><FiSun /></NavIcon> : null}
+            <NavIcon href="#" ariaLabel="GitHub"><IoLogoGithub /></NavIcon>
+            <NavIcon href="#" ariaLabel="GitHub"><IoLogoFacebook /></NavIcon>
+          </nav>
+          <small>{`Copyright © ${new Date().getFullYear()} Tellmann.co.za - All rights reserved.`}</small>
+        </div>
       </div>
     </footer>
     <legend>Made with <span className="heart">&nbsp;❤&nbsp;</span> by Tellmann</legend>
     <style jsx>{`
       footer {
+        position: relative;
         min-height: 400px;
         margin-right: auto;
         margin-left: auto;
@@ -101,9 +104,22 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
         border-top: var(--border);
         border-bottom: var(--border);
         background: var(--color-grey-bg-2);
+
         @media screen and (min-width: 960px) {
-          max-width: calc(100% - var(--header-nav-height) * 2);
-          border: var(--border);
+          &:before, &:after {
+            content: '';
+            position: absolute;
+            width: 64px;
+            left: 0;
+            bottom: calc(100% + 1px);
+            height: 470px;
+            background: linear-gradient(0deg, var(--color-background) 0%, var(--color-background) 70%, transparent 100%);
+          }
+
+          &:after {
+            right: 0;
+            left: unset;
+          }
         }
       }
 
@@ -117,12 +133,33 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
 
       .social-nav {
         padding: 24px 0;
+        order: 2;
+
+        :global(button), :global(a) {
+          height: auto;
+          padding-top: 0;
+          padding-bottom: 0;
+          padding-right: 12px;
+          padding-left: 12px;
+        }
+
+        :global(button:not(:last-child)), :global(a:not(:last-child)) {
+          border-right: var(--border);
+        }
       }
 
       .utility {
         padding-top: 24px;
         color: var(--color-text);
         text-align: center;
+        @media screen and (min-width: 960px) {
+          text-align: left;
+          .utility__group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
       }
 
       small {
@@ -151,7 +188,6 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
               padding: 0;
             }
           }
-
         }
       }
 

@@ -12,3 +12,4 @@ export * from "./sections/hero";
 export * from "./sections/what-we-do";
 export * from "./sections/footer";
 export * from "./sections/header";
+export * from "./sidebar";

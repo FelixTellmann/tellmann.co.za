@@ -1,4 +1,4 @@
-import { Footer, Header } from "components";
+import { Footer, Header, navData, Sidebar } from "components";
 import GoogleFonts from "next-google-fonts";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
@@ -52,13 +52,25 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
       <ThemeContext.Provider value={{ theme: colorTheme.value }}>
         <Header colorTheme={colorTheme} />
         <main>
-          <Component {...pageProps} />
+          <Sidebar left {...navData} />
+          <div className="page"><Component {...pageProps} /></div>
+          <Sidebar right {...navData} />
         </main>
         <Footer colorTheme={colorTheme} />
       </ThemeContext.Provider>
       <style jsx>{`
         main {
+          display: block;
           min-height: calc(200vh - var(--header-nav-height));
+          @media screen and (min-width: 960px) {
+            display: grid;
+            grid-template-columns: var(--header-nav-height) 1fr var(--header-nav-height);
+            grid-template-areas: ' . page . '
+          }
+        }
+
+        .page {
+          grid-area: page
         }
       `}</style>
     </>
