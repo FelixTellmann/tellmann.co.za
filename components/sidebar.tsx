@@ -27,6 +27,7 @@ export const Sidebar: FC<SidebarProps> = ({ left = false, right = false, email, 
     <style jsx>{`
       aside {
         position: fixed;
+        z-index: -4;
         top: var(--header-height);
         width: var(--header-nav-height);
         height: calc(100vh - var(--header-height) * 2);

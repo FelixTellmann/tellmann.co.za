@@ -56,25 +56,39 @@ p, .p {
   font-weight: 700;
   line-height: calc(0.2rem + 2ex + 0.2rem);
   letter-spacing: -16.5px;
+
+  & + h2, & + .h2 {
+    font-size: 24px !important;
+    font-weight: 400 !important;
+  }
 }
 
 h1, .h1 {
-  font-size: 60px;
+  font-size: 48px;
   font-weight: 700;
   line-height: calc(0.2rem + 2ex + 0.2rem);
   letter-spacing: -.05em;
+  @media screen and (min-width: 600px) {
+    font-size: 60px;
+  }
+
 }
 
 h2, .h2 {
-  font-size: 36px;
+  margin-bottom: 14px;
+  font-size: 26px;
   font-weight: 700;
   line-height: calc(0.2rem + 2ex + 0.2rem);
   letter-spacing: unset;
+  @media screen and (min-width: 600px) {
+    font-size: 36px;
+  }
 }
 
 h3, .h3 {
-  font-size: 24px;
-  font-weight: 400;
+  margin-bottom: 14px;
+  font-size: 32px;
+  font-weight: 700;
   line-height: calc(0.2rem + 2ex + 0.2rem);
   letter-spacing: unset;
 }
@@ -87,9 +101,12 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: calc(0.2rem + 2ex + 0.2rem);
   letter-spacing: -.02em;
+  @media screen and (min-width: 600px) {
+    font-size: 18px;
+  }
 }
 

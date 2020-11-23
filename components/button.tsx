@@ -74,29 +74,29 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
       .small {
         padding: 0 1.6rem;
         font-size: 1.4rem;
-      }
 
-      .small.branded {
-        &:before, &:after {
-          width: 0.4rem;
-          height: 5.2rem;
-        }
+        &.branded {
+          &:before, &:after {
+            width: 0.4rem;
+            height: 5.2rem;
+          }
 
-        &:before {
-          left: calc(50% + 3.5px);
-        }
-
-        &:after {
-          left: calc(50% - 3.5px);
-        }
-
-        &:hover {
           &:before {
-            top: -7px;
+            left: calc(50% + 3.5px);
           }
 
           &:after {
-            bottom: -7px;
+            left: calc(50% - 3.5px);
+          }
+
+          &:hover {
+            &:before {
+              top: -7px;
+            }
+
+            &:after {
+              bottom: -7px;
+            }
           }
         }
       }
@@ -109,10 +109,37 @@ export const Button: FC<ButtonProps & (ButtonHTMLAttributes<HTMLButtonElement> &
         text-transform: uppercase;
       }
 
-      .large {
-        min-width: 4.8rem;
-        height: 4.8rem;
-        font-size: 1.8rem;
+      @media screen and (min-width: 600px) {
+        .large {
+          min-width: 4.8rem;
+          height: 4.8rem;
+          font-size: 1.8rem;
+
+          &.branded {
+            &:before, &:after {
+              width: 0.6rem;
+              height: 6.8rem;
+            }
+
+            &:before {
+              left: calc(50% + 5.5px);
+            }
+
+            &:after {
+              left: calc(50% - 5.5px);
+            }
+
+            &:hover {
+              &:before {
+                top: -8px;
+              }
+
+              &:after {
+                bottom: -8px;
+              }
+            }
+          }
+        }
       }
 
       .icon {

@@ -107,11 +107,12 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
 
         @media screen and (min-width: 960px) {
           &:before, &:after {
-            content: '';
             position: absolute;
-            width: 64px;
-            left: 0;
+            content: '';
+            z-index: -1;
             bottom: calc(100% + 1px);
+            left: 0;
+            width: 64px;
             height: 470px;
             background: linear-gradient(0deg, var(--color-background) 0%, var(--color-background) 70%, transparent 100%);
           }
@@ -132,14 +133,14 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
       }
 
       .social-nav {
-        padding: 24px 0;
         order: 2;
+        padding: 24px 0;
 
         :global(button), :global(a) {
           height: auto;
           padding-top: 0;
-          padding-bottom: 0;
           padding-right: 12px;
+          padding-bottom: 0;
           padding-left: 12px;
         }
 
@@ -262,12 +263,12 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: url('/icons/heart.svg') 62 62, default;
+        user-select: none;
         color: var(--nav-color);
         font-size: var(--nav-font-size);
         letter-spacing: 0.075rem;
         text-transform: uppercase;
-        user-select: none;
-        cursor: url('/icons/heart.svg') 62 62, default;
 
         .heart {
           color: red;

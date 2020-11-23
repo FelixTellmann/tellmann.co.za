@@ -59,8 +59,9 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
       </ThemeContext.Provider>
       <style jsx>{`
         main {
-          display: block;
           min-height: calc(200vh - var(--header-nav-height));
+          display: block;
+
           @media screen and (min-width: 960px) {
             display: grid;
             grid-template-columns: var(--header-nav-height) 1fr var(--header-nav-height);
