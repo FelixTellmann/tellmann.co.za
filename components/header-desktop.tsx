@@ -33,7 +33,7 @@ type HeaderDesktopProps = {
   slogan?: string
 };
 
-export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav, navButton, email, tel, socialNav, slogan }) => {
+export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav, navButton }) => {
   return <>
     <div className="desktop">
       <Link href="/"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
@@ -47,14 +47,6 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
         {theme === "light-theme" ? <FiMoon /> : null}
         {theme === "dark-theme" ? <FiSun /> : null}
       </Button>
-      {/* <aside className="left">
-        <Link href={`mailto:${email}`}><a aria-label="Contact us via Email" role="link" tabIndex={0} className="email">{email}</a></Link>
-        <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
-        {socialNav.map(({ href, icon }) => <NavIcon key={href} target="_blank" href={href}>{icon}</NavIcon>)}
-      </aside>
-      <aside className="right">
-        <Link href="#"><a role="link" tabIndex={0} className="slogan">{slogan}</a></Link>
-      </aside> */}
     </div>
     <style jsx>{`
       .desktop {

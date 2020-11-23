@@ -55,7 +55,10 @@ export const Header: FC<HeaderProps> = ({ colorTheme }) => {
     <header className={cn({ showBanner })}>
       <HeaderBanner showMobileNav={showMobileNav}
                     onClose={() => setShowBanner(false)}
-                    title={<>Not on Shopify yet? Get a full page review and we will get you started</>}
+                    title={[
+                      <>Not on Shopify yet? Get a full page review</>,
+                      <>Not on Shopify yet? Get a full page review and we will get you started</>
+                    ]}
                     href="#contact" />
       <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} {...navData} />
       <HeaderMobile toggleMobileNav={toggleMobileNav}
