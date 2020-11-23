@@ -26,8 +26,9 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           {process.env.NODE_ENV === "production" ? (
             <>
-              <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0DB6MY3J4'" />
+              <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0DB6MY3J4" />
               <script async src="/google-analytics.js" />
+
             </>
           ) : null}
         </Head>
