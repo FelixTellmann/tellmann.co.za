@@ -15,21 +15,35 @@ const workData = [
     title: "Turningpoint",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
           modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
-    img: "/images/work-preview-kids-living.jpg",
+    img: "/images/work-preview-turningpoint.jpg",
     href: "#"
   },
   {
     title: "3",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
           modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
-    img: "/images/work-preview-kids-living.jpg",
+    img: "/images/work-preview-matsidiso.jpg",
+    href: "#"
+  },
+  {
+    title: "3",
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
+          modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
+    img: "/images/work-preview-broadwayjewellers.jpg",
     href: "#"
   },
   {
     title: "4",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
           modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
-    img: "/images/work-preview-kids-living.jpg",
+    img: "/images/work-preview-bushscarf.jpg",
+    href: "#"
+  },
+  {
+    title: "4",
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
+          modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
+    img: "/images/work-preview-pichulik.jpg",
     href: "#"
   }
 ];
@@ -309,7 +323,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
           overflow: hidden;
           overflow: -moz-scrollbars-none;
 
-          border-radius: var(--phone-border-radius);
+          border-radius: calc(var(--phone-border-radius) - 10px);
           transition: 0.2s ease-in-out;
           -ms-overflow-style: none;
           scrollbar-width: none;
