@@ -249,6 +249,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
           cursor: pointer;
           font-size: inherit;
           margin: 0 20px;
+          color: var(--color-text);
           @media screen and (min-width: 1000px) {
             margin: 0 10px;
 
@@ -276,7 +277,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         width: auto;
         height: 100%;
         overflow: hidden;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))
+        background: linear-gradient(90deg, rgba(var(--color-background-rgb), 0), rgba(var(--color-background-rgb), 1))
       }
 
       .image-slider__slidebar {
@@ -351,10 +352,10 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         display: block;
         padding: var(--phone-border);
         border-radius: var(--phone-border-radius);
-        background: linear-gradient(#fff, #fff) content-box, linear-gradient(90deg, #f6f9fc, #f6f9fc) border-box;
-        box-shadow: 0 50px 100px -20px rgba(50, 50, 93, .25), 0 30px 60px -30px rgba(0, 0, 0, .3), inset 0 -2px 6px 0 rgba(10, 37, 64, .35);
+        background: linear-gradient(#fff, #fff) content-box, linear-gradient(90deg, var(--color-grey-bg-3), var(--color-grey-bg-3)) border-box;
+        box-shadow: 0 50px 100px -20px rgba(var(--color-text-faded-rgb), .25), 0 30px 60px -30px rgba(var(--color-text-rgb), .3), inset 0 -2px 6px 0 rgba(var(--color-text-faded-rgb), .35);
       }
-    
+
     `}</style>
   
   </>;
