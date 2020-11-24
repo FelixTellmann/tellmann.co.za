@@ -7,7 +7,9 @@
 
   --phone-border: 10px;
   --phone-border-radius: 34px;
+  --phone-frame-margin: 60px;
   --phone-height: 532px;
+  --phone-inner-height: calc(var(--phone-height) - var(--phone-border) * 2);
   --phone-inner-width: calc(var(--phone-width) - var(--phone-border) * 2);
   --phone-width: 264px;
 }
