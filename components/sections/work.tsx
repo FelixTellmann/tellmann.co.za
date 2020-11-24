@@ -307,7 +307,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
           display: block;
           overflow: hidden;
           overflow: -moz-scrollbars-none;
-          overflow-y: scroll;
+
           border-radius: var(--phone-border-radius);
           transition: 0.2s ease-in-out;
           -ms-overflow-style: none;
@@ -318,6 +318,10 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
             width: 0;
             display: none;
             background: transparent;
+          }
+
+          @media screen and (min-width: 960px) {
+            overflow-y: scroll;
           }
         }
 
