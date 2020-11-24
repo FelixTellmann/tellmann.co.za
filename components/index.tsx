@@ -10,6 +10,7 @@ export * from "./section-scroll-to";
 export * from "./section-title";
 export * from "./sections/hero";
 export * from "./sections/what-we-do";
+export * from "./sections/work";
 export * from "./sections/footer";
 export * from "./sections/header";
 export * from "./sections/get-started";

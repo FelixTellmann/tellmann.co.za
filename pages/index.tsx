@@ -1,4 +1,4 @@
-import { GetStarted, Hero, Section, Statistics, WhatWeDo } from "components";
+import { GetStarted, Hero, Section, SectionTitle, Statistics, WhatWeDo, Work } from "components";
 import Topography from "public/topography.svg";
 import React, { FC } from "react";
 
@@ -14,13 +14,20 @@ const Index: FC = () => {
       <Section id="what-we-do" background={<Topography />} backgroundOpacity={0.03}>
         <WhatWeDo />
       </Section>
-      <Section id="cta-1" skew={-2} fullscreen background="var(--color-grey-bg-3)" py="48px">
+      <Section skew={-2} fullscreen background="var(--color-grey-bg-3)" py="48px">
         <GetStarted />
       </Section>
-      <Section id="cta-2" skew={-2} fullscreen background="var(--primary)" py="48px">
+      <Section skew={-2} fullscreen background="var(--primary)" py="48px">
         <Statistics />
       </Section>
-      <Section id="3" />
+      <Section id="work" pb="24px">
+        <SectionTitle title="Our Work" subtitle="We create beautiful and functional ecommerce experiences for amazing brands on Shopify." />
+      </Section>
+      <Section background="linear-gradient(90deg, transparent 0%, transparent 50%, var(--color-grey-bg-1) 50%, var(--color-grey-bg-1) 100%)"
+               py="36px" pl="36px" pr="36px">
+        <Work />
+      </Section>
+      <Section />
     </>
   );
 };
