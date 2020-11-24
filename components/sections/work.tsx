@@ -352,7 +352,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         display: block;
         padding: var(--phone-border);
         border-radius: var(--phone-border-radius);
-        background: linear-gradient(#fff, #fff) content-box, linear-gradient(90deg, var(--color-grey-bg-3), var(--color-grey-bg-3)) border-box;
+        background: linear-gradient(var(--color-grey-bg-3), var(--color-grey-bg-3)) content-box, linear-gradient(90deg, var(--color-grey-bg-3), var(--color-grey-bg-3)) border-box;
         box-shadow: 0 50px 100px -20px rgba(var(--color-text-faded-rgb), .25), 0 30px 60px -30px rgba(var(--color-text-rgb), .3), inset 0 -2px 6px 0 rgba(var(--color-text-faded-rgb), .35);
       }
 
