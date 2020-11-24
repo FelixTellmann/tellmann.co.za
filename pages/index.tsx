@@ -3,6 +3,7 @@ import Topography from "public/topography.svg";
 import React, { FC } from "react";
 
 const Index: FC = () => {
+  
   return (
     <>
       <Section id="hero"

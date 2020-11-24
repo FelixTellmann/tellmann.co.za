@@ -196,7 +196,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         position: absolute;
         right: 0;
         left: 0;
-        min-width: 400px;
+        min-width: 300px;
         max-width: 600px;
         opacity: 0;
         padding: 0 36px;
@@ -204,6 +204,9 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         margin-left: auto;
         text-align: center;
         transition: opacity 0.2s ease;
+        @media screen and (min-width: 400px) {
+          min-width: 400px;
+        }
 
         @media screen and (min-width: 1000px) {
           min-width: 300px;
