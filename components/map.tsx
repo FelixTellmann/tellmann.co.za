@@ -371,7 +371,7 @@ export const Map: FC = () => {
                   lat: -33.9186543,
                   lng: 18.4151442
                 }}
-                defaultZoom={16}
+                defaultZoom={15}
                 options={{
                   styles
                 }}
@@ -387,7 +387,7 @@ export const Map: FC = () => {
     <style jsx>{`
       .map {
         width: 100vw;
-        height: 600px;
+        height: 500px;
         left: calc(0px - var(--header-nav-height));
         position: relative;
         z-index: 2;
