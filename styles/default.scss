@@ -50,7 +50,8 @@ p, .p {
   letter-spacing: unset;
 }
 
-.h0 {
+h1.h0 {
+  margin-bottom: 0;
   margin-left: -8px;
   font-size: 220px;
   font-weight: 700;
@@ -58,6 +59,7 @@ p, .p {
   letter-spacing: -16.5px;
 
   & + h2, & + .h2 {
+    margin-top: 0;
     font-size: 24px !important;
     font-weight: 400 !important;
   }
@@ -72,6 +74,11 @@ h1, .h1 {
     font-size: 60px;
   }
 
+  & + h2, & + .h2 {
+    margin-top: 16px;
+    font-size: 24px !important;
+    font-weight: 400 !important;
+  }
 }
 
 h2, .h2 {

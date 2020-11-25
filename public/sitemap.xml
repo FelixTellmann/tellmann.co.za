@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tellmann.co.za/about</loc>
-  </url>  
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/contact</loc>
+  </url>
   <url>
     <loc>https://tellmann.co.za</loc>
-  </url>  
+  </url>
 </urlset>
