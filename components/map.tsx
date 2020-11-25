@@ -112,7 +112,10 @@ const darkMode = [
     "elementType": "geometry.fill",
     "stylers": [
       {
-        "color": "#2c2c2c"
+        "color": "#00e1ff"
+      },
+      {
+        "weight": 0.5
       }
     ]
   },
@@ -130,7 +133,10 @@ const darkMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#373737"
+        "color": "#08d4e2"
+      },
+      {
+        "weight": 1
       }
     ]
   },
@@ -139,7 +145,19 @@ const darkMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#3c3c3c"
+        "color": "#1194c0"
+      },
+      {
+        "weight": 0.5
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "weight": 2
       }
     ]
   },
@@ -148,7 +166,10 @@ const darkMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#4e4e4e"
+        "color": "#0076f5"
+      },
+      {
+        "weight": 1.5
       }
     ]
   },
@@ -175,7 +196,7 @@ const darkMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#000"
+        "color": "#000000"
       }
     ]
   },
@@ -194,7 +215,7 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#f5f5f5"
+        "color": "#c9d4de"
       }
     ]
   },
@@ -236,7 +257,7 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#eee"
+        "color": "#eeeeee"
       }
     ]
   },
@@ -254,7 +275,7 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#e5e5e5"
+        "color": "#878787"
       }
     ]
   },
@@ -272,7 +293,10 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#fff"
+        "color": "#08a4e7"
+      },
+      {
+        "weight": 0.5
       }
     ]
   },
@@ -326,7 +350,7 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#eee"
+        "color": "#eeeeee"
       }
     ]
   },
@@ -335,7 +359,7 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#c9c9c9"
+        "color": "#e3e3e3"
       }
     ]
   },
