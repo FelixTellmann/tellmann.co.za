@@ -14,6 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const mailer = (body) => {
+  
   const message = {
     from: `TELLMANN.co.za --- CONTACT FORM - <contact-form@tellmann.co.za>`,
     to: `${process.env.MAIL_CONTACT_FORM_RECEIVER}`,

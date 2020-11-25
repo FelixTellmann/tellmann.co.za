@@ -1,5 +1,6 @@
 export * from "./button";
 export * from "./card";
+export * from "./contact-form";
 export * from "./form-checkbox";
 export * from "./form-checkbox-group";
 export * from "./form-input";

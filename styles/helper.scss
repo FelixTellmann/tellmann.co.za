@@ -26,6 +26,10 @@
   transition: none !important;
 }
 
+.opacityHidden {
+  opacity: 0 !important;
+}
+
 .hidden {
   position: absolute;
   width: 1px;
