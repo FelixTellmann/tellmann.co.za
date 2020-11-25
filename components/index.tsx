@@ -7,6 +7,8 @@ export * from "./form-input";
 export * from "./form-textarea";
 export * from "./form-select";
 export * from "./link";
+export * from "./map";
+export * from "./map-marker";
 export * from "./nav-link";
 export * from "./nav-icon";
 export * from "./nav-toggle";

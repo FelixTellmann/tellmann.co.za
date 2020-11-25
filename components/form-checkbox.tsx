@@ -42,7 +42,7 @@ export const FormCheckbox: FC<FormCheckboxProps & InputHTMLAttributes<any>> = ({
         justify-content: center;
         margin-right: 8px;
         border-radius: 100%;
-        background: var(--secondary);
+        background: var(--primary);
         color: var(--color-background);
         font-size: 13px;
       }

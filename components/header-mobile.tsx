@@ -46,7 +46,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
     
     <div className={cn("mobile", { active: showMobileNav })}>
       <Link href="/">
-        <a aria-label="Logo" role="link" tabIndex={0} className="logo" onClick={toggleMobileNav}>
+        <a aria-label="Logo" role="link" tabIndex={0} className="logo" onClick={showMobileNav && toggleMobileNav}>
           <Logo width={105} height={56} />
         </a>
       </Link>

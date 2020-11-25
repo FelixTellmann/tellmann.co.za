@@ -130,7 +130,7 @@ export const ContactForm: FC = () => {
       }
 
       footer {
-        background-color: var(--secondary);
+        background-color: var(--primary);
         padding: 24px;
         display: flex;
         flex-direction: column;

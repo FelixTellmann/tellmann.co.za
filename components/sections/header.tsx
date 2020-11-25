@@ -70,7 +70,7 @@ export const Header: FC<HeaderProps> = ({ colorTheme }) => {
     <style jsx>{`
       header {
         position: sticky;
-        margin-bottom: calc(0px - var(--header-nav-height) - 40px);
+        margin-bottom: 0;
         z-index: 10;
         top: -40px;
         width: 100%;

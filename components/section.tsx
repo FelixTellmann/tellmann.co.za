@@ -52,7 +52,7 @@ export const Section: FC<SectionProps> = ({ background, skew, fullscreen = false
         padding-right: var(--section-x-padding);
         padding-left: var(--section-x-padding);
         margin-bottom: var(--section-bg-skew);
-        z-index: 1;
+        z-index: 2;
 
         @media screen and (min-width: 1190px) {
           padding-left: calc((100%/*- var(--header-nav-height) * 2*/ - var(--page-width)) / 2 + var(--section-x-padding));

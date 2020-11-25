@@ -104,6 +104,7 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
         border-top: var(--border);
         border-bottom: var(--border);
         background: var(--color-grey-bg-2);
+        z-index: 1;
 
         @media screen and (min-width: 960px) {
           &:before, &:after {
