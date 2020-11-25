@@ -412,9 +412,12 @@ export const Map: FC = () => {
       .map {
         width: 100vw;
         height: 500px;
-        left: calc(0px - var(--header-nav-height));
+        left: 0;
         position: relative;
         z-index: 2;
+        @media screen and (min-width: 960px) {
+          left: calc(0px - var(--header-nav-height));
+        }
       }
     `}</style>
   </>;
