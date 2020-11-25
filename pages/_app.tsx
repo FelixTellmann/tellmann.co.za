@@ -61,6 +61,8 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
         main {
           min-height: calc(200vh - var(--header-nav-height));
           display: block;
+          max-width: 100%;
+          overflow: hidden;
 
           @media screen and (min-width: 960px) {
             display: grid;

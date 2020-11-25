@@ -109,7 +109,7 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
           &:before, &:after {
             position: absolute;
             content: '';
-            z-index: -1;
+            z-index: 0;
             bottom: calc(100% + 1px);
             left: 0;
             width: 64px;

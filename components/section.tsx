@@ -20,13 +20,13 @@ type SectionProps = {
   pl?: PaddingProperty<any>
 };
 
-export const Section: FC<SectionProps> = ({ background, skew, fullscreen, overlay, p, py, px, pt, pr, pb, pl, id, jumpTo, children, backgroundOpacity, style = {} }) => {
+export const Section: FC<SectionProps> = ({ background, skew, fullscreen = false, overlay, p, py, px, pt, pr, pb, pl, id, jumpTo, children, backgroundOpacity, style = {} }) => {
   style["--section-bg"] = background;
   style["--section-bg-opacity"] = backgroundOpacity;
   style["--section-overlay"] = overlay;
   style["--section-bg-left"] = fullscreen ? "calc(0px - var(--header-nav-height))" : 0;
   style["--section-bg-width"] = fullscreen ? "100vw" : "100%";
-  style["--section-bg-skew"] = `${skew}deg` || 0;
+  skew && (style["--section-bg-skew"] = `${skew}deg`);
   p && (style["--section-y-padding"] = p, style["--section-x-padding"] = p);
   py && (style["--section-y-padding"] = py);
   px && (style["--section-x-padding"] = px);
