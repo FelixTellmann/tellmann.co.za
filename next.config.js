@@ -53,4 +53,7 @@ module.exports = withPlugins(
 
 module.exports.env = {
   BUTTONDOWN_API_KEY: process.env.BUTTONDOWN_API_KEY,
+  MAIL_USERNAME: process.env.MAIL_USERNAME,
+  MAIL_PASSWORD: process.env.MAIL_PASSWORD,
+  MAIL_CONTACT_FORM_RECEIVER: process.env.MAIL_CONTACT_FORM_RECEIVER,
 };

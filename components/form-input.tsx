@@ -2,13 +2,14 @@ import { FC, InputHTMLAttributes } from "react";
 
 type FormInputProps = {
   label: string
+  id: string
 };
 
-export const FormInput: FC<FormInputProps & InputHTMLAttributes<any>> = ({ label, type, ...props }) => {
+export const FormInput: FC<FormInputProps & InputHTMLAttributes<any>> = ({ label, id, ...props }) => {
   return <>
     <label>
       <div className="label">{label}</div>
-      <input type={type} {...props} />
+      <input id={id} {...props} />
     </label>
     <style jsx>{`
       label {

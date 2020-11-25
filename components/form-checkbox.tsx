@@ -3,13 +3,14 @@ import { FaCheck } from "react-icons/fa";
 
 type FormCheckboxProps = {
   label: string | { label: string, icon: JSX.Element, background?: string }
+  id: string
 };
 
-export const FormCheckbox: FC<FormCheckboxProps & InputHTMLAttributes<any>> = ({ label = "", ...props }) => {
+export const FormCheckbox: FC<FormCheckboxProps & InputHTMLAttributes<any>> = ({ label = "", id, ...props }) => {
   
   return <>
     <label>
-      <input className="hidden" type="checkbox" {...props} />
+      <input id={id} className="hidden" type="checkbox" {...props} />
       <span className="checkbox"><FaCheck /></span>
       {
         typeof label === "string"

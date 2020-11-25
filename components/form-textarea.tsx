@@ -2,13 +2,14 @@ import { FC, TextareaHTMLAttributes } from "react";
 
 type FormTextareaProps = {
   label: string
+  id: string
 };
 
-export const FormTextarea: FC<FormTextareaProps & TextareaHTMLAttributes<any>> = ({ label, ...props }) => {
+export const FormTextarea: FC<FormTextareaProps & TextareaHTMLAttributes<any>> = ({ label, id, ...props }) => {
   return <>
     <label>
       <div className="label">{label}</div>
-      <textarea {...props} />
+      <textarea id={id} {...props} />
     </label>
     <style jsx>{`
       label {

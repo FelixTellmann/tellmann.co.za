@@ -1,9 +1,50 @@
 import Link from "next/link";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { FaShopify } from "react-icons/fa";
 import { Button, FormCheckboxGroup, FormInput, FormSelect, FormTextarea, Section } from "../components";
 
 const Contact: FC = () => {
+  
+  const [formData, setFormData] = useState({ email: "" });
+  
+  const updateFormData = ({ currentTarget: { value, id, type, checked } }) => {
+    setFormData((currentFormData) => (
+      { ...currentFormData, [id]: type === "checkbox" ? checked : value }
+    ));
+  };
+  
+  const submitForm = async (e) => {
+    e.preventDefault();
+    console.log(e);
+    let res;
+    try {
+      res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+    } catch (err) {
+      console.log("Fetch: ", err);
+    }
+    console.log(res);
+  };
+  
+  const validateForm = () => {
+  
+  };
+  
+  useEffect(() => {
+    document.getElementById("contact").querySelectorAll("input, textarea, select").forEach((item) => {
+      const e = { currentTarget: item };
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      updateFormData(e);
+    });
+  }, []);
+  
   return <>
     <Section fullscreen background="var(--color-grey-bg-2)">
       <div className="heading">
@@ -11,27 +52,28 @@ const Contact: FC = () => {
         <h2 className="h4">Tell us how we can help and we’ll get in touch shortly.</h2>
       </div>
       
-      
       <div className="card-form">
-        <form id="contact" className="form">
-          <div className="form-group form-group--grid">
-            <FormInput label="Your Email" type="email" autoComplete="on" required />
-            <FormInput label="Your Name" type="text" autoComplete="on" required />
-            <FormInput label="Current Website" type="text" />
-            <FormSelect label="Budget" options={["R20,000 - R40,000", "R40,000+"]} />
-          </div>
-          <div className="form-group form-group--border">
-            <FormCheckboxGroup label="Interest"
-                               options={[{ label: "Shopify", icon: <FaShopify /> }, "Integrations", "other"]} />
-          </div>
-          <div className="form-group">
-            <FormTextarea label="Send a Message" spellCheck="false" rows={5} />
-          </div>
+        <form id="contact" className="form" onSubmit={submitForm}>
+          <main>
+            <div className="form-group form-group--grid">
+              <FormInput id="email" label="Your Email" type="email" autoComplete="on" required onBlur={updateFormData} />
+              <FormInput id="name" label="Your Name" type="text" autoComplete="on" required onBlur={updateFormData} />
+              <FormInput id="website" label="Current Website" type="text" onBlur={updateFormData} />
+              <FormSelect id="budget" label="Budget" options={["R20,000 - R40,000", "R40,000+"]} onBlur={updateFormData} />
+            </div>
+            <div className="form-group form-group--border">
+              <FormCheckboxGroup label="Interest" id="interest"
+                                 options={[{ label: "Shopify", icon: <FaShopify /> }, "Integrations", "other"]} onChange={updateFormData} />
+            </div>
+            <div className="form-group">
+              <FormTextarea id="message" label="Send a Message" spellCheck="false" rows={5} onBlur={updateFormData} />
+            </div>
+          </main>
+          <footer className="card-form__footer">
+            <p>You can also email us directly at <Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link></p>
+            <Button type="submit" secondary branded medium>Submit</Button>
+          </footer>
         </form>
-        <footer className="card-form__footer">
-          <p>You can also email us directly at <Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link></p>
-          <Button type="submit" secondary branded medium>Submit</Button>
-        </footer>
       </div>
     
     </Section>
@@ -48,7 +90,7 @@ const Contact: FC = () => {
         overflow: hidden;
       }
 
-      .card-form__footer {
+      footer {
         background-color: var(--secondary);
         padding: 24px;
         display: flex;
@@ -72,7 +114,7 @@ const Contact: FC = () => {
         }
       }
 
-      .form {
+      main {
         padding: 24px;
       }
 

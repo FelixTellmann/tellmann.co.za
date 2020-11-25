@@ -5,9 +5,10 @@ type FormCheckboxGroupProps = {
   label: string
   options: (string | { label: string, icon: JSX.Element, background?: string })[]
   style?: CSSProperties
+  id: string
 };
 
-export const FormCheckboxGroup: FC<FormCheckboxGroupProps & InputHTMLAttributes<any>> = ({ label, options = [], style = {}, ...props }) => {
+export const FormCheckboxGroup: FC<FormCheckboxGroupProps & InputHTMLAttributes<any>> = ({ label, id, options = [], style = {}, ...props }) => {
   style["--grid-rows"] = Math.ceil(options.length / 2);
   style["--grid-rows-total"] = options.length;
   
@@ -16,7 +17,10 @@ export const FormCheckboxGroup: FC<FormCheckboxGroupProps & InputHTMLAttributes<
     <ul style={style}>
       {
         options.map((opt, i) => (
-          <li key={i}><FormCheckbox label={opt} {...props} /></li>
+          <li key={i}>
+            <FormCheckbox label={opt}
+                          id={typeof opt === "string" ? `${id}_${opt.toLowerCase()}` : `${id}_${opt.label.toLowerCase()}`} {...props} />
+          </li>
         ))
       }
     </ul>

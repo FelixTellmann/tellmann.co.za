@@ -7,15 +7,15 @@ type FormSelectProps = {
 };
 
 export const FormSelect: FC<FormSelectProps & SelectHTMLAttributes<any>> = ({ label, options = [], ...props }) => {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(options[0]);
   
   return <>
     <label>
       <div className="label">{label}</div>
       <div className="select">
-        <select {...props} onSelect={(e) => { setSelected(1); }}>
-          {options.map((opt, i) => (
-            <option key={opt} value={opt} selected={i === selected}>{opt}</option>
+        <select {...props} onChange={(e) => { setSelected(e.target.value); }} value={selected}>
+          {options.map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
           ))}
         </select>
         <FiChevronDown />
