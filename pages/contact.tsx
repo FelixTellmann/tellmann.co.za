@@ -1,11 +1,20 @@
+import cn from "classnames";
 import Link from "next/link";
-import React, { FC, useEffect, useState } from "react";
+import Loading from "public/icons/loading.svg";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { FaShopify } from "react-icons/fa";
+import validator from "validator";
 import { Button, FormCheckboxGroup, FormInput, FormSelect, FormTextarea, Section } from "../components";
 
 const Contact: FC = () => {
-  
+  const textarea = useRef(null);
+  const name = useRef(null);
+  const email = useRef(null);
+  const website = useRef(null);
   const [formData, setFormData] = useState({ email: "" });
+  const [validatorActive, setValidatorActive] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   
   const updateFormData = ({ currentTarget: { value, id, type, checked } }) => {
     setFormData((currentFormData) => (
@@ -13,27 +22,10 @@ const Contact: FC = () => {
     ));
   };
   
-  const submitForm = async (e) => {
+  const validateForm = (e) => {
     e.preventDefault();
-    console.log(e);
-    let res;
-    try {
-      res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-    } catch (err) {
-      console.log("Fetch: ", err);
-    }
-    console.log(res);
-  };
-  
-  const validateForm = () => {
-  
+    setValidatorActive(true);
+    return !!(validator.isEmail(email.current.value) && !validator.isEmpty(name.current.value) && (validator.isURL(website.current.value) || validator.isEmpty(website.current.value)));
   };
   
   useEffect(() => {
@@ -44,6 +36,30 @@ const Contact: FC = () => {
       updateFormData(e);
     });
   }, []);
+  
+  const submitForm = async (e) => {
+    e.preventDefault();
+    let res;
+    if (validateForm(e)) {
+      setSubmitting(true);
+      try {
+        res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+      } catch (err) {
+        console.log("Fetch: ", err);
+      }
+    }
+    setSubmitting(false);
+    if (res && res.status === 200) {
+      setSubmitted(true);
+    }
+  };
   
   return <>
     <Section fullscreen background="var(--color-grey-bg-2)">
@@ -56,9 +72,26 @@ const Contact: FC = () => {
         <form id="contact" className="form" onSubmit={submitForm}>
           <main>
             <div className="form-group form-group--grid">
-              <FormInput id="email" label="Your Email" type="email" autoComplete="on" required onBlur={updateFormData} />
-              <FormInput id="name" label="Your Name" type="text" autoComplete="on" required onBlur={updateFormData} />
-              <FormInput id="website" label="Current Website" type="text" onBlur={updateFormData} />
+              <FormInput id="email"
+                         label="Your Email"
+                         type="email"
+                         autoComplete="on"
+                         onBlur={updateFormData}
+                         error={validatorActive && !validator.isEmail(email?.current?.value)}
+                         ref={email} />
+              <FormInput id="name"
+                         label="Your Name"
+                         type="text"
+                         autoComplete="on"
+                         onBlur={updateFormData}
+                         error={validatorActive && validator.isEmpty(name?.current?.value)}
+                         ref={name} />
+              <FormInput id="website"
+                         label="Current Website"
+                         type="website"
+                         onBlur={updateFormData}
+                         error={validatorActive && !validator.isURL(website.current.value) && !validator.isEmpty(website.current.value)}
+                         ref={website} />
               <FormSelect id="budget" label="Budget" options={["R20,000 - R40,000", "R40,000+"]} onBlur={updateFormData} />
             </div>
             <div className="form-group form-group--border">
@@ -66,12 +99,25 @@ const Contact: FC = () => {
                                  options={[{ label: "Shopify", icon: <FaShopify /> }, "Integrations", "other"]} onChange={updateFormData} />
             </div>
             <div className="form-group">
-              <FormTextarea id="message" label="Send a Message" spellCheck="false" rows={5} onBlur={updateFormData} />
+              <FormTextarea id="message"
+                            label="Send a Message"
+                            spellCheck="false"
+                            rows={5}
+                            onBlur={updateFormData}
+                            error={validatorActive && validator.isEmpty(textarea.current.value)} ref={textarea} />
             </div>
           </main>
           <footer className="card-form__footer">
-            <p>You can also email us directly at <Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link></p>
-            <Button type="submit" secondary branded medium>Submit</Button>
+            
+            
+            {submitted
+             ? <p style={{ flex: 1 }}>Thank you for your Message.</p>
+             : <>
+               <p>You can also email us directly at <Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link></p>
+               <Button type="submit"
+                       secondary
+                       branded
+                       medium><i className={cn({ submitting })}><Loading /></i><span className={cn({ submitting })}>Submit</span></Button></>}
           </footer>
         </form>
       </div>
@@ -100,6 +146,26 @@ const Contact: FC = () => {
         text-align: center;
         position: relative;
         z-index: 0;
+
+        i {
+          position: absolute;
+          font-size: 26px;
+          opacity: 0;
+          display: flex;
+          align-items: center;
+
+          &.submitting {
+            opacity: 1;
+          }
+        }
+
+        span {
+          opacity: 1;
+
+          &.submitting {
+            opacity: 0;
+          }
+        }
 
         p {
           font-size: 15px;
