@@ -53,13 +53,22 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
         <GoogleFonts href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;500;600;700&display=swap" />
       </>
       <ThemeContext.Provider value={{ theme: colorTheme.value }}>
-        <Header colorTheme={colorTheme} />
-        <main>
-          <Sidebar left {...navData} />
-          <div className="page"><Component {...pageProps} /></div>
-          <Sidebar right {...navData} />
-        </main>
-        <Footer colorTheme={colorTheme} />
+        {router.pathname.includes("examples/")
+         ? <>
+           <div className="example">
+             <Component {...pageProps} />
+           </div>
+         </>
+         : <>
+           <Header colorTheme={colorTheme} />
+           <main>
+             <Sidebar left {...navData} />
+             <div className="page"><Component {...pageProps} /></div>
+             <Sidebar right {...navData} />
+           </main>
+           <Footer colorTheme={colorTheme} />
+         </>
+        }
       </ThemeContext.Provider>
       <style jsx>{`
         main {
