@@ -1,5 +1,6 @@
+import LoadingIcon from "public/icons/loading.svg";
 import { FC, useState } from "react";
-import { FormInput } from "./form-input";
+import { Input } from "./input";
 
 export const NewsletterSignup: FC = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -32,32 +33,46 @@ export const NewsletterSignup: FC = () => {
   return (
     <>
       <div className="signup">
-        <h2 className="h3">Subscribe to my newsletter</h2>
-        <p>Get emails from me about web development, tech, and early access to new articles.</p>
-        <section>
-          {
-            success
-            ? <p>
-              Thank you for subscribing, you'll receive a welcome email shortly.
-            </p>
-            : <FormInput
-              label="Email Address"
-              id="email"
-              placeholder="Your email address"
-              type="email"
-              autoComplete="on" />
-          }
-          {errorMessage
-           ? <p>{errorMessage}</p>
-           : null}
-        </section>
+        <div className="signup-wrapper">
+          <h2 className="h3">Subscribe to my newsletter</h2>
+          <p>Get emails from me about web development, tech, and early access to new articles.</p>
+          <section>
+            {
+              success
+              ? <p>
+                Thank you for subscribing, you'll receive a welcome email shortly.
+              </p>
+              : <Input
+                placeholder="Your email address"
+                button={submitting ? <LoadingIcon style={{ fontSize: `28px` }} /> : `Subscribe`}
+                secondary
+                type="email"
+                autoComplete="on"
+                submit={submit}
+                submitting={submitting} />
+            }
+            {errorMessage
+             ? <p>{errorMessage}</p>
+             : null}
+          </section>
+        </div>
       </div>
       <style jsx>{`
         .signup {
-          padding: 3.2rem;
+          padding: 0.1rem;
           border-radius: 0.4rem;
-          border: 1px solid var(--color-card-highlight-border);
-          background-color: var(--color-card-highlight);
+          border: var(--card-border);
+          background: var(--card-background);
+
+          &:hover, &:focus, &:active {
+            background: var(--card-background-hover);
+            border: var(--card-border-hover);
+            box-shadow: var(--card-shadow-hover);
+          }
+        }
+
+        .signup-wrapper {
+          padding: 3.1rem;
         }
 
         section {

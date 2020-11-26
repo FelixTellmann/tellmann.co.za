@@ -25,7 +25,7 @@ export const Section: FC<SectionProps> = ({ background, skew, fullscreen = false
   style["--section-bg-opacity"] = backgroundOpacity;
   style["--section-overlay"] = overlay;
   style["--section-bg-left"] = fullscreen ? "calc(0px - var(--header-nav-height))" : 0;
-  style["--section-bg-width"] = fullscreen ? "100vw" : "100%";
+  style["--section-bg-width"] = fullscreen ? "auto" : "100%";
   skew && (style["--section-bg-skew"] = `${skew}deg`);
   p && (style["--section-y-padding"] = p, style["--section-x-padding"] = p);
   py && (style["--section-y-padding"] = py);
@@ -93,10 +93,11 @@ export const Section: FC<SectionProps> = ({ background, skew, fullscreen = false
 
         @media screen and (min-width: 960px) {
           left: var(--section-bg-left);
+          right: var(--section-bg-left);
           width: var(--section-bg-width);
         }
       }
-    
+
     `}</style>
   </>;
 };

@@ -1,6 +1,7 @@
-import { BlogPreview, FormInput, NewsletterSignup } from "components";
+import { BlogPreview, Input, NewsletterSignup } from "components";
 import matter from "gray-matter";
 import { FC, useState } from "react";
+import { FiSearch } from "react-icons/fi";
 import { getAllPostsSlug, getSinglePostData } from "../lib/getBlogPosts";
 
 type PostData = {
@@ -38,12 +39,12 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
       postData.reduce((acc: PostData, item) => {
         acc.push({
           ...item,
-          matchCount: matcher.exec(sanitize(item.frontMatter.title)) ? matcher.exec(sanitize(item.frontMatter.title)).length : 0
+          matchCount: matcher.exec(sanitize(item.frontMatter.title)) ? matcher.exec(sanitize(item.frontMatter.title))?.length : 0
         });
         if (matcher.exec(sanitize(item.frontMatter.title))) {
           totalMatchCount =
-            matcher.exec(sanitize(item.frontMatter.title)).length > totalMatchCount
-            ? matcher.exec(sanitize(item.frontMatter.title)).length
+            matcher.exec(sanitize(item.frontMatter.title))?.length > totalMatchCount
+            ? matcher.exec(sanitize(item.frontMatter.title))?.length
             : totalMatchCount;
         }
         return acc;
@@ -60,24 +61,60 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
   
   return (
     <>
-      {/* <Text as="h1" fontSize={[36, 6]} fontWeight={700} lineHeight={1.2} mb={10}>
-      Blog
-    </Text> */}
-      <h1>
-        <h1>Blog</h1>
-      </h1>
-      <p>
-        I'm writing mostly about web development, tech news, and the occasional life wisdom. Use the search below to filter by title.
-      </p>
-      <div>
-        <FormInput id="search" label="Search" />
-      </div>
-      
-      <h2>Recent Posts</h2>
-      {filteredPostData.map(({ slug, frontMatter: { title, excerpt } }) => (
-        <BlogPreview key={slug} slug={slug} title={title} excerpt={excerpt} />
-      ))}
-      <NewsletterSignup />
+      <article className="blog">
+        <header>
+          <h1>
+            Blog
+          </h1>
+          <p>
+            I'm writing mostly about web development, tech news, and the occasional life wisdom. Use the search below to filter by title.
+          </p>
+          <Input placeholder="Search Articles" icon={<FiSearch />} onChange={search} />
+        </header>
+        <main>
+          <h2>Recent Posts</h2>
+          {filteredPostData.map(({ slug, frontMatter: { title, excerpt } }) => (
+            <BlogPreview key={slug} slug={slug} title={title} excerpt={excerpt} />
+          ))}
+        </main>
+        <footer>
+          <NewsletterSignup />
+        </footer>
+      </article>
+      <style jsx>{`
+        article {
+          max-width: 76.4rem;
+          min-height: calc(100vh - 309px);
+          display: flex;
+          flex-direction: column;
+          margin: 0px auto;
+          padding: 0 var(--padding-page);
+          padding-top: var(--section-y-padding);
+          padding-bottom: var(--section-y-padding);
+        }
+
+        header {
+          margin-bottom: 48px;
+        }
+
+        h1 {
+          margin-bottom: -0.1em;
+          margin-left: -0.05em;
+          background-image: linear-gradient(270deg, #00bfa5 25.28%, #3182ce 59.7%, rgba(11, 197, 234, 0.67) 97.75%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          font-weight: 700;
+          line-height: 1.15;
+          letter-spacing: -0.06em;
+          font-size: 20rem;
+          margin-bottom: 30px;
+        }
+
+        main {
+          margin-bottom: 48px;
+        }
+      `}</style>
     </>
   );
 };

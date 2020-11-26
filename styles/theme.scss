@@ -1,3 +1,90 @@
+/*= ===============FROM FELIXTELLMANN.com ================ */
+
+body {
+  --box-shadow-card: 1px 1px 5px 0 rgb(0 191 165 / 0.5), inset 1px 0 6px 4px rgb(49 118 206 / 11%), 1px 1px 2px 1px #0bc5ea;
+  --box-shadow-card-hover: 1px 1px 5px 0 rgb(0 191 165 / 0.5), 1px 0 6px 4px rgb(49 118 206 / 11%), 1px 1px 2px 1px #0bc5ea;
+  --color-attention: hsl(52, 76%, 57%);
+  --color-background: #f9fafa;
+  --color-blue: hsl(208, 99%, 44%);
+  --color-blue-10: hsla(208, 99%, 44%, 0.1);
+  --color-blue-40: hsla(208, 99%, 44%, 0.4);
+  --color-border: #e2e8f0;
+  --color-border-shadow: rgba(0, 0, 0, 0.05);
+  --color-button: #e2e8f0;
+  --color-button-secondary: #edf2f7;
+  --color-card-highlight: #ebf8ff;
+  --color-card-highlight-border: #90cdf4;
+  --color-code: #336ef5;
+  --color-code-bg: rgba(81, 132, 249, 0.15);
+  --color-faded: #aebcd4;
+  --color-gradient-1: #00bfa5;
+  --color-gradient-2: #3182ce;
+  --color-gradient-3: rgba(11, 197, 234, 0.67);
+  --color-header: #1a202c;
+  --color-header-backdrop-filter: saturate(180%) blur(2rem);
+  --color-header-background: transparent;
+  --color-input-background: #f2f4fa;
+  --color-input-border: #c6c6c8;
+  --color-input-border-focus: #3182ce;
+  --color-input-border-hover: #cbd5e0;
+  --color-link: #3b3b3b;
+  --color-link-hover: #626262;
+  --color-mdx-link: #0178df;
+  --color-primary: #1ec4ee;
+  --color-pro: hsl(172, 100%, 37%);
+  --color-pro-10: hsla(172, 100%, 37%, 0.1);
+  --color-pro-40: hsla(172, 100%, 37%, 0.4);
+  --color-remark-code-bg: #f7fafc;
+  --color-remark-code-title-bg: #e2e8f0;
+  --color-selection: #81e6d9;
+  --color-subdued: #718096;
+  /* --color-text: #2d3748;*/
+  --color-turqois: #1ec4ee;
+  --color-warn: hsl(0, 76%, 57%, 1);
+  --color-warn-10: hsla(0, 76%, 57%, 0.1);
+  --color-warn-40: hsla(0, 76%, 57%, 0.4);
+}
+
+.dark-theme {
+  --box-shadow-card: 0 0 8px 2px hsl(172deg 100% 37% / 24%), inset 1px 0 11px 4px rgb(49 118 206 / 25%), 0 0 1px 1px #0bc5ea52;
+  --box-shadow-card-hover: 0 0 8px 2px hsl(172deg 100% 37% / 24%), 1px 0 11px 4px rgb(49 118 206 / 25%), 0 0 1px 1px #0bc5ea52;
+  --color-body: #f9fafa;
+  --color-border: #373d48;
+  --color-border-shadow: rgba(255, 255, 255, 0.05);
+  --color-button: rgba(255, 255, 255, 0.16);
+  --color-button-secondary: rgb(255, 255, 255, 0.08);
+  --color-card-highlight: #2d3748;
+  --color-card-highlight-border: #718096;
+  --color-faded: #3e4254;
+  --color-header: #fff;
+  --color-header-backdrop-filter: saturate(100%) blur(2rem);
+  --color-header-background: rgba(23, 25, 35, 0.6);
+  --color-input-background: rgb(255, 255, 255, 0.08);
+  --color-input-border: rgba(255, 255, 255, 0.14);
+  --color-input-border-focus: #3182ce;
+  --color-input-border-hover: rgb(255, 255, 255, 0.08);
+  --color-link: rgba(255, 255, 255, 0.8);
+  --color-link-hover: rgb(255, 255, 255, 0.68);
+  --color-mdx-link: #60b3fb;
+  --color-primary: #ee601e;
+  --color-pro: #00bfa5;
+  --color-remark-code-bg: #1a202c;
+  --color-remark-code-title-bg: #2d3748;
+  --color-selection: rgba(11, 197, 234, 0.67);
+  --color-subdued: #718096;
+  --color-text: #a0aec0;
+}
+
+:root {
+  --border-radius: 0.4rem;
+  --font-family: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
+  --p: 1.6rem;
+  --padding-page: 2.4rem;
+  @media screen and (min-width: 600px) {
+    --padding-page: 3.6rem;
+  }
+}
+
 :root {
   --header-banner-height: 40px;
   --header-height: calc(var(--header-nav-height) + var(--header-banner-height));
@@ -35,8 +122,7 @@ body {
   --card-background-hover: var(--color-background);
   --card-border: var(--border);
   --card-border-hover: 1px solid transparent;
-  --card-shadow-hover: rgba(var(--color-text-rgb), 0.12);
-
+  --card-shadow-hover: 0 8px 30px rgba(var(--color-text-rgb), 0.12);
   --card-text: var(--color-text);
 
   /*= =============== color ================ */
@@ -92,3 +178,7 @@ body {
   --nav-color: #888;
   --nav-hover-color: #f1f1f1;
 }
+
+
+
+

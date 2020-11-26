@@ -22,6 +22,7 @@ export const Avatar: FC<AvatarProps> = ({ src, alt, initials = "", size }) => {
           display: inline-flex;
           width: ${size};
           height: ${size};
+          margin-right: 8px;
         }
 
         img,

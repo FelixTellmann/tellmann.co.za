@@ -11,6 +11,7 @@ export * from "./form-textarea";
 export * from "./form-select";
 export * from "./iframe-code-preview";
 export * from "./info-block";
+export * from "./input";
 export * from "./link";
 export * from "./map";
 export * from "./map-marker";

@@ -1,3 +1,9 @@
+@mixin min-width($min) {
+  @media screen and (min-width: #{$min}) {
+    @content;
+  }
+}
+
 @mixin responsive($alias) {
   @if $alias == 'fullscreen' {
     @media screen and (min-width: 1200px) {

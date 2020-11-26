@@ -71,7 +71,9 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           title={title}
           url={canonical}
         />
-        {/*= =============== HEADING ================ */}
+      </>
+      <section>
+        {/*= =============== CONTENT ================ */}
         <ArticleHeading
           title={title}
           authorAvatarUrl={authorAvatarUrl}
@@ -80,19 +82,40 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           readingTime={readingTime}
           views={views}
         />
-      </>
-      {/*= =============== CONTENT ================ */}
-      <article id="mdx-content" className="mdx">
-        {content}
-      </article>
-      
-      {/*= =============== SIDEBAR ================ */}
-      {showHeadings > 0 && headings ? (
-        <ArticleSidebar showHeadings={showHeadings} headings={headings} showHeadingsExpanded={showHeadingsExpanded} />
-      ) : null}
-      
-      {/*= =============== NEWSLETTER SIGNUP ================ */}
-      <NewsletterSignup />
+        <article id="mdx-content" className="mdx">
+          {content}
+        </article>
+    
+        {/*= =============== SIDEBAR ================ */}
+        {showHeadings > 0 && headings ? (
+          <ArticleSidebar showHeadings={showHeadings} headings={headings} showHeadingsExpanded={showHeadingsExpanded} />
+        ) : null}
+    
+        {/*= =============== NEWSLETTER SIGNUP ================ */}
+        <NewsletterSignup />
+      </section>
+      <style jsx>{`
+        section {
+
+          position: relative;
+          padding-top: var(--section-y-padding);
+          padding-bottom: var(--section-y-padding);
+          padding-right: var(--section-x-padding);
+          padding-left: var(--section-x-padding);
+          max-width: 76.4rem;
+          min-height: calc(100vh - 309px);
+          display: flex;
+          flex-direction: column;
+          margin: 0px auto;
+
+          :global(img) {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+          }
+        }
+      `}</style>
       <style jsx global>{`
         code {
           padding: 0.1rem 0.6rem;

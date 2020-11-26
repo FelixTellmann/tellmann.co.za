@@ -25,7 +25,7 @@ export const ArticleHeading: FC<ArticleHeadingProps> = ({ title, author, authorA
       )}
       <div className="details">
         <div className="author">
-          {authorAvatarUrl && <Avatar src={authorAvatarUrl} alt={author || ""} initials={author} size={24} />}
+          {authorAvatarUrl && <Avatar src={authorAvatarUrl} alt={author || ""} initials={author} size="24px" />}
           {(author || publishedAt) && (
             <p>
               {author}

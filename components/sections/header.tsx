@@ -14,9 +14,10 @@ export const navData = {
   logo: { href: "/", src: "/logo.svg", alt: "Tellmann Logo" },
   nav: [
     { href: "/", title: "Home", alt: "Hi.", mobile: true },
+    { href: "/#services", title: "Services", alt: `What we can do` },
+    { href: "/#work", title: "Work", alt: `What we've done` },
+    { href: "/blog", title: "Blog", alt: "What could be done" },
     { href: "/about", title: "About", alt: "Who we are" },
-    { href: "/work", title: "Work", alt: `What we've done` },
-    { href: "/services", title: "Services", alt: `What we can do` },
     { href: "/contact", title: "Contact", alt: `Get in touch`, mobile: true }
   ],
   navButton: { href: "/contact", title: "Contact" },
@@ -78,7 +79,7 @@ export const Header: FC<HeaderProps> = ({ colorTheme }) => {
         flex-direction: column;
         margin-top: -40px;
         transition: box-shadow .1s ease 0s, margin-top 0.1s ease 0s;
-        box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 -1px 0 0 rgba(var(--color-text-rgb), 0.1);
         @media screen and (min-width: 600px) {
           position: sticky;
           margin-bottom: 0;

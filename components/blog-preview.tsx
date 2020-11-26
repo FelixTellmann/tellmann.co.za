@@ -21,6 +21,15 @@ export const BlogPreview: FC<BlogPreviewProps> = ({ slug, title, excerpt }) => {
           display: block;
           margin-bottom: 32px;
         }
+
+        h3 {
+          margin-bottom: 4px;
+        }
+
+        p {
+          color: var(--color-text-faded);
+          margin: 0;
+        }
       `}</style>
     </>
   );

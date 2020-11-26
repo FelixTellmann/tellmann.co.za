@@ -6,6 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { createContext, FC } from "react";
 import "reset-css/sass/_reset.scss";
+import { prism, typography, variables } from "styles";
 import "styles/default.scss";
 import "styles/helper.scss";
 import "styles/theme.scss";
@@ -75,7 +76,6 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
           min-height: calc(60vh - var(--header-nav-height));
           display: block;
           max-width: 100%;
-          overflow: hidden;
 
           @media screen and (min-width: 960px) {
             display: grid;
@@ -86,6 +86,22 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
 
         .page {
           grid-area: page
+        }
+      `}</style>
+      <style jsx global>
+        {variables}
+      </style>
+      <style jsx global>
+        {typography}
+      </style>
+      <style jsx global>
+        {prism}
+      </style>
+      <style jsx global>{`
+        .example {
+          background: var(--color-remark-code-bg);
+          padding: 2.4rem;
+          overflow: hidden;
         }
       `}</style>
     </>

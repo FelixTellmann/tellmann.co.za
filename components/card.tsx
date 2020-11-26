@@ -57,14 +57,14 @@ export const Card: FC<CardProps> = ({ title, content, icon, link, clickable, sty
         cursor: var(--card-cursor);
         text-align: left;
         text-decoration: none;
-        transition: box-shadow .2s ease,border .2s ease;
+        transition: box-shadow .2s ease, border .2s ease;
 
         &.clickable {
           &:hover, &:focus, &:active {
             border: var(--card-border-hover);
             outline: none;
             background: var(--card-background-hover);
-            box-shadow: 0 8px 30px var(--card-shadow-hover);
+            box-shadow: var(--card-shadow-hover);
             transition: box-shadow .2s ease;
 
             .card__link {
