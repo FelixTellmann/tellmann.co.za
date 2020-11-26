@@ -9,7 +9,9 @@ import "reset-css/sass/_reset.scss";
 import { prism, typography, variables } from "styles";
 import "styles/default.scss";
 import "styles/helper.scss";
+import "styles/mdx.scss";
 import "styles/theme.scss";
+
 import useColorTheme from "use-color-theme";
 
 export const ThemeContext = createContext({ theme: "" });

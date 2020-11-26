@@ -11,17 +11,25 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
   
   let anchorElement = children;
   
-  if (typeof href === "string" && href.charAt(0) === "#") {
+  if (typeof href === "string" && (href.charAt(0) === "#" || href.includes("#"))) {
     const anchorReactElement = Children.only(children);
     const { onClick } = !isValidElement(anchorReactElement) || anchorReactElement.props;
     anchorElement = cloneElement(isValidElement(anchorReactElement) && anchorReactElement, {
       tabIndex: 0,
       role: "link",
       onClick: (e) => {
-        e.preventDefault();
         onClick && onClick(e);
-        const to = document.getElementById(href.replace(/^#/, ""))?.offsetTop || 0;
-        scrollTo(scrollDuration, to + scrollOffset);
+        if (document.getElementById(href.replace(/^.*?#/, ""))) {
+          e.preventDefault();
+          const to = document.getElementById(href.replace(/^.*?#/, ""))?.offsetTop || 0;
+          scrollTo(scrollDuration, to + scrollOffset);
+        } else {
+          setTimeout(() => {
+            const to = document.getElementById(href.replace(/^.*?#/, ""))?.offsetTop || 0;
+            scrollTo(1000, to + scrollOffset);
+          }, 10);
+        }
+      
       }
     });
   }

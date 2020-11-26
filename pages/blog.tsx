@@ -98,7 +98,7 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
         }
 
         h1 {
-          margin-bottom: -0.1em;
+          /*margin-bottom: -0.1em;
           margin-left: -0.05em;
           background-image: linear-gradient(270deg, #00bfa5 25.28%, #3182ce 59.7%, rgba(11, 197, 234, 0.67) 97.75%);
           -webkit-background-clip: text;
@@ -107,7 +107,7 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
           font-weight: 700;
           line-height: 1.15;
           letter-spacing: -0.06em;
-          font-size: 20rem;
+          font-size: 20rem;*/
           margin-bottom: 30px;
         }
 
