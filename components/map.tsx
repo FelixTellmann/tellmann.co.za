@@ -196,7 +196,7 @@ const darkMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#000000"
+        "color": "#000"
       }
     ]
   },
@@ -257,7 +257,7 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#eeeeee"
+        "color": "#eee"
       }
     ]
   },
@@ -350,7 +350,7 @@ const lightMode = [
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#eeeeee"
+        "color": "#eee"
       }
     ]
   },
@@ -427,13 +427,13 @@ export const Map: FC = () => {
     </div>
     <style jsx>{`
       .map {
-        width: 100vw;
+        width: auto;
         height: 500px;
-        left: 0;
         position: relative;
         z-index: 2;
         @media screen and (min-width: 960px) {
-          left: calc(0px - var(--header-nav-height));
+          margin-left: -64px;
+          margin-right: -64px;
         }
       }
     `}</style>
