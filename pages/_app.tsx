@@ -2,6 +2,7 @@ import { Footer, Header, navData, Sidebar } from "components";
 import GoogleFonts from "next-google-fonts";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { createContext, FC } from "react";
 import "reset-css/sass/_reset.scss";
@@ -20,6 +21,9 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
   return (
     <>
       <>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        </Head>
         <DefaultSeo
           title={title}
           description={description}
