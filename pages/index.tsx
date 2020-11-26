@@ -33,6 +33,9 @@ const Index: FC<BlogProps> = ({ postData }) => {
       <Section id="contact" skew={-2} fullscreen background="var(--color-grey-bg-3)" py="96px" style={{ zIndex: 0 }}>
         <Team />
       </Section>
+      <Section skew={-2} fullscreen background="var(--primary)" py="48px">
+        <GetStarted />
+      </Section>
       <Section id="blog-preview" background={<Topography />} backgroundOpacity={0.03}>
         {/* <BlogSummary postData={postData} /> */}
       </Section>
