@@ -121,31 +121,31 @@ export const ContactForm: FC = () => {
       </form>
     </div>
     <style jsx>{`
-
       .card-form {
-        background-color: var(--color-background);
-        border-radius: 5px;
-        box-shadow: 0 30px 60px rgba(var(--color-text-rgb), 0.12);
         overflow: hidden;
+        margin-bottom: auto;
+        border-radius: 5px;
+        background-color: var(--color-background);
+        box-shadow: 0 30px 60px rgba(var(--color-text-rgb), 0.12);
       }
 
       footer {
-        background-color: var(--primary);
-        padding: 24px;
+        position: relative;
+        z-index: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        padding: 24px;
+        background-color: var(--primary);
         text-align: center;
-        position: relative;
-        z-index: 0;
 
         i {
           position: absolute;
-          font-size: 26px;
           opacity: 0;
           display: flex;
           align-items: center;
+          font-size: 26px;
 
           &.submitting {
             opacity: 1;
@@ -188,9 +188,9 @@ export const ContactForm: FC = () => {
       }
 
       .form-group--border {
+        padding: 24px 0;
         border-top: var(--border);
         border-bottom: var(--border);
-        padding: 24px 0;
       }
     `}</style>
   </>;
