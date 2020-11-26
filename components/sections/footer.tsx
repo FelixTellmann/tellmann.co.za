@@ -93,7 +93,7 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
         </div>
       </div>
     </footer>
-    <legend>Made with <span className="heart">&nbsp;❤&nbsp;</span> by Tellmann</legend>
+    <div className="made-by">Made with <span className="heart">&nbsp;❤&nbsp;</span> by Tellmann</div>
     <style jsx>{`
       footer {
         position: relative;
@@ -259,7 +259,7 @@ export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copy
         }
       }
 
-      legend {
+      .made-by {
         height: var(--header-nav-height);
         display: flex;
         align-items: center;
