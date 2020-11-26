@@ -4,9 +4,36 @@
     <loc>https://tellmann.co.za/about</loc>
   </url>
   <url>
+    <loc>https://tellmann.co.za/blog</loc>
+  </url>
+  <url>
     <loc>https://tellmann.co.za/contact</loc>
   </url>
   <url>
     <loc>https://tellmann.co.za</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/blog/color-themes-with-react</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/blog/useCallback-typescript</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/blog/useContext-typescript</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/blog/useEffect-typescript</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/blog/useState-typescript</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/examples/useEffect-typescript-1</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/examples/useState-typescript-1</loc>
+  </url>
+  <url>
+    <loc>https://tellmann.co.za/examples/useState-typescript-2</loc>
   </url>
 </urlset>

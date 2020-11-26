@@ -24,8 +24,8 @@ export const Statistics: FC<StatisticsProps> = ({ style = {} }) => {
   
   return <>
     <div className="statistics" style={style}>
-      {statisticsData.map(({ title, statistic }) => (
-        <div key={title} className="statistics__item">
+      {statisticsData.map(({ title, statistic }, i) => (
+        <div key={i} className="statistics__item">
           <b>{statistic}</b>
           <small>{title}</small>
         </div>

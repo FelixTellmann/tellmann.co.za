@@ -1,6 +1,6 @@
 import cn from "classnames";
 import Image from "next/image";
-import { CSSProperties, FC, useEffect, useState } from "react";
+import { CSSProperties, FC, Fragment, useEffect, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const workData = [
@@ -119,8 +119,8 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
       <div className="content">
         <div className="content__spaceholder">
           {
-            workData.map(({ title, description }) => (
-              <div key={title} className={cn("content__item")}>
+            workData.map(({ title, description }, i) => (
+              <div key={i} className={cn("content__item")}>
                 <h3>{title}</h3>
                 <p>{description}</p>
               </div>
@@ -129,7 +129,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         </div>
         {
           workData.map(({ title, description }, i) => (
-            <div key={title} className={cn("content__item", { active: i === activeIndex % workData.length })}>
+            <div key={i} className={cn("content__item", { active: i === activeIndex % workData.length })}>
               <h3>{title}</h3>
               <p>{description}</p>
             </div>
@@ -149,7 +149,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
                style={{ transform: `translateX(calc((0px - var(--phone-inner-width) - 36px) * ${activeIndex} - ${slideByTouch}px))` }}>
             {
               [...workData, ...workData, ...workData].map(({ img }, i) => (
-                <>
+                <Fragment key={i}>
                   <picture className={cn({ active: i === activeIndex, hideTransition })}
                            draggable
                            onTouchStart={(e) => { setTouchStartPosition(+e.touches[0].clientX); }}
@@ -157,7 +157,7 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
                            onTouchMove={(e) => touchSlide(e)}>
                     <Image src={img} width="248px" height="1200px" />
                   </picture>
-                </>
+                </Fragment>
               ))
             }
           </div>

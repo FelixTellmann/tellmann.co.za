@@ -6,7 +6,7 @@ import { ContactForm, Link, Map, Section } from "../components";
 const Contact: FC = () => {
   
   return <>
-    <Section fullscreen background="var(--color-grey-bg-2)">
+    <Section fullscreen background="var(--color-grey-bg-2)" style={{ zIndex: 0 }}>
       <div className="heading">
         <h1>Get in Touch</h1>
         <h2 className="h4">Tell us how we can help and we’ll get in touch shortly.</h2>

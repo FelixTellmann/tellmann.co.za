@@ -6,7 +6,7 @@ type FormInputProps = {
   label: string
   id: string
   error?: boolean
-  ref
+  ref?
 };
 
 export const FormInput: FC<FormInputProps & InputHTMLAttributes<any>> = forwardRef(({ label, id, error = false, type, ...props }, ref) => {
