@@ -32,6 +32,7 @@ const mailer = (body) => {
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log(transporter);
   const mailerRes = await mailer(req.body);
   res.send(mailerRes);
 }
