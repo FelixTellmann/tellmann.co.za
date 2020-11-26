@@ -389,24 +389,41 @@ export const Map: FC = () => {
   
   return <>
     <div className="map">
-      {update ? <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
-                defaultCenter={{
-                  lat: -33.9183338,
-                  lng: 18.4223969
-                }}
-                defaultZoom={15}
-                options={{
-                  styles
-                }}
-              >
-                <MapMarker
-                  lat={-33.9183338}
-                  lng={18.4223969}
-                  text="My Marker"
-                />
-              </GoogleMapReact>
-              : null}
+      {theme.theme === "light-theme" ? <GoogleMapReact
+                                       bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
+                                       defaultCenter={{
+                                         lat: -33.9183338,
+                                         lng: 18.4223969
+                                       }}
+                                       defaultZoom={15}
+                                       options={{
+                                         styles: lightMode
+                                       }}
+                                     >
+                                       <MapMarker
+                                         lat={-33.9183338}
+                                         lng={18.4223969}
+                                         text="My Marker"
+                                       />
+                                     </GoogleMapReact>
+                                     : <GoogleMapReact
+         bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
+         defaultCenter={{
+           lat: -33.9183338,
+           lng: 18.4223969
+         }}
+         defaultZoom={15}
+         options={{
+           styles: darkMode
+         }}
+       >
+         <MapMarker
+           lat={-33.9183338}
+           lng={18.4223969}
+           text="My Marker"
+         />
+       </GoogleMapReact>}
+
     </div>
     <style jsx>{`
       .map {
