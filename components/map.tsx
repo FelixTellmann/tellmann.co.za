@@ -392,8 +392,8 @@ export const Map: FC = () => {
       {update ? <GoogleMapReact
                 bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
                 defaultCenter={{
-                  lat: -33.9186543,
-                  lng: 18.4151442
+                  lat: -33.9183338,
+                  lng: 18.4223969
                 }}
                 defaultZoom={15}
                 options={{
