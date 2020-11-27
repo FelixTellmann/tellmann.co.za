@@ -21,8 +21,8 @@ export const IframeExample: FC<IframeExampleProps> = ({ src, title, ...props }) 
         iframe {
           border: 1px solid var(--color-remark-code-title-bg);
           border-radius: 0;
-          margin-left: calc(var(--border-width, 5px) - var(--padding-page, 2.4rem));
-          width: calc(100% + (var(--padding-page, 2.4rem) - var(--border-width, 5px)) * 2);
+          margin-left: calc(0px - var(--page-margin, 2.4rem));
+          width: calc(100% + var(--page-margin, 2.4rem) * 2);
           @media screen and (min-width: 600px) {
             width: 100%;
             margin-left: 0;

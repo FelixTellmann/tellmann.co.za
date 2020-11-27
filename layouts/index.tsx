@@ -187,9 +187,9 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           color: var(--color-header);
           font-family: SFMono-Regular, Consolas, 'Liberation Mono', 'Courier New', monospace;
           font-size: 1.5rem;
-          margin-left: calc(var(--border-width, 5px) - var(--padding-page, 2.4rem));
+          margin-left: calc(0px - var(--page-margin, 2.4rem));
           border-radius: 0;
-          width: calc(100% + (var(--padding-page, 2.4rem) - var(--border-width, 5px)) * 2);
+          width: calc(100% + var(--page-margin, 2.4rem) * 2);
           @media screen and (min-width: 600px) {
             width: 100%;
             margin-left: 0;
@@ -250,8 +250,8 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           border: 1px solid var(--color-remark-code-title-bg);
           background: var(--color-remark-code-bg);
           border-radius: 0;
-          margin-left: calc(var(--border-width, 5px) - var(--padding-page, 2.4rem));
-          width: calc(100% + (var(--padding-page, 2.4rem) - var(--border-width, 5px)) * 2);
+          margin-left: calc(0px - var(--page-margin, 2.4rem));
+          width: calc(100% + var(--page-margin, 2.4rem) * 2);
           @media screen and (min-width: 600px) {
             width: 100%;
             margin-left: 0;

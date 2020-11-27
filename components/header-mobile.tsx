@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { Link } from "components";
 import Logo from "public/logo.svg";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { IoIosCall, IoIosMail, IoIosMoon, IoIosSunny } from "react-icons/io";
 import Fade from "react-reveal/Fade";
 import { NavBackground } from "./nav-background";
@@ -41,19 +41,30 @@ type HeaderMobileProps = {
 };
 
 export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMobileNav, toggleMobileNav, nav, address, email, tel, socialNav }) => {
+  const [changingColor, setChangingColor] = useState(false);
+  const changeColor = (e) => {
+    setChangingColor(true);
+    toggleColor(e);
+    setTimeout(() => {
+      setChangingColor(false);
+    }, 60);
+  };
   
   return <>
-    
     <div className={cn("mobile", { active: showMobileNav })}>
       <Link href="/">
-        <a aria-label="Logo" role="link" tabIndex={0} className="logo" onClick={showMobileNav && toggleMobileNav}>
+        <a aria-label="Logo"
+           role="link"
+           tabIndex={0}
+           className={cn("logo", { hideTransition: changingColor })}
+           onClick={showMobileNav && toggleMobileNav}>
           <Logo width={105} height={56} />
         </a>
       </Link>
       <nav className="topbar">
         <NavIcon href={`mailto:${email}`}><IoIosMail /></NavIcon>
         <NavIcon href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
-        <NavIcon aria-label="Toggle Color Theme" onClick={toggleColor}>
+        <NavIcon aria-label="Toggle Color Theme" onClick={changeColor}>
           {theme === "light-theme" ? <IoIosSunny /> : null}
           {theme === "dark-theme" ? <IoIosMoon /> : null}
         </NavIcon>

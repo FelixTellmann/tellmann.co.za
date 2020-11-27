@@ -88,7 +88,7 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
           display: flex;
           flex-direction: column;
           margin: 0px auto;
-          padding: 0 var(--padding-page);
+          padding: 0 var(--page-margin);
           padding-top: var(--section-y-padding);
           padding-bottom: var(--section-y-padding);
         }
