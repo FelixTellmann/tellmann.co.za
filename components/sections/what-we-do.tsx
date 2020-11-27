@@ -5,7 +5,7 @@ import { FaShopify } from "react-icons/fa";
 
 const WhatWeDoData = {
   title: "What we Do",
-  subtitle: "We specialise in E-commerce web development with a strong focus on Shopify and Vend. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus dolorem esse fuga inventore laborum nihil quam qui ratione repellat!"
+  subtitle: "We specialise in E-commerce web development with a strong focus on Shopify and Vend. We believe in coming up with original ideas and turning them into digital work that is both innovative and interactive."
 };
 
 export const WhatWeDo: FC = () => {
@@ -14,56 +14,44 @@ export const WhatWeDo: FC = () => {
     <SectionTitle title={title} subtitle={subtitle} align="center" />
     <div className="grid">
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
             title="Shopify"
             content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <FaShopify />, background: `linear-gradient(0deg, #53A0EC, #57C84F)`, color: `#fff` }} />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
             title="Vend POS"
             content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <VendLogo />, size: "32px" }} />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Custom Designs"
             content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Custom Functionality"
             content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Product Photography"
             content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Store Migrations"
             content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Shopify"
+            title="Data Management"
             content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <FaShopify />, background: `linear-gradient(0deg, #53A0EC, #57C84F)`, color: `#fff` }} />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Vend POS"
+            title="E-Commerce Consultations"
             content="<Image> and Automatic Image Optimization with instant builds."
             icon={{ src: <VendLogo />, size: "32px" }} />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Page Reviews & Analysis"
             content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Sales Channel integrations"
             content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Copywriting"
             content="<Image> and Automatic Image Optimization with instant builds." />
       <Card clickable
-            link={{ href: `#hero`, title: "Read More" }}
-            title="Image Optimization"
+            title="Social Media Marketing"
             content="<Image> and Automatic Image Optimization with instant builds." />
     </div>
     <style jsx>{`

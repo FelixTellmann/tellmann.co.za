@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { IoLogoFacebook, IoLogoGithub } from "react-icons/io";
 
 import Logo from "../../public/logo.svg";
 import { Link } from "../link";
 import { NavIcon } from "../nav-icon";
+import { navData } from "./header";
 
-const navData: { heading: string, nav: { href: string, title: string, target?: string }[] }[] = [
+const footerNavData: { heading: string, nav: { href: string, title: string, target?: string }[] }[] = [
   {
     heading: `Sitemap`,
     nav: [
@@ -72,7 +72,7 @@ export const Footer: FC<FooterProps> = ({ colorTheme }) => {
   return <>
     <footer>
       <nav className="nav">
-        {navData.map(({ heading, nav }, i) => (
+        {footerNavData.map(({ heading, nav }, i) => (
           <div key={heading} className="nav-group">
             <input aria-label="Toggle Nav Group"
                    type="checkbox"
@@ -99,8 +99,10 @@ export const Footer: FC<FooterProps> = ({ colorTheme }) => {
           <nav className="social-nav">
             {colorTheme.value === "light-theme" ? <NavIcon ariaLabel="GitHub" onClick={toggleColor}><FiMoon /></NavIcon> : null}
             {colorTheme.value === "dark-theme" ? <NavIcon ariaLabel="GitHub" onClick={toggleColor}><FiSun /></NavIcon> : null}
-            <NavIcon href="#" ariaLabel="GitHub"><IoLogoGithub /></NavIcon>
-            <NavIcon href="#" ariaLabel="GitHub"><IoLogoFacebook /></NavIcon>
+            {navData.socialNav.map(({ href, icon, target }) => (
+              <NavIcon href={href} target={target} ariaLabel="GitHub">{icon}</NavIcon>
+            ))
+            }
           </nav>
           <small>{`Copyright © ${new Date().getFullYear()} Tellmann.co.za - All rights reserved.`}</small>
         </div>

@@ -43,7 +43,6 @@ export const Card: FC<CardProps> = ({ title, content, icon, link, clickable, sty
         </div>
           <p className="card__content">{content}</p>
         </div>
-      
       </div>
     }
     
@@ -89,6 +88,15 @@ export const Card: FC<CardProps> = ({ title, content, icon, link, clickable, sty
         display: flex;
         align-items: center;
 
+      }
+
+      .card__title {
+        line-height: 32px;
+        margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        text-overflow: ellipsis;
       }
 
       .card__icon {
