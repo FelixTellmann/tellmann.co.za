@@ -16,6 +16,7 @@ export const NavIcon: FC<NavIconProps> = ({ children, href, onClick, target, ari
                             role="link"
                             tabIndex={0}
                             target={target}
+                            rel="noopener noreferrer"
                             onClick={onClick}>{children}</a></Link>
      : <button aria-label={ariaLabel || "Navigation Icon"} type="button" onClick={onClick}>{children}</button>}
     <style jsx>{`

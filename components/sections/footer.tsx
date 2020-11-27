@@ -84,7 +84,9 @@ export const Footer: FC<FooterProps> = ({ colorTheme }) => {
             <ul>
               {
                 nav.map(({ href, title, target }) => (
-                  <li key={`${href}${title}`}><Link href={href}><a className="nav-group__link" target={target}>{title}</a></Link></li>
+                  <li key={`${href}${title}`}><Link href={href}><a className="nav-group__link"
+                                                                   target={target}
+                                                                   rel="noopener noreferrer">{title}</a></Link></li>
                 ))
               }
             

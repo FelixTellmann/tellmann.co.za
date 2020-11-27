@@ -16,7 +16,11 @@ type SidebarProps = {
 export const Sidebar: FC<SidebarProps> = ({ left = false, right = false, email, tel, socialNav, slogan }) => {
   return <>
     {left ? <aside className="left">
-      <Link href={`mailto:${email}`}><a aria-label="Contact us via Email" role="link" tabIndex={0} className="email">{email}</a></Link>
+      <Link href={`mailto:${email}`}><a aria-label="Contact us via Email"
+                                        role="link"
+                                        tabIndex={0}
+                                        className="email"
+                                        style={{ marginBottom: "12px" }}>{email}</a></Link>
       <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
       {socialNav.map(({ href, icon }) => <NavIcon key={href} target="_blank" href={href}>{icon}</NavIcon>)}
     </aside> : null}

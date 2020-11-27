@@ -9,7 +9,7 @@ const heroData = {
     specializing in creating websites
     that drive interaction and sales.
   </>,
-  cta: { href: "#contact", title: "Get in touch" }
+  cta: { href: "/contact", title: "Get in touch" }
 };
 
 export const Hero: FC = () => {
@@ -20,7 +20,7 @@ export const Hero: FC = () => {
       <div className="hero__content">
         {
           Array.isArray(title)
-          ? title.map((title, i) => <h1 key={title} className={`h0 bp-${i}`}>{title}</h1>)
+          ? title.map((heading, i) => <h1 key={heading} className={`h0 bp-${i}`}>{heading}</h1>)
           : <h1 key={title} className="h0">{title}</h1>
         }
         <h2 className="h3">{subtitle}</h2>
