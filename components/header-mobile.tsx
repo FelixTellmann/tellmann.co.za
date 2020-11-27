@@ -52,8 +52,9 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
   
   return <>
     <div className={cn("mobile", { active: showMobileNav })}>
-      <Link href="/">
+      <Link href="/#hero">
         <a aria-label="Logo"
+           id="logo-link"
            role="link"
            tabIndex={0}
            className={cn("logo", { hideTransition: changingColor })}
@@ -170,7 +171,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
         a {
           display: flex;
           justify-content: space-between;
-          margin-top: 48px;
+          margin-top: 5vh;
           font-size: 17px;
           font-weight: 500;
           line-height: 1;

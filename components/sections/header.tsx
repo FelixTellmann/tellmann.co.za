@@ -11,13 +11,13 @@ type HeaderProps = {
 }
 
 export const navData = {
-  logo: { href: "/", src: "/logo.svg", alt: "Tellmann Logo" },
+  logo: { href: "/#hero", src: "/logo.svg", alt: "Tellmann Logo" },
   nav: [
-    { href: "/", title: "Home", alt: "Hi.", mobile: true },
+    { href: "/#hero", title: "Home", alt: "Hi.", mobile: true },
     { href: "/#services", title: "Services", alt: `What we can do` },
     { href: "/#work", title: "Work", alt: `What we've done` },
-    { href: "/blog", title: "Blog", alt: "What could be done" },
-    { href: "/about", title: "About", alt: "Who we are" },
+    { href: "/blog", title: "Blog", alt: "What we write" },
+    { href: "/#about", title: "About", alt: "Who we are" },
     { href: "/contact", title: "Contact", alt: `Get in touch`, mobile: true }
   ],
   navButton: { href: "/contact", title: "Contact" },

@@ -36,7 +36,7 @@ type HeaderDesktopProps = {
 export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav, navButton }) => {
   return <>
     <div className="desktop">
-      <Link href="/"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
+      <Link href="/#hero"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
       <nav>
         {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => (
           <Link key={href} href={href}><a role="link" tabIndex={0}>{title}</a></Link>)

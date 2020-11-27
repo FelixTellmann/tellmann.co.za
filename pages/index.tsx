@@ -30,13 +30,13 @@ const Index: FC<BlogProps> = ({ postData }) => {
       <Section py="0" pl="0" pr="0" pb="200px">
         <Work />
       </Section>
-      <Section id="contact" skew={-2} fullscreen background="var(--color-grey-bg-3)" py="96px" style={{ zIndex: 0 }}>
+      <Section id="about" skew={-2} fullscreen background="var(--color-grey-bg-3)" py="96px" style={{ zIndex: 0 }}>
         <Team />
       </Section>
       <Section skew={-2} fullscreen background="var(--primary)" py="48px">
         <GetStarted />
       </Section>
-      <Section id="blog-preview" background={<Topography />} backgroundOpacity={0.03}>
+      <Section id="blog-preview" background={<Topography />} backgroundOpacity={0.03} py="32px">
         {/* <BlogSummary postData={postData} /> */}
       </Section>
     </>

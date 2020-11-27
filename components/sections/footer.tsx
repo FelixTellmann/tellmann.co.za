@@ -6,86 +6,99 @@ import Logo from "../../public/logo.svg";
 import { Link } from "../link";
 import { NavIcon } from "../nav-icon";
 
+const navData: { heading: string, nav: { href: string, title: string, target?: string }[] }[] = [
+  {
+    heading: `Sitemap`,
+    nav: [
+      { href: "/#hero", title: "Home" },
+      { href: "/#services", title: "Services" },
+      { href: "/#work", title: "Work" },
+      { href: "/blog", title: "Blog" },
+      { href: "/#about", title: "About" },
+      { href: "/contact", title: "Contact" }
+    ]
+  },
+  {
+    heading: `Shopify`,
+    nav: [
+      { href: "https://www.shopify.com/online?ref=liquix", title: "Sell Online", target: "_blank" },
+      { href: "https://www.shopify.com/online/ecommerce-solutions?ref=liquix", title: "Features", target: "_blank" },
+      { href: "https://www.shopify.com/tour/ecommerce-website?ref=liquix", title: "Ecommerce Sites", target: "_blank" },
+      { href: "https://www.shopify.com/domains?ref=liquix", title: "Domains", target: "_blank" },
+      { href: "https://www.shopify.com/themes?ref=liquix", title: "Themes", target: "_blank" },
+      { href: "https://www.shopify.com/blog/topics/guides?ref=liquix", title: "Guides", target: "_blank" }
+    ]
+  },
+  {
+    heading: `Tools`,
+    nav: [
+      { href: "https://www.canva.com/", title: "Canva design", target: "_blank" },
+      { href: "https://konklone.io/json/", title: "Data Converter", target: "_blank" },
+      { href: "https://unsplash.com/", title: "Free Stock Images", target: "_blank" },
+      { href: "https://www.omnisend.com/", title: "Email Marketing", target: "_blank" },
+      { href: "https://coolors.co/", title: "Coolers", target: "_blank" },
+      { href: "https://web.dev/measure/", title: "Website Performance", target: "_blank" },
+      { href: "https://react-icons.netlify.com/", title: "Find Icons", target: "_blank" }
+    ]
+  },
+  {
+    heading: `Support`,
+    nav: [
+      { href: "/contact", title: "Contact Us" },
+      { href: "tel:0763934356", title: "076 393 4356" },
+      { href: "mailto:info@tellmann.co.za", title: "info@tellmann.co.za" },
+      /* { href: "/#", title: "FAQ" }, */
+      { href: "/terms", title: "Terms & Conditions" },
+      { href: "/privacy", title: "Privacy Policy" }
+    ]
+  }
+];
+
 type FooterProps = {
-  nav?
-  socialNav?
-  logo?
-  copyright?
   colorTheme?
 };
 
-export const Footer: FC<FooterProps> = ({ colorTheme, nav, socialNav, logo, copyright }) => {
+export const Footer: FC<FooterProps> = ({ colorTheme }) => {
+  
+  const toggleColor = () => {
+    const logo = document.getElementById("logo-link");
+    logo.classList.add("hideTransition");
+    colorTheme.toggle();
+    setTimeout(() => {
+      logo.classList.remove("hideTransition");
+    }, 60);
+  };
+  
   return <>
     <footer>
       <nav className="nav">
-        <div className="nav-group">
-          <input aria-label="Toggle Nav Group" type="checkbox" id="nav-group__input" name="nav-group__input" />
-          <label htmlFor="nav-group__input">
-            <h3>Shopify</h3>
-          </label>
-          <ul>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-          </ul>
-        </div>
-        
-        <div className="nav-group">
-          <input type="checkbox" id="nav-group__input4" name="nav-group__input" />
-          <label htmlFor="nav-group__input4">
-            <h3>Shopify</h3>
-          </label>
-          <ul>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-          </ul>
-        </div>
-        <div className="nav-group">
-          <input type="checkbox" id="nav-group__input3" name="nav-group__input" />
-          <label htmlFor="nav-group__input3">
-            <h3>Shopify</h3>
-          </label>
-          <ul>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-          </ul>
-        </div>
-        <div className="nav-group">
-          <input type="checkbox" id="nav-group__input2" name="nav-group__input" />
-          <label htmlFor="nav-group__input2">
-            <h3>Shopify</h3>
-          </label>
-          <ul>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-            <li><Link href="#"><a className="nav-group__link">Link</a></Link></li>
-          </ul>
-        </div>
+        {navData.map(({ heading, nav }, i) => (
+          <div key={heading} className="nav-group">
+            <input aria-label="Toggle Nav Group"
+                   type="checkbox"
+                   id={`nav-group__input--${heading}`}
+                   name={`nav-group__input--${heading}`} />
+            <label htmlFor={`nav-group__input--${heading}`}>
+              <h3>{heading}</h3>
+            </label>
+            <ul>
+              {
+                nav.map(({ href, title, target }) => (
+                  <li key={`${href}${title}`}><Link href={href}><a className="nav-group__link" target={target}>{title}</a></Link></li>
+                ))
+              }
+            
+            </ul>
+          </div>
+        ))}
+      
       </nav>
       <div className="utility">
         <Logo width={105} height={56} />
         <div className="utility__group">
           <nav className="social-nav">
-            {colorTheme.value === "light-theme" ? <NavIcon ariaLabel="GitHub" onClick={colorTheme.toggle}><FiMoon /></NavIcon> : null}
-            {colorTheme.value === "dark-theme" ? <NavIcon ariaLabel="GitHub" onClick={colorTheme.toggle}><FiSun /></NavIcon> : null}
+            {colorTheme.value === "light-theme" ? <NavIcon ariaLabel="GitHub" onClick={toggleColor}><FiMoon /></NavIcon> : null}
+            {colorTheme.value === "dark-theme" ? <NavIcon ariaLabel="GitHub" onClick={toggleColor}><FiSun /></NavIcon> : null}
             <NavIcon href="#" ariaLabel="GitHub"><IoLogoGithub /></NavIcon>
             <NavIcon href="#" ariaLabel="GitHub"><IoLogoFacebook /></NavIcon>
           </nav>
