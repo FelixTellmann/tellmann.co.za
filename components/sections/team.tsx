@@ -79,7 +79,9 @@ export const Team: FC<TeamProps> = ({ style = {} }) => {
         flex-direction: column;
         align-items: center;
         max-width: 460px;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
       }
 
       h4 {
