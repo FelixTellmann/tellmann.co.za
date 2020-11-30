@@ -325,7 +325,6 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
           display: block;
           overflow: hidden;
           overflow: -moz-scrollbars-none;
-
           border-radius: calc(var(--phone-border-radius) - 10px);
           transition: 0.2s ease-in-out;
           -ms-overflow-style: none;
@@ -338,9 +337,18 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
             background: transparent;
           }
 
-          @media screen and (min-width: 960px) {
+          > :global(div) {
+            height: 100%;
             overflow-y: scroll;
+            border-radius: calc(var(--phone-border-radius) - 10px);
           }
+
+          > :global(div::-webkit-scrollbar) {
+            width: 0;
+            display: none;
+            background: transparent;
+          }
+
         }
 
         picture.active + picture {
