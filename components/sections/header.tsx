@@ -8,6 +8,7 @@ import { HeaderMobile } from "../header-mobile";
 
 type HeaderProps = {
   colorTheme: ColorTheme
+  currentRoute: string
 }
 
 export const navData = {
@@ -38,7 +39,7 @@ export const navData = {
   slogan: "Your Partners in Online Success"
 };
 
-export const Header: FC<HeaderProps> = ({ colorTheme }) => {
+export const Header: FC<HeaderProps> = ({ colorTheme, currentRoute }) => {
   const [showBanner, setShowBanner] = useState(true);
   const [showMobileNav, setShowMobileNav] = useState(false);
   
@@ -47,10 +48,13 @@ export const Header: FC<HeaderProps> = ({ colorTheme }) => {
   }
   
   useEffect(() => {
+    if (currentRoute.includes("contact")) {
+      setShowBanner(false);
+    }
     showBanner
     ? document.documentElement.style.setProperty("--header-banner-height", "40px")
     : document.documentElement.style.setProperty("--header-banner-height", "0px");
-  }, [showBanner]);
+  }, [showBanner, currentRoute]);
   
   return <>
     <header className={cn({ showBanner })}>
@@ -60,7 +64,7 @@ export const Header: FC<HeaderProps> = ({ colorTheme }) => {
                       <>Not on Shopify yet? Get a full page review</>,
                       <>Not on Shopify yet? Get a full page review and we will get you started</>
                     ]}
-                    href="#contact" />
+                    href="/contact" />
       <HeaderDesktop theme={colorTheme.value} toggleColor={colorTheme.toggle} {...navData} />
       <HeaderMobile toggleMobileNav={toggleMobileNav}
                     showMobileNav={showMobileNav}

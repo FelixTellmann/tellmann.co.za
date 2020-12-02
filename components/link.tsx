@@ -22,13 +22,7 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
         if (document.getElementById(href.replace(/^.*?#/, ""))) {
           e.preventDefault();
           const to = document.getElementById(href.replace(/^.*?#/, ""))?.offsetTop || 0;
-          console.log(to);
           scrollTo(scrollDuration, to + scrollOffset);
-        } else {
-          setTimeout(() => {
-            const to = document.getElementById(href.replace(/^.*?#/, ""))?.offsetTop || 0;
-            scrollTo(1000, to + scrollOffset);
-          }, 50);
         }
       
       }

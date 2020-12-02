@@ -136,10 +136,12 @@ body {
   --color-text-faded-rgb: 45, 55, 72;
   --color-text-rgb: 23, 23, 23;
 
-  /*= =============== header ================ */
   --header-backdrop-filter: saturate(180%) blur(5px);
+
+  /*= =============== header ================ */
   --header-background: rgba(var(--color-background-rgb), 1);
   --header-border-bottom: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  --hero-overlay: radial-gradient(61% 70% at 30% 30%, rgb(92 145 171 / 39%) 0, rgb(235 249 255) 100%);
 
   --nav-color: #666;
   --nav-font-size: 14px;
@@ -157,24 +159,28 @@ body {
 }
 
 .dark-theme {
+
   --border: 1px solid #333;
+
   --card-background: linear-gradient(#111, #111) content-box, linear-gradient(90deg, #333, #333) border-box;
   --card-background-hover: linear-gradient(#111, #111) content-box, linear-gradient(90deg, #ec6192, #ec4c34, #ffbd2b, #ebde56, #57c754, #53a1eb) border-box;
   --card-border: none;
   --card-border-hover: none;
   --card-shadow-hover: none;
-
   --card-text: var(--color-text);
+
   --color-background: #07080a;
   --color-background-rgb: 7, 8, 10;
   --color-grey-bg-1: #2f2f2f;
   --color-grey-bg-2: #0b0d10;
   --color-grey-bg-3: #111;
   --color-text: #fff;
-
   --color-text-faded: #a0aec0;
+
   --color-text-faded-rgb: 160, 174, 192;
   --color-text-rgb: 255, 255, 255;
+  --hero-overlay: radial-gradient(70% 70% at 50% 100%, rgb(22 52 66 / 96%) 0, hsl(194 130% 10% / 0.54) 100%);
+
   --nav-color: #888;
   --nav-hover-color: #f1f1f1;
 }

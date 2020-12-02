@@ -63,7 +63,7 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
            </div>
          </>
          : <>
-           <Header colorTheme={colorTheme} />
+           <Header colorTheme={colorTheme} currentRoute={router.pathname} />
            <main>
              <Sidebar left {...navData} />
              <div className="page"><Component {...pageProps} /></div>

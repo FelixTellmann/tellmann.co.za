@@ -5,9 +5,8 @@ const heroData = {
   title: ["Hi.", "Hello."],
   subtitle: <>
     We are Tellmann, <br />
-    a small design & development studio
-    specializing in creating websites
-    that drive interaction and sales.
+    a small team of Web-design & Shopify experts in of Cape Town.
+    We specializing in creating websites that drive interaction and sales.
   </>,
   cta: { href: "/contact", title: "Get in touch" }
 };
@@ -45,6 +44,11 @@ export const Hero: FC = () => {
         margin-left: auto;
         position: relative;
         z-index: 0;
+      }
+
+      h2 {
+        max-width: 600px;
+        margin-right: auto;
       }
     `}</style>
   </>;

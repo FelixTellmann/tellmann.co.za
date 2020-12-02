@@ -11,8 +11,8 @@ const Index: FC<BlogProps> = ({ postData }) => {
     <>
       <Section id="hero"
                jumpTo={{ href: "#services", title: "What we do" }}
-               background={`url('/images/hero-bg.jpg') center / cover no-repeat`}
-               overlay="radial-gradient(70% 70% at 50% 100%, var(--color-grey-bg-1) 0, var(--color-grey-bg-2) 100%)">
+               background={`url('/images/hero-bg-r2d2.jpg') 70% 90% / cover no-repeat`}
+               overlay="var(--hero-overlay)">
         <Hero />
       </Section>
       <Section id="services" background={<Topography />} backgroundOpacity={0.03}>
