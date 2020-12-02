@@ -30,7 +30,7 @@ const workData = [
   },
   {
     title: "Broadway Jewellers",
-    description: `, Broadway Jewellers has made it their mission to strive every day to earn the confidence and trust of their clients by
+    description: `Broadway Jewellers has made it their mission to strive every day to earn the confidence and trust of their clients by
     meeting and exceeding their expectations of quality, service, and unsurpassed value. Providing a wide range of branded watches, Jewellery and accessories. `,
     work: `Store Migration: WordPress to Shopify, Page Review & Analysis, Custom Filter Functionality, Performance & SEO enhancement.`,
     img: "/images/work-preview-broadwayjewellers.jpg",
