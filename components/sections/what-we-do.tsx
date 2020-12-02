@@ -45,7 +45,7 @@ export const WhatWeDo: FC = () => {
             icon={{ src: <FiCpu />, background: `linear-gradient(58deg, #01cbdd, rgba(60, 212, 243, 0.62))`, color: `#fff` }} />
       <Card clickable
             title="Review and Analysis"
-            content="With each project, we perform an in&#8209;depth review & analysis. We cover all aspects of performance, seo and more."
+            content="With each project, we perform an in&#8209;depth review & analysis. We cover all aspects of performance, SEO and more."
             icon={{ src: <BiPulse />, size: "24px", background: `linear-gradient(0deg, #EC6193, #EC4B31)`, color: `#fff` }} />
       <Card clickable
             title="Data Management"

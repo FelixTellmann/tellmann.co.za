@@ -6,12 +6,12 @@ const statisticsData = [
     statistic: 2017
   },
   {
-    title: "Pages created",
-    statistic: 24
+    title: "Lines of Code Written",
+    statistic: `164k`
   },
   {
-    title: "Founded in",
-    statistic: 2017
+    title: "Customer Satisfaction",
+    statistic: `100%`
   }
 ];
 

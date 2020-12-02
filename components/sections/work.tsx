@@ -2,50 +2,55 @@ import cn from "classnames";
 import Image from "next/image";
 import { CSSProperties, FC, Fragment, useEffect, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { Link } from "../link";
 
 const workData = [
   {
-    title: "Kids Living",
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
-          modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
+    title: "KidsLiving",
+    description: `Est. 2008 in Cape Town, now a leading South African baby and kids store, offering an extensive range of imported and locally manufactured high-end products.`,
+    work: `Store Migration: BigCommerce to Shopify, Vend POS Integration, Sales Channel Management, Custom Functionality, and Continuous Development.`,
     img: "/images/work-preview-kids-living.jpg",
-    href: "#"
+    href: "https://www.kidsliving.co.za"
   },
   {
     title: "Turningpoint",
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
-          modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
+    description: `Ballet and Dancewear company focusing handmade and high-end dance wear with modern styles and
+    designs. Always dedicated to design products that Suit-Your-Body. `,
+    work: `Store Migration: WordPress to Shopify, Web design, Custom Functionality, E-commerce consultation, Data Management.`,
     img: "/images/work-preview-turningpoint.jpg",
-    href: "#"
+    href: "https://www.turningpoint.co.za"
   },
   {
-    title: "3",
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
-          modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
+    title: "Matsidiso",
+    description: `Inspired by the beautiful diversity of Pan-African cultures. Featuring Vibrant colours and textures that melt into
+    designs in a modern way. Run by a wonderful husband and wife team. `,
+    work: `Custom App Development, Internationalization, Custom Design, Custom Functionality.`,
     img: "/images/work-preview-matsidiso.jpg",
-    href: "#"
+    href: "https://www.matsidiso.com"
   },
   {
-    title: "3",
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
-          modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
+    title: "Broadway Jewellers",
+    description: `, Broadway Jewellers has made it their mission to strive every day to earn the confidence and trust of their clients by
+    meeting and exceeding their expectations of quality, service, and unsurpassed value. Providing a wide range of branded watches, Jewellery and accessories. `,
+    work: `Store Migration: WordPress to Shopify, Page Review & Analysis, Custom Filter Functionality, Performance & SEO enhancement.`,
     img: "/images/work-preview-broadwayjewellers.jpg",
-    href: "#"
+    href: "https://www.broadwayjewellers.co.za"
   },
   {
-    title: "4",
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
-          modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
+    title: "BushScarf",
+    description: `Established in 2016 BushScarf focuses on quality handwoven bamboo and mohair scarves. Locally made and proudly South African,
+     the scarves expresses beauty, elegancy and simplicity through the vivid and strong colour tones in their designs.`,
+    work: `E-Commerce Consultation, New Site Setup & Design, Product Photography, Custom Design`,
     img: "/images/work-preview-bushscarf.jpg",
-    href: "#"
-  },
+    href: "https://originalthings-za.myshopify.com/"
+  }/* ,
   {
     title: "4",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur cumque deleniti dolorem eaque explicabo fuga impedit
           modi recusandae repellendus. Delectus dignissimos est et in ipsa itaque reiciendis, rem, sapiente tempora tempore vitae voluptas.`,
     img: "/images/work-preview-pichulik.jpg",
     href: "#"
-  }
+  } */
 ];
 
 type WorkProps = {
@@ -119,19 +124,26 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
       <div className="content">
         <div className="content__spaceholder">
           {
-            workData.map(({ title, description }, i) => (
+            workData.map(({ title, description, work }, i) => (
               <div key={i} className={cn("content__item")}>
                 <h3>{title}</h3>
                 <p>{description}</p>
+                <h4>What we did:</h4>
+                <p>{work}</p>
               </div>
             ))
           }
         </div>
         {
-          workData.map(({ title, description }, i) => (
+          workData.map(({ href, title, description, work }, i) => (
             <div key={i} className={cn("content__item", { active: i === activeIndex % workData.length })}>
               <h3>{title}</h3>
               <p>{description}</p>
+              <h4>What we did:</h4>
+              <p>{work}</p>
+              {href
+               ? <Link href={href}><a aria-label={title}><span className="content__item__link">View <FiChevronRight /></span></a></Link>
+               : null}
             </div>
           ))
         }
@@ -204,6 +216,8 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         margin-left: auto;
         text-align: center;
         transition: opacity 0.2s ease;
+        user-select: none;
+        z-index: -10;
         @media screen and (min-width: 400px) {
           min-width: 400px;
         }
@@ -216,6 +230,8 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         }
 
         &.active {
+          z-index: unset;
+          user-select: unset;
           opacity: 1;
           transition: opacity ease 0.2s 0.2s;
         }
@@ -223,6 +239,22 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         @media screen and (min-width: 1000px) {
           text-align: left;
 
+        }
+
+        .content__item__link {
+          display: flex;
+          align-items: center;
+          color: var(--primary);
+          font-size: 16px;
+          text-decoration: none;
+
+          :global(svg) {
+            margin-left: 10px;
+          }
+
+          &:hover, &:focus, &:active {
+            text-decoration: underline;
+          }
         }
       }
 
