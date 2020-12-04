@@ -196,7 +196,7 @@ export const ContactForm: FC = () => {
     <style jsx>{`
 
       main {
-        max-height: 1500px;
+        max-height: 1800px;
         transition: max-height ease 0.4s 0s, padding ease 0.2s 0.2s;
         height: auto;
         padding: 24px;
