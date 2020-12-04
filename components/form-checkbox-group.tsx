@@ -38,7 +38,7 @@ export const FormCheckboxGroup: FC<FormCheckboxGroupProps & InputHTMLAttributes<
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         grid-template-rows: repeat(auto-fill, 1fr);
-        grid-gap: 24px;
+        grid-gap: 10px;
         grid-auto-flow: row;
       }
 

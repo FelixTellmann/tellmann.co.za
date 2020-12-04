@@ -9,12 +9,12 @@ type FormTextareaProps = {
   ref
 };
 
-export const FormTextarea: FC<FormTextareaProps & TextareaHTMLAttributes<any>> = forwardRef(({ label, id, error, ...props }, ref) => {
+export const FormTextarea: FC<FormTextareaProps & TextareaHTMLAttributes<any>> = forwardRef(({ label, required, id, error, ...props }, ref) => {
   const errorMessage = `Please enter a message or question`;
   
   return <>
     <label>
-      <div className="label">{label}</div>
+      <div className={cn("label", { required })}>{label}</div>
       <div className={cn("error", { active: error })}><i><FiAlertCircle /></i><span><b>Error:</b> {errorMessage}</span></div>
       <textarea id={id} ref={ref} {...props} />
     </label>
@@ -60,6 +60,15 @@ export const FormTextarea: FC<FormTextareaProps & TextareaHTMLAttributes<any>> =
         font-size: 12px;
         font-weight: 500;
         text-transform: uppercase;
+
+        &.required {
+          &:after {
+            display: inline-block;
+            padding-left: 4px;
+            content: '*';
+            color: red;
+          }
+        }
       }
 
       textarea {

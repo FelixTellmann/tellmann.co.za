@@ -1,21 +1,28 @@
-import { FC, SelectHTMLAttributes, useState } from "react";
-import { FiChevronDown } from "react-icons/fi";
+import cn from "classnames";
+import { FC, forwardRef, SelectHTMLAttributes, useState } from "react";
+import { FiAlertCircle, FiChevronDown } from "react-icons/fi";
 
 type FormSelectProps = {
   label: string
   options: string[]
+  error?: boolean
+  ref?
 };
 
-export const FormSelect: FC<FormSelectProps & SelectHTMLAttributes<any>> = ({ label, options = [], ...props }) => {
+export const FormSelect: FC<FormSelectProps & SelectHTMLAttributes<any>> = forwardRef(({ label, required, error, options = [], ...props }, ref) => {
   const [selected, setSelected] = useState(options[0]);
+  const errorMessage = "Please choose an Option";
   
   return <>
     <label>
-      <div className="label">{label}</div>
+      <div className={cn("label", { required })}>{label}</div>
+      <div className={cn("error", { active: error })}><i><FiAlertCircle /></i><span><b>Error:</b> {errorMessage}</span></div>
       <div className="select">
-        <select {...props} onChange={(e) => { setSelected(e.target.value); }} value={selected}>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
+        <select {...props} ref={ref} onChange={(e) => { setSelected(e.target.value); }} value={selected}>
           {options.map((opt) => (
-            <option key={opt} value={opt}>{opt}</option>
+            <option key={opt} value={opt} disabled={opt === "Please Select"}>{opt}</option>
           ))}
         </select>
         <FiChevronDown />
@@ -28,12 +35,51 @@ export const FormSelect: FC<FormSelectProps & SelectHTMLAttributes<any>> = ({ la
         flex-direction: column;
       }
 
+      .error {
+        display: none;
+        align-items: center;
+        padding: 12px 4px;
+        color: red;
+        font-size: 14px;;
+        font-weight: 500;
+        line-height: 1.4;
+        order: 2;
+
+        b {
+          font-weight: 700;
+        }
+
+        i {
+          display: flex;
+          align-items: center;
+          margin-right: 8px;
+          font-size: 16px;
+        }
+      }
+
+      .error.active {
+        display: flex;
+
+        & + input {
+          border-color: red;
+        }
+      }
+
       .label {
         margin-bottom: 12px;
         color: var(--color-text-faded);
         font-size: 12px;
         text-transform: uppercase;
         font-weight: 500;
+
+        &.required {
+          &:after {
+            display: inline-block;
+            padding-left: 4px;
+            content: '*';
+            color: red;
+          }
+        }
       }
 
       .select {
@@ -70,4 +116,4 @@ export const FormSelect: FC<FormSelectProps & SelectHTMLAttributes<any>> = ({ la
       }
     `}</style>
   </>;
-};
+});

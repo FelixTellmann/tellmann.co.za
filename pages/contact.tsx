@@ -6,7 +6,7 @@ import { ContactForm, Link, Map, Section } from "../components";
 const Contact: FC = () => {
   
   return <>
-    <Section fullscreen background="var(--color-grey-bg-2)" style={{ zIndex: 0 }}>
+    <Section id="contact-section" fullscreen background="var(--color-grey-bg-2)" style={{ zIndex: 0 }}>
       <div className="heading">
         <h1>Get in Touch</h1>
         <h2 className="h4">Tell us how we can help and we’ll get in touch shortly.</h2>
@@ -17,9 +17,9 @@ const Contact: FC = () => {
         <aside>
           <div className="contact__intro">
             <h3>How can we <em>help</em> you?</h3>
-            <p>Wondering if we have any ideas about your challenging project?</p>
             <p>Feel free to contact us with any questions, projects or partnerships.</p>
-            <p> Prefer a cup of coffee and a chat? Visit us by appointment in Cape Town, CBD.</p>
+            <p>Want to have a online meeting instead? Request an appointment with us.</p>
+            <p>Prefer a cup of coffee and a chat face to face? Schedule an appointment with us in our Cape Town offices.</p>
       
           </div>
           <div className="contact__details">

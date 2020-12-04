@@ -1,8 +1,8 @@
 import cn from "classnames";
 import Link from "next/link";
 import React, { FC, useEffect, useRef, useState } from "react";
-import { FaShopify } from "react-icons/fa";
 import validator from "validator";
+import scrollTo from "../lib/scrollTo";
 import Loading from "../public/icons/loading.svg";
 import { Button } from "./button";
 import { FormCheckboxGroup } from "./form-checkbox-group";
@@ -12,8 +12,9 @@ import { FormTextarea } from "./form-textarea";
 
 export const ContactForm: FC = () => {
   
-  const textarea = useRef(null);
+  const message = useRef(null);
   const name = useRef(null);
+  const source = useRef(null);
   const email = useRef(null);
   const website = useRef(null);
   const [formData, setFormData] = useState({ email: "" });
@@ -63,64 +64,149 @@ export const ContactForm: FC = () => {
     setSubmitting(false);
     if (res && res.status === 200) {
       setSubmitted(true);
+      scrollTo(400, document.getElementById("contact-section").offsetTop);
     }
   };
   
   return <>
     <div className="card-form">
       <form id="contact" className="form" onSubmit={submitForm}>
-        <main>
+        <main className={cn({ submitted })}>
           <div className="form-group form-group--grid">
-            <FormInput id="email"
-                       label="Your Email"
-                       type="email"
-                       autoComplete="on"
-                       onBlur={updateFormData}
-                       error={validatorActive && !validator.isEmail(email?.current?.value)}
-                       ref={email} />
             <FormInput id="name"
                        label="Your Name"
                        type="text"
+                       required
                        autoComplete="on"
                        onBlur={updateFormData}
                        error={validatorActive && validator.isEmpty(name?.current?.value)}
                        ref={name} />
+            <FormInput id="email"
+                       label="Your Email"
+                       type="email"
+                       autoComplete="on"
+                       required
+                       onBlur={updateFormData}
+                       error={validatorActive && !validator.isEmail(email?.current?.value)}
+                       ref={email} />
+            <FormInput id="company"
+                       label="Company name"
+                       type="text"
+                       autoComplete="on"
+                       onBlur={updateFormData} />
+            <FormSelect id="source"
+                        required
+                        label="How did You here about us?"
+                        error={validatorActive && source?.current?.value === "Please Select"}
+                        options={[`Please Select`, `Google`, `Shopify Partners list`, `Facebook/Instagram`, `Referral`, `Other`]}
+                        onBlur={updateFormData}
+                        ref={source} />
+    
+          </div>
+    
+          <div className="form-group form-group--border">
+            <FormCheckboxGroup label="Interest" id="interest"
+                               options={
+                                 [
+                                   `Basic Shopify Site`,
+                                   `Pro Shopify Site`,
+                                   `Pro+ Shopify Site`,
+                                   `Vend POS Integration`,
+                                   "Migrating Site",
+                                   "App Integrations",
+                                   `Maintenance Plan`,
+                                   `E-Mail Marketing`,
+                                   `Custom Design`,
+                                   `Custom Functionality`,
+                                   `Page Review & Analysis`,
+                                   `Sales Channel Setup`,
+                                   `Support`,
+                                   `General Question`
+                                 ]
+                               } onChange={updateFormData} />
+          </div>
+    
+          <div className="form-group form-group--grid">
             <FormInput id="website"
                        label="Current Website"
                        type="website"
                        onBlur={updateFormData}
                        error={validatorActive && !validator.isURL(website.current.value) && !validator.isEmpty(website.current.value)}
                        ref={website} />
-            <FormSelect id="budget" label="Budget" options={["R20,000 - R40,000", "R40,000+"]} onBlur={updateFormData} />
+            <FormSelect id="current-platform"
+                        label="Current e-commerce platform"
+                        options={[
+                          `Please Select`,
+                          `I don't have a site yet.`,
+                          `Shopify`,
+                          `BigCommerce`,
+                          `Magento`,
+                          `PrestaShop`,
+                          `WooCommerce`,
+                          `Volusion`,
+                          `Other`
+                        ]}
+                        onBlur={updateFormData} />
+            <FormSelect id="budget"
+                        label="Budget"
+                        options={[
+                          `Please Select`,
+                          `less than R15,000`,
+                          `R15,000 - R25,000`,
+                          `R25,000 - R50,000`,
+                          `R50,000 - R75,000`,
+                          `R75,000 +`
+                        ]}
+                        onBlur={updateFormData} />
+            <FormSelect id="timeline"
+                        label="Timeline"
+                        options={[
+                          `Please Select`,
+                          `Yesterday!`,
+                          `0 - 2 Weeks`,
+                          `2 - 4 Weeks`,
+                          `4 - 8 Weeks`,
+                          `+8 Weeks`
+                        ]}
+                        onBlur={updateFormData} />
           </div>
-          <div className="form-group form-group--border">
-            <FormCheckboxGroup label="Interest" id="interest"
-                               options={[{ label: "Shopify", icon: <FaShopify /> }, "Integrations", "other"]} onChange={updateFormData} />
-          </div>
+    
           <div className="form-group">
             <FormTextarea id="message"
                           label="Send a Message"
                           spellCheck="false"
                           rows={5}
+                          required
                           onBlur={updateFormData}
-                          error={validatorActive && validator.isEmpty(textarea.current.value)} ref={textarea} />
+                          error={validatorActive && validator.isEmpty(message.current.value)} ref={message} />
           </div>
         </main>
-        <footer className="card-form__footer">
-          
-          
-          {submitted
-           ? <p style={{ flex: 1 }}>Thank you for your Message.</p>
-           : <>
-             <p>You can also email us directly at <Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link></p>
-             <Button type="submit"
-                     secondary
-                     branded
-                     medium><i className={cn({ submitting })}><Loading /></i><span className={cn({ submitting })}>Submit</span></Button></>}
+        <footer className="card-form__footer">{submitted
+                                               ? <p style={{ flex: 1 }}>Thank you for your Message.</p>
+                                               : <>
+                                                 <p>You can also email us directly
+                                                   at <Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link></p>
+                                                 <Button type="submit"
+                                                         secondary
+                                                         branded
+                                                         medium><i className={cn({ submitting })}><Loading /></i><span className={cn({ submitting })}>Submit</span></Button></>}
         </footer>
       </form>
     </div>
     <style jsx>{`
+
+      main {
+        max-height: 1500px;
+        transition: max-height ease 0.4s 0s, padding ease 0.2s 0.2s;
+        height: auto;
+        padding: 24px;
+
+        &.submitted {
+          max-height: 0px;
+          padding: 0 24px;
+        }
+      }
+
       .card-form {
         overflow: hidden;
         margin-bottom: auto;
@@ -171,10 +257,6 @@ export const ContactForm: FC = () => {
           justify-content: space-between;
 
         }
-      }
-
-      main {
-        padding: 24px;
       }
 
       .form-group--grid {

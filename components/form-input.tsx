@@ -9,7 +9,7 @@ type FormInputProps = {
   ref?
 };
 
-export const FormInput: FC<FormInputProps & InputHTMLAttributes<any>> = forwardRef(({ label, id, error = false, type, ...props }, ref) => {
+export const FormInput: FC<FormInputProps & InputHTMLAttributes<any>> = forwardRef(({ label, id, error = false, type, required, ...props }, ref) => {
   let errorMessage = "";
   let inputType = type;
   switch (type) {
@@ -29,7 +29,7 @@ export const FormInput: FC<FormInputProps & InputHTMLAttributes<any>> = forwardR
   
   return <>
     <label>
-      <div className="label">{label}</div>
+      <div className={cn("label", { required })}>{label}</div>
       <div className={cn("error", { active: error })}><i><FiAlertCircle /></i><span><b>Error:</b> {errorMessage}</span></div>
       <input id={id} ref={ref} type={inputType} {...props} />
     </label>
@@ -75,6 +75,15 @@ export const FormInput: FC<FormInputProps & InputHTMLAttributes<any>> = forwardR
         font-size: 12px;
         font-weight: 500;
         text-transform: uppercase;
+
+        &.required {
+          &:after {
+            display: inline-block;
+            padding-left: 4px;
+            content: '*';
+            color: red;
+          }
+        }
       }
 
       input {
