@@ -142,7 +142,9 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
               <h4>What we did:</h4>
               <p>{work}</p>
               {href
-               ? <Link href={href}><a aria-label={title}><span className="content__item__link">View <FiChevronRight /></span></a></Link>
+               ? <Link href={href}><a aria-label={title}
+                                      target="_blank"
+                                      rel="noopener noreferrer"><span className="content__item__link">View <FiChevronRight /></span></a></Link>
                : null}
             </div>
           ))

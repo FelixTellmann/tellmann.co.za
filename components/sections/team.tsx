@@ -4,26 +4,26 @@ import { SectionTitle } from "../section-title";
 
 const teamData = [
   {
-    name: "Elizabeth Tellmann",
-    title: "Project Manager ",
-    content: `Elizabeth starts each morning with a cup of Rooibos Tea, followed by a morning workout before checking in to work.
-     To her left is her Husband and partner in crime, Felix. She loves working with people. Conceptualizing different options
-     best situatable for the clients and business needs. Elizabeth is the face of the company. She keeps everyone focused to
-     ensure that projects are completed on time and on budget.`,
-    img: "/images/team-elizabeth.jpg"
-  },
-  {
     name: "Felix Tellmann",
-    title: "Designer",
+    title: "Lead Developer",
     content: `Felix starts his day with a fresh cup of coffee before setting up for the day. To his right is his better half
-     and best friend Elizabeth. Felix is a Shopify Expert and Senior Frontend developer with proven design, development, and
-     business skills. He is always informed of the latest and best tools to keep his sites up to date and running flawlessly.
+     and best friend Elizabeth. Felix is a Shopify Expert and senior full-stack developer with proven design, development, and
+     business skills. He is always informed of the latest and best tools to keep his projects up to date and running flawlessly.
      He loves running and hiking and always takes Alpha with him every day.`,
     img: "/images/team-felix.jpg"
   },
   {
-    name: "Alpha Tellmann",
-    title: "Designer",
+    name: "Elizabeth Tellmann",
+    title: "Project Manager ",
+    content: `Elizabeth starts each morning with a cup of Rooibos Tea, followed by a morning workout before checking in to work.
+     To her left is her Husband and partner in crime, Felix. She loves working with people. Conceptualizing different options
+     best suitable for the clients and business needs. Elizabeth is the face of the company. She keeps everyone focused to
+     ensure that projects are completed on time and on budget.`,
+    img: "/images/team-elizabeth.jpg"
+  },
+  {
+    name: "Alpha",
+    title: "CEO - Chief Exercise Officer",
     content: `Alpha starts his day doing the downward facing dog and a few barks into the neighbourhood. Usually around lunch
     time, he takes Felix out for a run, followed by a quick shower and a long afternoon nap. He enjoys playing ball and getting
     everyone moving out in nature. He is a gentle soul with an incredible energy, keeping everyone motivated and fit.`,
