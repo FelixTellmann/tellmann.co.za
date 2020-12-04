@@ -1,4 +1,4 @@
-import cn from "classNames";
+import cn from "classnames";
 import { FC } from "react";
 import { Link } from "./link";
 
