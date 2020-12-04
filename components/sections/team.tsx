@@ -58,41 +58,53 @@ export const Team: FC<TeamProps> = ({ style = {} }) => {
       .team {
         display: grid;
         grid-template-columns: 1fr;
-        grid-gap: 48px;
         text-align: center;
+        grid-gap: 48px;
         @media screen and (min-width: 960px) {
           grid-template-columns: repeat(var(--team-length), 1fr);
         }
       }
 
       picture {
+        position: relative;
         display: block;
-        border-radius: 100%;
-        overflow: hidden; /**/
+        overflow: hidden;
         margin-bottom: 48px;
+        border-radius: 100%;
         box-shadow: var(--card-shadow-hover);
+
+        &:before {
+          position: absolute;
+          content: '';
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          display: block;
+          backdrop-filter: sepia(0) saturate(1.1) contrast(1.2) brightness(1.1);
+          background-color: rgba(0, 0, 0, 0.1);
+        }
       }
 
       .team-member {
+        max-width: 460px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 460px;
-        margin-left: auto;
         margin-right: auto;
         margin-bottom: auto;
+        margin-left: auto;
       }
 
       h4 {
+        color: var(--color-text-faded);
         font-size: 14px;
         font-weight: 500;
         text-transform: uppercase;
-        color: var(--color-text-faded)
       }
 
       p {
-        color: var(--color-text-faded);
         margin-top: 32px;
+        color: var(--color-text-faded);
       }
     `}</style>
   </>;
