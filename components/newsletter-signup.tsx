@@ -34,8 +34,10 @@ export const NewsletterSignup: FC = () => {
     <>
       <div className="signup">
         <div className="signup-wrapper">
-          <h2 className="h3">Subscribe to my newsletter</h2>
-          <p>Get emails from me about web development, tech, and early access to new articles.</p>
+          <h2 className="h3">Subscribe to our newsletter</h2>
+          <p>Get emails from us about the latest trends in ecommerce, Shopify and early access to our latest articles. We send out a
+            Newsletter 1-2 times per month, and you can unsubscribe at any time. No spam guaranteed.
+          </p>
           <section>
             {
               success

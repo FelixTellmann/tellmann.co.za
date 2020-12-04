@@ -1,3 +1,4 @@
+import cn from "classNames";
 import { FC } from "react";
 import { Link } from "./link";
 
@@ -5,13 +6,15 @@ type BlogPreviewProps = {
   slug: string;
   title: string;
   excerpt: string;
+  published?: boolean
 };
 
-export const BlogPreview: FC<BlogPreviewProps> = ({ slug, title, excerpt }) => {
+export const BlogPreview: FC<BlogPreviewProps> = ({ slug, title, excerpt, published }) => {
+  
   return (
     <>
       <Link href={`blog/${slug}`}>
-        <a>
+        <a className={cn({ published })}>
           <h3 className="h4">{title}</h3>
           <p>{excerpt}</p>
         </a>
@@ -20,6 +23,11 @@ export const BlogPreview: FC<BlogPreviewProps> = ({ slug, title, excerpt }) => {
         a {
           display: block;
           margin-bottom: 32px;
+          opacity: 0.4;
+        }
+
+        .published {
+          opacity: 1;
         }
 
         h3 {

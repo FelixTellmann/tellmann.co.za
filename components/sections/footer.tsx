@@ -102,7 +102,7 @@ export const Footer: FC<FooterProps> = ({ colorTheme }) => {
             {colorTheme.value === "light-theme" ? <NavIcon ariaLabel="GitHub" onClick={toggleColor}><FiMoon /></NavIcon> : null}
             {colorTheme.value === "dark-theme" ? <NavIcon ariaLabel="GitHub" onClick={toggleColor}><FiSun /></NavIcon> : null}
             {navData.socialNav.map(({ href, icon, target }) => (
-              <NavIcon href={href} target={target} ariaLabel="GitHub">{icon}</NavIcon>
+              <NavIcon key={href} href={href} target={target} ariaLabel="GitHub">{icon}</NavIcon>
             ))
             }
           </nav>

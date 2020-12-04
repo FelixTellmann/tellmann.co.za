@@ -67,14 +67,16 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
             Blog
           </h1>
           <p>
-            I'm writing mostly about web development, tech news, and the occasional life wisdom. Use the search below to filter by title.
+            Get your latest info about Shopify trends, Ecommerce tips & tricks, insights about Vend POS, and tutorials about increasing
+            sales online.
+            Use the search below to filter by title.
           </p>
           <Input placeholder="Search Articles" icon={<FiSearch />} onChange={search} />
         </header>
         <main>
           <h2>Recent Posts</h2>
-          {filteredPostData.map(({ slug, frontMatter: { title, excerpt } }) => (
-            <BlogPreview key={slug} slug={slug} title={title} excerpt={excerpt} />
+          {filteredPostData.map(({ slug, frontMatter: { title, excerpt, published } }) => (
+            <BlogPreview key={slug} slug={slug} title={title} excerpt={excerpt} published={published} />
           ))}
         </main>
         <footer>
