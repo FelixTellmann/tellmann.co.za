@@ -191,8 +191,8 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
 
         padding-bottom: 100px;
         @media screen and (min-width: 1000px) {
-          padding-bottom: 200px;
           grid-template-areas: ' content slider';
+          padding-bottom: 200px;
         }
       }
 
@@ -211,18 +211,18 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
 
       .content__item {
         position: absolute;
+        z-index: -10;
         right: 0;
         left: 0;
         min-width: 300px;
         max-width: 600px;
         opacity: 0;
-        padding: 0 36px;
         margin-right: auto;
         margin-left: auto;
+        padding: 0 36px;
+        user-select: none;
         text-align: center;
         transition: opacity 0.2s ease;
-        user-select: none;
-        z-index: -10;
         @media screen and (min-width: 400px) {
           min-width: 400px;
         }
@@ -236,8 +236,8 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
 
         &.active {
           z-index: unset;
-          user-select: unset;
           opacity: 1;
+          user-select: unset;
           transition: opacity ease 0.2s 0.2s;
         }
 
@@ -249,10 +249,11 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         .content__item__link {
           display: flex;
           align-items: center;
+          justify-content: center;
           color: var(--primary);
           font-size: 16px;
           text-decoration: none;
-          justify-content: center;
+
           @media screen and (min-width: 1000px) {
             justify-content: flex-start;
           }
@@ -269,16 +270,16 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
 
       .content__spaceholder {
         position: relative;
+        max-width: 100vw;
         opacity: 0;
         display: flex;
-        max-width: 100vw;
         overflow: hidden;
 
         .content__item {
           position: relative;
           user-select: none;
-          touch-action: none;
           pointer-events: none;
+          touch-action: none;
         }
 
         @media screen and (min-width: 1000px) {
@@ -288,26 +289,26 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
 
       nav {
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -40px;
         z-index: 1;
+        top: -40px;
+        left: 50%;
         display: flex;
         font-size: 32px;
+        transform: translateX(-50%);
 
         @media screen and (min-width: 1000px) {
-          left: unset;
-          transform: none;
           top: unset;
           right: var(--phone-frame-margin);
           bottom: calc(var(--phone-frame-margin) * 2.2);
+          left: unset;
+          transform: none;
         }
 
         button {
-          cursor: pointer;
-          font-size: inherit;
           margin: 0 20px;
+          cursor: pointer;
           color: var(--color-text);
+          font-size: inherit;
           @media screen and (min-width: 1000px) {
             margin: 0 10px;
 
