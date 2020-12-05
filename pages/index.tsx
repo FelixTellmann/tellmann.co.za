@@ -27,7 +27,7 @@ const Index: FC<BlogProps> = ({ postData }) => {
       <Section id="work" pb="24px">
         <SectionTitle title="Our Work" subtitle="We create beautiful and functional ecommerce experiences for amazing brands on Shopify." />
       </Section>
-      <Section py="0" pl="0" pr="0" pb="200px">
+      <Section py="0" pl="0" pr="0">
         <Work />
       </Section>
       <Section id="about" skew={-2} fullscreen background="var(--color-grey-bg-3)" py="96px" style={{ zIndex: 0 }}>

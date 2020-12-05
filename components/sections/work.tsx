@@ -188,7 +188,10 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
         grid-template-columns: 1fr 1fr;
         grid-template-areas:' . slider'
                             'content content';
+
+        padding-bottom: 100px;
         @media screen and (min-width: 1000px) {
+          padding-bottom: 200px;
           grid-template-areas: ' content slider';
         }
       }
@@ -249,6 +252,10 @@ export const Work: FC<WorkProps> = ({ style = {} }) => {
           color: var(--primary);
           font-size: 16px;
           text-decoration: none;
+          justify-content: center;
+          @media screen and (min-width: 1000px) {
+            justify-content: flex-start;
+          }
 
           :global(svg) {
             margin-left: 10px;
