@@ -90,6 +90,8 @@ export const FormSelect: FC<FormSelectProps & SelectHTMLAttributes<any>> = forwa
         :global(svg) {
           position: absolute;
           right: 12px;
+          user-select: none;
+          pointer-events: none;
         }
       }
 
