@@ -60,7 +60,7 @@ export const FormSelect: FC<FormSelectProps & SelectHTMLAttributes<any>> = forwa
       .error.active {
         display: flex;
 
-        & + input {
+        & + .select select {
           border-color: red;
         }
       }

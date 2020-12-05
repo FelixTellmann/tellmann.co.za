@@ -21,7 +21,7 @@ export const Sidebar: FC<SidebarProps> = ({ left = false, right = false, email, 
                                         tabIndex={0}
                                         className="email"
                                         style={{ marginBottom: "12px" }}>{email}</a></Link>
-      <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
+      <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(/\s/g, "")}`}><IoIosCall /></NavIcon>
       {socialNav.map(({ href, icon }) => <NavIcon key={href} target="_blank" href={href}>{icon}</NavIcon>)}
     </aside> : null}
     {right ? <aside className="right">

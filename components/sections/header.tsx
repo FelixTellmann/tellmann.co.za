@@ -1,6 +1,6 @@
 import cn from "classnames";
 import React, { FC, useEffect, useState } from "react";
-import { IoLogoFacebook, IoLogoGithub, IoLogoGoogle } from "react-icons/io";
+import { IoLogoFacebook, IoLogoGoogle } from "react-icons/io";
 import { ColorTheme } from "use-color-theme";
 import { HeaderBanner } from "../header-banner";
 import { HeaderDesktop } from "../header-desktop";
@@ -30,10 +30,10 @@ export const navData = {
     country: "South Africa"
   },
   email: "info@tellmann.co.za",
-  tel: "076 031 3590",
+  tel: "076 393 4356",
   socialNav: [
     { href: "https://www.facebook.com/tellmann.co.za", icon: <IoLogoFacebook title="Facebook" />, target: "_blank" },
-    { href: "https://github.com/Tellmann", icon: <IoLogoGithub title="Github" />, target: "_blank" },
+    /* { href: "https://github.com/Tellmann", icon: <IoLogoGithub title="Github" />, target: "_blank" }, */
     { href: "https://g.page/tellmann-cpt?share", icon: <IoLogoGoogle title="Google" />, target: "_blank" }
   ],
   slogan: "Your Partners in Online Success"

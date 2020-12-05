@@ -46,10 +46,10 @@ const footerNavData: { heading: string, nav: { href: string, title: string, targ
     nav: [
       { href: "/contact", title: "Contact Us" },
       { href: "tel:0763934356", title: "076 393 4356" },
-      { href: "mailto:info@tellmann.co.za", title: "info@tellmann.co.za" },
+      { href: "mailto:info@tellmann.co.za", title: "info@tellmann.co.za" }
       /* { href: "/#", title: "FAQ" }, */
-      { href: "/terms", title: "Terms & Conditions" },
-      { href: "/privacy", title: "Privacy Policy" }
+      /* { href: "/terms", title: "Terms & Conditions" }, */
+      /* { href: "/privacy", title: "Privacy Policy" } */
     ]
   }
 ];
