@@ -80,7 +80,7 @@ export const Team: FC<TeamProps> = ({ style = {} }) => {
           width: 100%;
           height: 100%;
           display: block;
-          backdrop-filter: sepia(0) saturate(1.1) contrast(1.2) brightness(1.1);
+          backdrop-filter: sepia(0) saturate(1.1) contrast(1.2) brightness(1.1) grayscale(1);
           background-color: rgba(0, 0, 0, 0.1);
           border-radius: 100%;
         }
