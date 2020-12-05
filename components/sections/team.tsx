@@ -4,20 +4,20 @@ import { SectionTitle } from "../section-title";
 
 const teamData = [
   {
-    name: "Felix Tellmann",
+    name: "Felix",
     title: "Lead Developer",
     content: `Felix starts his day with a fresh cup of coffee before setting up for the day. To his right is his better half
      and best friend Elizabeth. Felix is a Shopify Expert and full-stack developer with proven design, development, and
-     business skills. He is always informed of the latest tech to keep his projects up to performing flawlessly.
+     business skills. He is always informed of the latest tech to keep his projects performing flawlessly.
      He loves taking Alpha on a run or hike.`,
     img: "/images/team-felix.jpg"
   },
   {
-    name: "Elizabeth Tellmann",
+    name: "Elizabeth",
     title: "Project Manager ",
-    content: `Elizabeth starts each morning with a cup of Rooibos Tea, followed by a morning workout before checking in to work.
-     To her left is her husband and partner in crime, Felix. She loves working with people and conceptualizing ideas
-     best suitable for our clients and business needs. Elizabeth is the face of the company, while keeping everyone focused.`,
+    content: `Elizabeth starts each morning with a cup of Rooibos Tea followed by a morning workout before checking in to work.
+     To her left is her husband and partner in crime, Felix. She loves working with clients and conceptualizing ideas
+     best suitable for their product and business needs. She keeps everyone focused, on time and on budget.`,
     img: "/images/team-elizabeth.jpg"
   },
   {

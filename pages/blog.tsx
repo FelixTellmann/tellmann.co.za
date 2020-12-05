@@ -67,9 +67,7 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
             Blog
           </h1>
           <p>
-            Get your latest info about Shopify trends, Ecommerce tips & tricks, insights about Vend POS, and tutorials about increasing
-            sales online.
-            Use the search below to filter by title.
+            Get your latest info about Shopify, ecommerce tips & tricks, and insights about Vend POS.
           </p>
           <Input placeholder="Search Articles" icon={<FiSearch />} onChange={search} />
         </header>

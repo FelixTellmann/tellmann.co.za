@@ -14,7 +14,7 @@ const workData = [
   },
   {
     title: "Turningpoint",
-    description: `Ballet and Dancewear company focusing handmade and high-end dance wear with modern styles and
+    description: `Ballet and Dancewear company focusing on handmade and high-end dance wear with modern styles and
     designs. Always dedicated to design products that Suit-Your-Body. `,
     work: `Store Migration: WordPress to Shopify, Web design, Custom Functionality, E-commerce consultation, Data Management.`,
     img: "/images/work-preview-turningpoint.jpg",
@@ -30,16 +30,16 @@ const workData = [
   },
   {
     title: "Broadway Jewellers",
-    description: `Broadway Jewellers has made it their mission to strive every day to earn the confidence and trust of their clients by
-    meeting and exceeding their expectations of quality, service, and unsurpassed value. Providing a wide range of branded watches, Jewellery and accessories. `,
+    description: `Broadway Jewellers provide a wide range of branded watches, Jewellery and accessories. They strive every day to earn the
+    confidence and trust of their clients by exceeding their expectations of quality, service, and value.`,
     work: `Store Migration: WordPress to Shopify, Page Review & Analysis, Custom Filter Functionality, Performance & SEO enhancement.`,
     img: "/images/work-preview-broadwayjewellers.jpg",
     href: "https://www.broadwayjewellers.co.za"
   },
   {
     title: "BushScarf",
-    description: `Established in 2016 BushScarf focuses on quality handwoven bamboo and mohair scarves. Locally made and proudly South African,
-     the scarves expresses beauty, elegancy and simplicity through the vivid and strong colour tones in their designs.`,
+    description: `Est. 2016, BushScarf focuses on quality handwoven bamboo and mohair scarves. Locally made and proudly South African,
+     the scarves express beauty, elegancy and simplicity through the vivid and strong colour tones in their designs.`,
     work: `E-Commerce Consultation, New Site Setup & Design, Product Photography, Custom Design`,
     img: "/images/work-preview-bushscarf.jpg",
     href: "https://originalthings-za.myshopify.com/"
