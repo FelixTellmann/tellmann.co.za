@@ -1,7 +1,8 @@
-import cn from "classnames";
+import { Div, Header as Header3 } from "components/html-elements";
 import React, { FC, useEffect, useState } from "react";
 import { IoLogoFacebook, IoLogoGoogle } from "react-icons/io";
 import { ColorTheme } from "use-color-theme";
+
 import { HeaderBanner } from "../header-banner";
 import { HeaderDesktop } from "../header-desktop";
 import { HeaderMobile } from "../header-mobile";
@@ -57,7 +58,15 @@ export const Header: FC<HeaderProps> = ({ colorTheme, currentRoute }) => {
   }, [showBanner, currentRoute]);
   
   return <>
-    <header className={cn({ showBanner })}>
+    <Header3 position="sticky"
+             zIndex={10}
+             top={-40}
+             width="100%"
+             d="flex"
+             direction="column"
+             mt={showBanner ? 0 : -40}
+             boxShadow="inset 0 -1px 0 0 rgba(var(--color-text-rgb), 0.1)"
+             transition="box-shadow .1s ease 0s, margin-top 0.1s ease 0s">
       <HeaderBanner showMobileNav={showMobileNav}
                     onClose={() => setShowBanner(false)}
                     title={[
@@ -70,45 +79,14 @@ export const Header: FC<HeaderProps> = ({ colorTheme, currentRoute }) => {
                     showMobileNav={showMobileNav}
                     theme={colorTheme.value}
                     toggleColor={colorTheme.toggle} {...navData} />
-      <div className="header__background" />
-    </header>
-    <style jsx>{`
-      header {
-        position: sticky;
-        margin-bottom: 0;
-        z-index: 10;
-        top: -40px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        margin-top: -40px;
-        transition: box-shadow .1s ease 0s, margin-top 0.1s ease 0s;
-        box-shadow: inset 0 -1px 0 0 rgba(var(--color-text-rgb), 0.1);
-        @media screen and (min-width: 600px) {
-          position: sticky;
-          margin-bottom: 0;
-          top: -40px
-        }
-      }
-
-      .showBanner {
-        margin-top: 0;
-      }
-
-      .header__background {
-        position: absolute;
-        z-index: -3;
-        top: -1px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--header-background);
-        backdrop-filter: saturate(180%) blur(20px);
-
-        @media screen and (min-width: 600px) {
-          box-shadow: none
-        }
-      }
-    `}</style>
+      <Div position="absolute"
+           zIndex={-3}
+           top="-1px"
+           left={0}
+           w="100%"
+           h="100%"
+           backgroundColor="--header-background"
+           backdropFilter="saturate(180%) blur(20px)" />
+    </Header3>
   </>;
 };
