@@ -24,7 +24,6 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
           const to = document.getElementById(href.replace(/^.*?#/, ""))?.offsetTop || 0;
           scrollTo(scrollDuration, to + scrollOffset);
         }
-      
       }
     });
   }

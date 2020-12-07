@@ -25,7 +25,7 @@ export const HeaderBanner: FC<HeaderBannerProps> = ({ title, href, onClose, show
          mx="auto"
          px="--section-x-padding"
          className={cn("banner", { showMobileNav })}>
-    
+  
       {Array.isArray(title)
        ? title.map((item, i) => (
           <Link key={i} href={href}>

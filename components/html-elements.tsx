@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-fragments */
 import cn from "classnames";
 import { LayoutProps, useJsxSystem } from "integrated-ui";
-import React, { ButtonHTMLAttributes, createElement, FC, forwardRef, Fragment } from "react";
+import React, { createElement, FC, HTMLAttributes } from "react";
 import _JSXStyle from "styled-jsx/style";
 
 export type PseudoSelectorProps = {
@@ -45,61 +45,74 @@ type FactoryProps = {
   className?: string
   type?: string
   children?
-  ref?
+  forwardRef?
 }
 
-export const Factory = (as: string): FC<any & FactoryProps & CssProps> => forwardRef(({
+export const FactoryWithRef = (as: string): FC<any & FactoryProps & CssProps> => React.forwardRef(({
   type = as,
   className,
   children,
   ...props
 }, ref) => {
   const { id, styles, filteredProps } = useJsxSystem(props);
-  return <Fragment>
+  return <>
     {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref }, children)}
     {/* eslint-disable-next-line react/jsx-pascal-case */}
     <_JSXStyle id={id}>{styles}</_JSXStyle>
-  </Fragment>;
+  </>;
 });
 
-export const A: FC<FactoryProps & CssProps> = Factory("a");
-export const Article: FC<FactoryProps & CssProps> = Factory("article");
-export const Aside: FC<FactoryProps & CssProps> = Factory("aside");
-export const B: FC<FactoryProps & CssProps> = Factory("b");
-export const Br: FC<FactoryProps & CssProps> = Factory("br");
-export const Blockquote: FC<FactoryProps & CssProps> = Factory("blockquote");
-export const Button: FC<ButtonHTMLAttributes<any> & FactoryProps & CssProps> = Factory("button");
-export const Code: FC<FactoryProps & CssProps> = Factory("code");
-export const Div: FC<FactoryProps & CssProps> = Factory("div");
-export const Figure: FC<FactoryProps & CssProps> = Factory("figure");
-export const Footer: FC<FactoryProps & CssProps> = Factory("footer");
-export const Form: FC<FactoryProps & CssProps> = Factory("form");
-export const H1: FC<FactoryProps & CssProps> = Factory("h1");
-export const H2: FC<FactoryProps & CssProps> = Factory("h2");
-export const H3: FC<FactoryProps & CssProps> = Factory("h3");
-export const H4: FC<FactoryProps & CssProps> = Factory("h4");
-export const H5: FC<FactoryProps & CssProps> = Factory("h5");
-export const H6: FC<FactoryProps & CssProps> = Factory("h6");
-export const Header: FC<FactoryProps & CssProps> = Factory("header");
-export const Hr: FC<FactoryProps & CssProps> = Factory("hr");
-export const I: FC<FactoryProps & CssProps> = Factory("i");
-export const Input: FC<FactoryProps & CssProps> = Factory("input");
-export const Label: FC<FactoryProps & CssProps> = Factory("label");
-export const Li: FC<FactoryProps & CssProps> = Factory("li");
-export const Main: FC<FactoryProps & CssProps> = Factory("main");
-export const Mark: FC<FactoryProps & CssProps> = Factory("mark");
-export const Nav: FC<FactoryProps & CssProps> = Factory("nav");
-export const Ol: FC<FactoryProps & CssProps> = Factory("ol");
-export const P: FC<FactoryProps & CssProps> = Factory("p");
-export const Picture: FC<FactoryProps & CssProps> = Factory("picture");
-export const Pre: FC<FactoryProps & CssProps> = Factory("pre");
-export const Q: FC<FactoryProps & CssProps> = Factory("q");
-export const S: FC<FactoryProps & CssProps> = Factory("s");
-export const Section: FC<FactoryProps & CssProps> = Factory("section");
-export const Select: FC<FactoryProps & CssProps> = Factory("select");
-export const Small: FC<FactoryProps & CssProps> = Factory("small");
-export const Span: FC<FactoryProps & CssProps> = Factory("span");
-export const Strong: FC<FactoryProps & CssProps> = Factory("strong");
-export const U: FC<FactoryProps & CssProps> = Factory("u");
-export const Ul: FC<FactoryProps & CssProps> = Factory("ul");
+export const Factory = (as: string): FC<any & FactoryProps & CssProps> => ({ type = as, className, children, forwardRef, ...props }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { id, styles, filteredProps } = useJsxSystem(props);
+  return <>
+    {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref: forwardRef }, children)}
+    {/* eslint-disable-next-line react/jsx-pascal-case */}
+    <_JSXStyle id={id}>{styles}</_JSXStyle>
+  </>;
+};
+
+type HtmlElementProps = HTMLAttributes<any> & FactoryProps & CssProps
+
+export const ANoRef: FC<HtmlElementProps> = Factory("a");
+export const A: FC<HtmlElementProps> = FactoryWithRef("a");
+export const Article: FC<HtmlElementProps> = Factory("article");
+export const Aside: FC<HtmlElementProps> = Factory("aside");
+export const B: FC<HtmlElementProps> = Factory("b");
+export const Br: FC<HtmlElementProps> = Factory("br");
+export const Blockquote: FC<HtmlElementProps> = Factory("blockquote");
+export const Button: FC<HtmlElementProps> = Factory("button");
+export const Code: FC<HtmlElementProps> = Factory("code");
+export const Div: FC<HtmlElementProps> = Factory("div");
+export const Figure: FC<HtmlElementProps> = Factory("figure");
+export const Footer: FC<HtmlElementProps> = Factory("footer");
+export const Form: FC<HtmlElementProps> = Factory("form");
+export const H1: FC<HtmlElementProps> = Factory("h1");
+export const H2: FC<HtmlElementProps> = Factory("h2");
+export const H3: FC<HtmlElementProps> = Factory("h3");
+export const H4: FC<HtmlElementProps> = Factory("h4");
+export const H5: FC<HtmlElementProps> = Factory("h5");
+export const H6: FC<HtmlElementProps> = Factory("h6");
+export const Header: FC<HtmlElementProps> = Factory("header");
+export const Hr: FC<HtmlElementProps> = Factory("hr");
+export const I: FC<HtmlElementProps> = Factory("i");
+export const Input: FC<HtmlElementProps> = Factory("input");
+export const Label: FC<HtmlElementProps> = Factory("label");
+export const Li: FC<HtmlElementProps> = Factory("li");
+export const Main: FC<HtmlElementProps> = Factory("main");
+export const Mark: FC<HtmlElementProps> = Factory("mark");
+export const Nav: FC<HtmlElementProps> = Factory("nav");
+export const Ol: FC<HtmlElementProps> = Factory("ol");
+export const P: FC<HtmlElementProps> = Factory("p");
+export const Picture: FC<HtmlElementProps> = Factory("picture");
+export const Pre: FC<HtmlElementProps> = Factory("pre");
+export const Q: FC<HtmlElementProps> = Factory("q");
+export const S: FC<HtmlElementProps> = Factory("s");
+export const Section: FC<HtmlElementProps> = Factory("section");
+export const Select: FC<HtmlElementProps> = Factory("select");
+export const Small: FC<HtmlElementProps> = Factory("small");
+export const Span: FC<HtmlElementProps> = Factory("span");
+export const Strong: FC<HtmlElementProps> = Factory("strong");
+export const U: FC<HtmlElementProps> = Factory("u");
+export const Ul: FC<HtmlElementProps> = Factory("ul");
 
