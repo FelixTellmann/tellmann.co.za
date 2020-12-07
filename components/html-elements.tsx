@@ -1,45 +1,8 @@
 /* eslint-disable react/jsx-fragments */
 import cn from "classnames";
-import { LayoutProps, useJsxSystem } from "integrated-ui";
+import { CssProps, useJsxSystem } from "integrated-ui";
 import React, { createElement, FC, HTMLAttributes } from "react";
 import _JSXStyle from "styled-jsx/style";
-
-export type PseudoSelectorProps = {
-  _hover?: LayoutProps
-  _active?: LayoutProps
-  _activeLink?: LayoutProps
-  _after?: LayoutProps
-  _autofill?: LayoutProps
-  _before?: LayoutProps
-  _checked?: LayoutProps
-  _empty?: LayoutProps
-  _even?: LayoutProps
-  _expanded?: LayoutProps
-  _first?: LayoutProps
-  _focus?: LayoutProps
-  _focusVisible?: LayoutProps
-  _focusWithin?: LayoutProps
-  _fullScreen?: LayoutProps
-  _grabbed?: LayoutProps
-  _hidden?: LayoutProps
-  _highlighted?: LayoutProps
-  _indeterminate?: LayoutProps
-  _invalid?: LayoutProps
-  _last?: LayoutProps
-  _loading?: LayoutProps
-  _notFirst?: LayoutProps
-  _notLast?: LayoutProps
-  _odd?: LayoutProps
-  _placeholder?: LayoutProps
-  _pressed?: LayoutProps
-  _readOnly?: LayoutProps
-  _selected?: LayoutProps
-  _selection?: LayoutProps
-  _valid?: LayoutProps
-  _visited?: LayoutProps
-}
-
-export type CssProps = LayoutProps & PseudoSelectorProps
 
 type FactoryProps = {
   className?: string

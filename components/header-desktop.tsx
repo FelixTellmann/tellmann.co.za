@@ -3,6 +3,7 @@ import Logo from "public/logo.svg";
 import React, { FC } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { Button } from "./button";
+import { A, Div, Nav } from "./html-elements";
 
 export type NavItem = {
   href: string,
@@ -35,114 +36,41 @@ type HeaderDesktopProps = {
 
 export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav, navButton }) => {
   return <>
-    <div className="desktop">
+    <Div w="100%"
+         maxW="--page-width"
+         h="--header-nav-height"
+         d="flex"
+         align="center"
+         justify="space-between"
+         mx="auto"
+         px={[`--page-margin`, `calc(var(--header-nav-height) + var(--page-margin) / 2)`, `--page-margin`]}
+         _forwardClass={{ className: `toggle`, ml: 3 }}
+         className="desktop">
       <Link href="/#hero"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
-      <nav>
+      <Nav d="flex"
+           flex={1}
+           justify="center"
+           align="center">
         {nav.filter(({ mobile }) => !mobile).map(({ href, title }) => (
-          <Link key={href} href={href}><a role="link" tabIndex={0}>{title}</a></Link>)
+          <Link key={href} href={href}>
+            <A d="flex"
+               m={1}
+               p={2}
+               outline="none"
+               color="--nav-color"
+               fontSize="--nav-font-size"
+               textDecoration="none"
+               transition="0.1s ease-in color"
+               _hfa={{ color: `--nav-hover-color` }}
+               role="link" tabIndex={0}>{title}</A>
+          </Link>)
         )}
-      </nav>
+      </Nav>
       <Button aria-label={navButton.title} href={navButton.href} branded small>{navButton.title}</Button>
-      <Button aria-label="Toggle Color Theme" onClick={toggleColor} icon>
+      <Button aria-label="Toggle Color Theme" className="toggle" onClick={toggleColor} icon>
         {theme === "light-theme" ? <FiMoon /> : null}
         {theme === "dark-theme" ? <FiSun /> : null}
       </Button>
-    </div>
-    <style jsx>{`
-      .desktop {
-        width: 100%;
-        max-width: var(--page-width);
-        height: var(--header-nav-height);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-right: auto;
-        margin-left: auto;
-        padding-right: var(--page-margin);
-        padding-left: var(--page-margin);
-
-        :global(button:last-of-type) {
-          margin-left: 16px;
-        }
-
-        @media screen and (min-width: 960px) {
-          padding-right: calc(var(--header-nav-height) + var(--page-margin) / 2);
-          padding-left: calc(var(--header-nav-height) + var(--page-margin) / 2);
-        }
-
-        @media screen and (min-width: 1196px) {
-          padding-right: var(--page-margin);
-          padding-left: var(--page-margin);
-        }
-      }
-
-      nav {
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-
-        a {
-          display: flex;
-          margin: 4px;
-          padding: 8px;
-          outline: none;
-          color: var(--nav-color);
-          font-size: var(--nav-font-size);
-          text-decoration: none;
-          transition: 0.1s ease-in color;
-
-          &:hover, &:focus, &:active {
-            color: var(--nav-hover-color);
-          }
-        }
-      }
-
-      aside {
-        position: fixed;
-        top: 0;
-        height: 100vh;
-        width: var(--header-nav-height);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        padding-top: var(--header-nav-height);
-        padding-bottom: var(--page-margin);
-        z-index: -1;
-
-        @media screen and (min-width: 960px) {
-          display: flex;
-        }
-
-        &.left {
-          left: 0;
-          writing-mode: vertical-lr;
-        }
-
-        &.right {
-          right: 0;
-          writing-mode: vertical-rl;
-        }
-
-        .email, .slogan {
-          margin: var(--space-1x);
-          color: var(--nav-color);
-          font-size: 1.4rem;
-          font-weight: 400;
-          letter-spacing: 0.175rem;
-          text-decoration: none;
-          text-transform: uppercase;
-
-          &:hover {
-            color: var(--primary);
-          }
-        }
-
-        .email {
-          transform: rotate(180deg);
-        }
-
-      }
-    `}</style>
+    </Div>
   </>;
 };
