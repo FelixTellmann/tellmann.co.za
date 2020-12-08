@@ -15,8 +15,8 @@ import "styles/theme.scss";
 import useColorTheme from "use-color-theme";
 
 export const ThemeContext = createContext({ theme: "" });
-const title = "Tellmann - E-commerce Web development Studio";
-const description = "Creator of things that live on the internet - Web developer, writer and entrepreneur.";
+const title = "Tellmann - E-commerce Web development";
+const description = `Web-design, Shopify & Vend experts located in Cape Town. We specialize in creating ecommerce websites that drive interaction and sales.`;
 
 export const Root: FC<AppProps> = ({ pageProps, Component }) => {
   const colorTheme = useColorTheme("light-theme", { classNames: ["light-theme", "dark-theme"] });
