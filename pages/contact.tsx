@@ -1,3 +1,4 @@
+import { Head } from "next/document";
 import React, { FC } from "react";
 import { IoIosClock, IoIosMail, IoIosPhonePortrait, IoIosPin } from "react-icons/io";
 
@@ -6,12 +7,16 @@ import { ContactForm, Link, Map, Section } from "../components";
 const Contact: FC = () => {
   
   return <>
+    <Head>
+      {/* eslint-disable-next-line react/no-danger */}
+      <script dangerouslySetInnerHTML={{ __html: `gtag('event', 'conversion', {'send_to': 'AW-862366423/s2FBCOqb-ewBENfVmpsD'});` }} />
+    </Head>
     <Section id="contact-section" fullscreen background="var(--color-grey-bg-2)" style={{ zIndex: 0 }}>
       <div className="heading">
         <h1>Get in Touch</h1>
         <h2 className="h4">Tell us how we can help and we’ll get in touch shortly.</h2>
       </div>
-  
+      
       <div className="contact">
         <ContactForm />
         <aside>
@@ -20,7 +25,7 @@ const Contact: FC = () => {
             <p>Feel free to contact us with any questions, projects or partnerships.</p>
             <p>Want to have a online meeting instead? Request an appointment with us.</p>
             <p>Prefer a cup of coffee and a chat face to face? Schedule an appointment with us in our Cape Town offices.</p>
-      
+          
           </div>
           <div className="contact__details">
             <h3>Cape Town Office</h3>

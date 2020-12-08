@@ -4,6 +4,7 @@ import Logo from "public/logo.svg";
 import React, { FC, useState } from "react";
 import { IoIosCall, IoIosMail, IoIosMoon, IoIosSunny } from "react-icons/io";
 import Fade from "react-reveal/Fade";
+import { A, Div, Nav } from "./html-elements";
 import { NavBackground } from "./nav-background";
 import { NavIcon } from "./nav-icon";
 import { NavToggle } from "./nav-toggle";
@@ -40,7 +41,17 @@ type HeaderMobileProps = {
   showMobileNav: boolean
 };
 
-export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMobileNav, toggleMobileNav, nav, address, email, tel, socialNav }) => {
+export const HeaderMobile: FC<HeaderMobileProps> = ({
+  theme,
+  toggleColor,
+  showMobileNav,
+  toggleMobileNav,
+  nav,
+  address,
+  email,
+  tel,
+  socialNav
+}) => {
   const [changingColor, setChangingColor] = useState(false);
   const changeColor = (e) => {
     setChangingColor(true);
@@ -51,18 +62,37 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
   };
   
   return <>
-    <div className={cn("mobile", { active: showMobileNav })}>
+    <Div w="100%"
+         maxW="--page-width"
+         h="--header-nav-height"
+         d="flex"
+         align="center"
+         justify="space-between"
+         mx="auto"
+         px="--page-margin"
+         transition="2.5s"
+         className={cn("mobile", { active: showMobileNav })}>
       <Link href="/#hero">
-        <a aria-label="Logo"
+        <A color="--color-text"
+           transition="color ease-in-out 0.1s"
+           transitionDelay="1s"
+           aria-label="Logo"
            id="logo-link"
            role="link"
            tabIndex={0}
-           className={cn("logo", { hideTransition: changingColor })}
+           _activeClass={{ color: `--color-background`, transitionDelay: `0.05s` }}
+           className={cn("logo", { hideTransition: changingColor, active: showMobileNav })}
            onClick={showMobileNav && toggleMobileNav}>
           <Logo width={105} height={56} />
-        </a>
+        </A>
       </Link>
-      <nav className="topbar">
+      <Nav d="flex"
+           flex={1}
+           align="center"
+           justify="flex-end"
+           _forwardSelector={{ selector: `a, button:not(:last-of-type)`, transition: `opacity ease-in-out 0.1s 0.4s` }}
+           _lastChild={{ ml: 4 }}
+           className="topbar">
         <NavIcon href={`mailto:${email}`}><IoIosMail /></NavIcon>
         <NavIcon href={`tel:${tel.replace(" ", "")}`}><IoIosCall /></NavIcon>
         <NavIcon aria-label="Toggle Color Theme" onClick={changeColor}>
@@ -70,7 +100,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
           {theme === "dark-theme" ? <IoIosMoon /> : null}
         </NavIcon>
         <NavToggle active={showMobileNav} toggleNav={toggleMobileNav} />
-      </nav>
+      </Nav>
       
       <div className="dropdown">
         <nav className="dropdown-nav">
@@ -108,46 +138,8 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
         </Fade>
       </div>
       <NavBackground active={showMobileNav} />
-    </div>
-    
-    
+    </Div>
     <style jsx>{`
-      .mobile {
-        width: 100%;
-        max-width: var(--page-width);
-        height: var(--header-nav-height);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-right: auto;
-        margin-left: auto;
-        padding-right: var(--page-margin);
-        padding-left: var(--page-margin);
-        transition: 2.5s;
-
-      }
-
-      .logo {
-        color: var(--color-text);
-        transition: 0.1s ease-in-out;
-        transition-delay: 1s;
-      }
-
-      .topbar {
-        display: flex;
-        flex: 1;
-        align-items: center;
-        justify-content: flex-end;
-
-        :global(a), :global(button:not(:last-of-type)) {
-          transition: opacity 0.1s ease-in-out;
-          transition-delay: 0.4s;
-        }
-
-        :global(button:last-of-type) {
-          margin-left: 8px;
-        }
-      }
 
       .dropdown {
         position: fixed;
@@ -228,13 +220,8 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({ theme, toggleColor, showMo
 
       }
 
-      .mobile.active {
-        .logo {
-          color: var(--color-background);
-          transition-delay: 0.05s;
-        }
-
-        .topbar {
+      :global(.mobile.active) {
+        :global(.topbar) {
           :global(a), :global(button:not(:last-of-type)) {
             opacity: 0;
             pointer-events: none;

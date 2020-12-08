@@ -1,15 +1,17 @@
 import cn from "classnames";
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 
 type NavToggleProps = {
   toggleNav: (e) => void
+  style?: CSSProperties
   active: boolean
 };
 
-export const NavToggle: FC<NavToggleProps > = ({ toggleNav, active, ...props }) => {
+export const NavToggle: FC<NavToggleProps> = ({ toggleNav, active, style = {}, ...props }) => {
   
   return <>
-    <button aria-label="Toggle Navigation" type="button" className={cn({ active })} onClick={toggleNav} {...props}><span /></button>
+    <button aria-label="Toggle Navigation" type="button" className={cn({ active })} onClick={toggleNav} style={style} {...props} ><span />
+    </button>
     <style jsx>{`
       button {
         --nav-icon-size: 2.4rem;

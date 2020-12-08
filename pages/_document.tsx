@@ -29,9 +29,22 @@ class MyDocument extends Document {
               <meta name="google-site-verification" content="ABRxARbtP_hcsbUThM6pn40bQryJhAnC9JqWMg7TidY" />
               <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0DB6MY3J4" />
               <script async src="/google-analytics.js" />
-    
+  
+  
+              {/* Global site tag (gtag.js) - Google Ads: 862366423 */}
+              <script async src="https://www.googletagmanager.com/gtag/js?id=AW-862366423" />
+              {/* eslint-disable-next-line react/no-danger */}
+              <script dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                          
+                            gtag('config', 'AW-862366423');
+                          `
+              }} />
             </>
           ) : null}
+
         </Head>
         <body>
           <script src="/colorTheme.js" />

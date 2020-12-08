@@ -44,7 +44,7 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
          justify="space-between"
          mx="auto"
          px={[`--page-margin`, `calc(var(--header-nav-height) + var(--page-margin) / 2)`, `--page-margin`]}
-         _forwardClass={{ className: `toggle`, ml: 3 }}
+         _forwardSelector={{ selector: `.toggle`, ml: 3 }}
          className="desktop">
       <Link href="/#hero"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
       <Nav d="flex"
