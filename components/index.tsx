@@ -2,7 +2,7 @@ export * from "./article-heading";
 export * from "./article-sidebar";
 export * from "./blog-preview";
 export * from "./button";
-export * from "./card";
+export * from "./feature-card";
 export * from "./contact-form";
 export * from "./form-checkbox";
 export * from "./form-checkbox-group";

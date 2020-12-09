@@ -21,7 +21,7 @@ export const FactoryWithRef = (as: string): FC<any & FactoryProps & CssProps> =>
   return <>
     {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref }, children)}
     {/* eslint-disable-next-line react/jsx-pascal-case */}
-    <_JSXStyle id={id}>{styles}</_JSXStyle>
+    {id ? <_JSXStyle id={id}>{styles}</_JSXStyle> : null}
   </>;
 });
 
@@ -31,7 +31,7 @@ export const Factory = (as: string): FC<any & FactoryProps & CssProps> => ({ typ
   return <>
     {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref: forwardRef }, children)}
     {/* eslint-disable-next-line react/jsx-pascal-case */}
-    <_JSXStyle id={id}>{styles}</_JSXStyle>
+    {id ? <_JSXStyle id={id}>{styles}</_JSXStyle> : null}
   </>;
 };
 

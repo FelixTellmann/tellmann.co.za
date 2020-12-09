@@ -1,16 +1,18 @@
 import cn from "classnames";
 import { Link } from "components";
 import { CSSProperties, FC } from "react";
+import { FiChevronRight } from "react-icons/fi";
 
-type CardProps = {
+type FeatureCardProps = {
   title: string
+  content: string
   icon?: { src: JSX.Element, background?: string, color?: string, size?: string }
   link?: { href: string, title?: string }
   clickable?: boolean
   style?: CSSProperties
 };
 
-export const Card: FC<CardProps> = ({ title, children, icon, link, clickable, style = {} }) => {
+export const FeatureCard: FC<FeatureCardProps> = ({ title, content, icon, link, clickable, style = {} }) => {
   
   (link || clickable) && (style[`--card-cursor`] = "pointer");
   link && (clickable = true);
@@ -25,13 +27,21 @@ export const Card: FC<CardProps> = ({ title, children, icon, link, clickable, st
       ? <Link href={link.href}>
         <a className={cn("card", { clickable })} style={style}>
           <div className="card__wrapper">
-            {children}
+            <div className="card__header">
+              {icon ? <i className="card__icon">{icon.src}</i> : null}
+              <h3 className="h4 card__title">{title}</h3>
+            </div>
+            <p className="card__content">{content}</p>
+            {link.title ? <span className="card__link">{link.title} <FiChevronRight /></span> : null}
           </div>
         </a>
       </Link>
       : <div className={cn("card", { clickable })} style={style}>
-        <div className="card__wrapper">
-          {children}
+        <div className="card__wrapper"> <div className="card__header">
+          {icon ? <i className="card__icon">{icon.src}</i> : null}
+          <h3 className="h4 card__title">{title}</h3>
+        </div>
+          <p className="card__content">{content}</p>
         </div>
       </div>
     }
@@ -72,6 +82,58 @@ export const Card: FC<CardProps> = ({ title, children, icon, link, clickable, st
         cursor: var(--card-cursor);
         text-align: left;
         text-decoration: none;
+      }
+
+      .card__header {
+        display: flex;
+        align-items: center;
+
+      }
+
+      .card__title {
+        line-height: 32px;
+        margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        text-overflow: ellipsis;
+      }
+
+      .card__icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        border-radius: 100%;
+        background: var(--card-icon-background);
+        color: var(--card-icon-color);
+        font-size: 20px;
+
+        :global(svg) {
+          position: relative;
+          z-index: 1;
+          display: block;
+          font-size: var(--card-icon-size);
+        }
+      }
+
+      .card__content {
+        color: var(--color-text-faded);
+        font-size: 14px;
+      }
+
+      .card__link {
+        display: flex;
+        align-items: center;
+        color: var(--primary);
+        font-size: 14px;
+        text-decoration: none;
+
+        :global(svg) {
+          margin-left: 4px;
+        }
       }
     
     `}</style>

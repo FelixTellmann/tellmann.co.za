@@ -8,15 +8,19 @@ const Contact: FC = () => {
   
   return <>
     <Head>
-      {/* eslint-disable-next-line react/no-danger */}
-      <script dangerouslySetInnerHTML={{ __html: `gtag('event', 'conversion', {'send_to': 'AW-862366423/s2FBCOqb-ewBENfVmpsD'});` }} />
+      {
+        process.env.NODE_ENV === `production`
+          // eslint-disable-next-line react/no-danger
+        ? <script dangerouslySetInnerHTML={{ __html: `gtag('event', 'conversion', {'send_to': 'AW-862366423/s2FBCOqb-ewBENfVmpsD'});` }} />
+        : null
+      }
     </Head>
     <Section id="contact-section" fullscreen background="var(--color-grey-bg-2)" style={{ zIndex: 0 }}>
       <div className="heading">
         <h1>Get in Touch</h1>
         <h2 className="h4">Tell us how we can help and we’ll get in touch shortly.</h2>
       </div>
-      
+    
       <div className="contact">
         <ContactForm />
         <aside>

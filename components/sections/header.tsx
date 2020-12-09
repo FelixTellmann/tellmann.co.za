@@ -1,5 +1,5 @@
 import { Div, Header as Header3 } from "components/html-elements";
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { IoLogoFacebook, IoLogoGoogle } from "react-icons/io";
 import { ColorTheme } from "use-color-theme";
 
@@ -43,7 +43,7 @@ export const navData = {
 export const Header: FC<HeaderProps> = ({ colorTheme, currentRoute }) => {
   const [showBanner, setShowBanner] = useState(true);
   const [showMobileNav, setShowMobileNav] = useState(false);
-  const refe = useRef();
+  
   function toggleMobileNav() {
     setShowMobileNav(!showMobileNav);
   }
@@ -55,12 +55,10 @@ export const Header: FC<HeaderProps> = ({ colorTheme, currentRoute }) => {
     showBanner
     ? document.documentElement.style.setProperty("--header-banner-height", "40px")
     : document.documentElement.style.setProperty("--header-banner-height", "0px");
-    console.log(refe.current);
   }, [showBanner, currentRoute]);
   
   return <>
-    <Header3 forwardRef={refe}
-             position="sticky"
+    <Header3 position="sticky"
              zIndex={10}
              top={-40}
              width="100%"
