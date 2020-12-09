@@ -5,6 +5,23 @@ import { GetStarted, Section } from "../components";
 import { Card } from "../components/card";
 import { Div, H3, H4, Header, Hr, I, Li, Main, P, Small, Ul } from "../components/html-elements";
 
+const PricingData = [
+  {
+    package: `Shopify Starter Setup`,
+    goal: <>
+      Create a fully funtional ecommerce store that is branded to suit your unique identity. <b>Fastest and most cost-effective </b>
+      solution to suit all essential needs for a great online shopping experience. <br /><br />
+      We will cover all the complex parts of getting you up and running and guide you through the easier tasks.
+    </>,
+    features: [
+      {
+        title: `Full Page Review & Analysis`,
+        description: `If applicable`
+      }
+    ]
+  }
+];
+
 const Pricing: FC = () => {
   return (
     <>
@@ -32,9 +49,79 @@ const Pricing: FC = () => {
             <H3 fz={18} letterSpacing="-0.03em" mt={0}>$ 1100 / R 16 500</H3>
             <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>Goal:</Small>
             <P color="--color-text-faded" fz={14} mt={0}>
-              Create a fully funtional ecommerce store that is branded to suit your unique identity. <b>Fastest and most cost-effective </b>
-              solution to suit all essential needs for a great online shopping experience. <br /><br />
-              We will cover all the complex parts of getting you up and running and guide you through the easier tasks.
+              {PricingData[0].goal}
+            </P>
+            <Hr borderBottom="--border" my={4} />
+            <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>Details:</Small>
+            <Ul d="flex" direction="column">
+              <Li d="grid" gridTemplateColumns="24px 1fr" mb={3}>
+                <I color="--secondary"><FiCheckCircle /></I>
+                <Div>
+                  <H4 fz={14} lineHeight={1.3} fontWeight={500}>Feature</H4>
+                  <P m={0} fz={12} color="--color-text-faded">Feature subtitle</P>
+                </Div>
+              </Li>
+              <Li d="grid" gridTemplateColumns="24px 1fr">
+                <I color="--secondary"><FiCheckCircle /></I>
+                <Div>
+                  <H4 fz={14} lineHeight={1.3} fontWeight={500}>Feature</H4>
+                  <P m={0} fz={12} color="--color-text-faded">Feature subtitle</P>
+                </Div>
+              </Li>
+            </Ul>
+          </Card>
+          <Card title="Starter" clickable>
+            <H3 fz={4}
+                fontWeight={600}
+                lineHeight={1.6}
+                whiteSpace="nowrap"
+                letterSpacing="-0.03em"
+                d="flex"
+                align="center"
+                justify="space-between">
+              Shopify Starter Setup <FiArrowRight color="var(--primary)" />
+            </H3>
+            <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>From:</Small>
+            <H3 fz={18} letterSpacing="-0.03em" mt={0}>$ 1100 / R 16 500</H3>
+            <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>Goal:</Small>
+            <P color="--color-text-faded" fz={14} mt={0}>
+              {PricingData[0].goal}
+            </P>
+            <Hr borderBottom="--border" my={4} />
+            <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>Details:</Small>
+            <Ul d="flex" direction="column">
+              <Li d="grid" gridTemplateColumns="24px 1fr" mb={3}>
+                <I color="--secondary"><FiCheckCircle /></I>
+                <Div>
+                  <H4 fz={14} lineHeight={1.3} fontWeight={500}>Feature</H4>
+                  <P m={0} fz={12} color="--color-text-faded">Feature subtitle</P>
+                </Div>
+              </Li>
+              <Li d="grid" gridTemplateColumns="24px 1fr">
+                <I color="--secondary"><FiCheckCircle /></I>
+                <Div>
+                  <H4 fz={14} lineHeight={1.3} fontWeight={500}>Feature</H4>
+                  <P m={0} fz={12} color="--color-text-faded">Feature subtitle</P>
+                </Div>
+              </Li>
+            </Ul>
+          </Card>
+          <Card title="Starter" clickable>
+            <H3 fz={4}
+                fontWeight={600}
+                lineHeight={1.6}
+                whiteSpace="nowrap"
+                letterSpacing="-0.03em"
+                d="flex"
+                align="center"
+                justify="space-between">
+              Shopify Starter Setup <FiArrowRight color="var(--primary)" />
+            </H3>
+            <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>From:</Small>
+            <H3 fz={18} letterSpacing="-0.03em" mt={0}>$ 1100 / R 16 500</H3>
+            <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>Goal:</Small>
+            <P color="--color-text-faded" fz={14} mt={0}>
+              {PricingData[0].goal}
             </P>
             <Hr borderBottom="--border" my={4} />
             <Small mb={3} color="--color-text-faded" textTransform="uppercase" fz={12} fontWeight={700} mt={4}>Details:</Small>
