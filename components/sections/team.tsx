@@ -4,7 +4,7 @@ import { SectionTitle } from "../section-title";
 
 const teamData = [
   {
-    name: "Felix",
+    packageName: "Felix",
     title: "Lead Developer",
     content: `Felix starts his day with a fresh cup of coffee before setting up for the day. To his right is his better half
      and best friend Elizabeth. Felix is a Shopify Expert and full-stack developer with proven design, development, and
@@ -13,7 +13,7 @@ const teamData = [
     img: "/images/team-felix.jpg"
   },
   {
-    name: "Elizabeth",
+    packageName: "Elizabeth",
     title: "Project Manager ",
     content: `Elizabeth starts each morning with a cup of Rooibos Tea followed by a morning workout before checking in to work.
      To her left is her husband and partner in crime, Felix. She loves working with clients and conceptualizing ideas
@@ -21,7 +21,7 @@ const teamData = [
     img: "/images/team-elizabeth.jpg"
   },
   {
-    name: "Alpha",
+    packageName: "Alpha",
     title: "CEO - Chief Exercise Officer",
     content: `Alpha starts his day doing the downward facing dog and a few barks into the neighbourhood. Usually around lunch
     time, he takes Felix out for a run, followed by a quick shower and a long afternoon nap. He enjoys playing ball and getting

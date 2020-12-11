@@ -22,7 +22,7 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
   const colorTheme = useColorTheme("light-theme", { classNames: ["light-theme", "dark-theme"] });
   const router = useRouter();
   useEffect(() => {
-    console.log("%c" +
+    process.env.NODE_ENV === `production` && console.log("%c" +
       "HEY YOU! I see you sneaking in our code. Our Page is custom made, something we've worked hard on so please do not copy. " +
       "LEARN FROM IT AND MAKE IT YOUR OWN. Questions? Just drop us an email at code@tellmann.co.za !",
       "background: rgb(0,0,0);color: #fafafa;font-size: 24px;font-weight: bold;padding: 25px 10px;text-align: center;text-shadow: 2px 2px 0 rgba(45, 45, 45);");
