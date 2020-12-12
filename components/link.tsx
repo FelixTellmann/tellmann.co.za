@@ -29,6 +29,6 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
   }
   
   return <>
-    <NextLink href={href} {...props}>{anchorElement}</NextLink>
+    <NextLink href={href} passHref {...props}>{anchorElement}</NextLink>
   </>;
 };
