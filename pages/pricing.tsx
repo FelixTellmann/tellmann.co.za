@@ -1,9 +1,10 @@
 import Topography from "public/topography.svg";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
-import { GetStarted, Section } from "../components";
+import { Button, GetStarted, Section } from "../components";
 import { Card } from "../components/card";
 import { Div, H3, H4, Header, Hr, I, Li, Main, P, Small, Ul } from "../components/html-elements";
+import scrollTo from "../lib/scrollTo";
 
 const PricingData = [
   {
@@ -163,7 +164,7 @@ const PricingData = [
     </>,
     features: [
       {
-        title: `Comprehensive Online Store Consultation`,
+        title: `Comprehensive Consultation`,
         description: `We discuss all the options & creative direction needed for your store to stand out.`
       },
       {
@@ -239,6 +240,48 @@ const PricingData = [
 ];
 
 const Pricing: FC = () => {
+  const [filteredPricingData, setFilteredPricingData] = useState(PricingData.map(({ features, ...data }) => {
+    const feature = [...features];
+    feature.length = 3;
+    return { ...data, features: feature };
+  }));
+  const [viewPackages, setViewPackages] = useState(PricingData.map(() => false));
+  
+  const toggleView = (i) => {
+    if (viewPackages[i]) {
+      
+      scrollTo(700, document.getElementById("packages").offsetTop);
+      setFilteredPricingData(PricingData.map(({ features, ...data }, j) => {
+        const feature = [...features];
+        
+        if (!viewPackages[j]) {
+          feature.length = 3;
+        }
+        if (j === i) {
+          feature.length = 3;
+        }
+        return { ...data, features: feature };
+      }));
+      setViewPackages(packages => {
+        packages[i] = false;
+        return packages;
+      });
+      
+    } else {
+      setFilteredPricingData(PricingData.map(({ features, ...data }, j) => {
+        const feature = [...features];
+        if (j !== i && !viewPackages[j]) {
+          feature.length = 3;
+        }
+        return { ...data, features: feature };
+      }));
+      setViewPackages(packages => {
+        packages[i] = true;
+        return packages;
+      });
+    }
+  };
+  
   return (
     <>
       <Section id="pricing" fullscreen background="var(--color-grey-bg-2)" style={{ zIndex: 0 }}>
@@ -249,9 +292,9 @@ const Pricing: FC = () => {
             Choose the Shopify Package that suits your needs.
           </h2>
         </Header>
-        <Main d="grid" gridTemplateColumns={[`1fr`, `repeat(2,minmax(0,1fr))`, `repeat(3,minmax(0,1fr))`]} gridGap={5}>
-          {PricingData.map(({ packageName, price, goal, features }, i) => (
-            <Card key={i} title="Starter" clickable>
+        <Main id="packages" d="grid" gridTemplateColumns={[`1fr`, `repeat(2,minmax(0,1fr))`, `repeat(3,minmax(0,1fr))`]} gridGap={5}>
+          {filteredPricingData.map(({ packageName, price, goal, features }, i) => (
+            <Card key={i} title="Starter" clickable style={{ marginBottom: `auto` }}>
               <H3 fz={4}
                   fontWeight={600}
                   lineHeight={1.6}
@@ -282,6 +325,10 @@ const Pricing: FC = () => {
                   )
                 )}
               </Ul>
+              {viewPackages[i]
+               ? <Button onClick={() => toggleView(i)}>Show Less</Button>
+               : <Button onClick={() => toggleView(i)}>Show More</Button>
+              }
             </Card>
           ))}
         </Main>

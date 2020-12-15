@@ -163,7 +163,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
         a {
           display: flex;
           justify-content: space-between;
-          margin-top: 5vh;
+          margin-top: 4.2vh;
           font-size: 17px;
           font-weight: 500;
           line-height: 1;

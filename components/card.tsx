@@ -12,7 +12,7 @@ type CardProps = {
 
 export const Card: FC<CardProps> = ({ title, children, icon, link, clickable, style = {} }) => {
   
-  (link || clickable) && (style[`--card-cursor`] = "pointer");
+  link && (style[`--card-cursor`] = "pointer");
   link && (clickable = true);
   
   icon && icon.background && (style[`--card-icon-background`] = icon.background);

@@ -18,6 +18,7 @@ export const navData = {
     { href: "/#hero", title: "Home", alt: "Hi.", mobile: true },
     { href: "/#services", title: "Services", alt: `What we can do` },
     { href: "/#work", title: "Work", alt: `What we've done` },
+    { href: "/pricing", title: "Pricing", alt: `What we charge` },
     { href: "/blog", title: "Blog", alt: "What we write" },
     { href: "/#about", title: "About", alt: "Who we are" },
     { href: "/contact", title: "Contact", alt: `Get in touch`, mobile: true }
