@@ -30,11 +30,11 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         });
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       }
-    
+  
       if (version < response.data.version.max) {
         data = [...data, ...await getData(url, String(+response.data.version.max + 1), keys)];
       }
-    
+  
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return data;
     } catch (err) {
@@ -43,7 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     return [];
   };
   
-  /* const tags = (await getData(`https://kidsliving.vendhq.com/api/2.0/tags?after=`, "0", ["name"]));
+  const tags = (await getData(`https://kidsliving.vendhq.com/api/2.0/tags?after=`, "0", ["name"]));
   console.log(tags);
   const products = (await getData(`https://kidsliving.vendhq.com/api/2.0/products?after=`, "0", [
     "active",
@@ -54,6 +54,5 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
   console.log(consignments.length);
   const sales = (await getData(`https://kidsliving.vendhq.com/api/2.0/sales?after=`, "0"));
   console.log(sales.length);
-  */
   res.status(200).send(/* JSON.stringify(data, null, 4) */[products.length, tags.length, consignments.length, sales.length]);
 }
