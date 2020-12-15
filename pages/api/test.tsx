@@ -17,6 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       });
       
       let { data } = response.data;
+      console.log(response.data.version.max);
       if (version < response.data.version.max) {
         data = [...data, ...await getData(url, String(+response.data.version.max + 1))];
       }
