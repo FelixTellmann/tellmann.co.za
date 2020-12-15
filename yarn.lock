@@ -5556,10 +5556,10 @@ inline-style-parser@0.1.1:
   resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
 
-integrated-ui@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/integrated-ui/-/integrated-ui-2.2.0.tgz#83c68fb3fb0aebbd67aa4441304cb9d133401e43"
-  integrity sha512-zQ4KExN05JIxKWVIsp0zF10DlpCbK6vtdPVgyEf/2V/xsWrmNpFtriTEqiv25KBv8VvcbyFVxwgexdbcChlGEg==
+integrated-ui@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/integrated-ui/-/integrated-ui-2.2.2.tgz#31e90de4c44df50dc4d49a06ed2cc383d6f99b1e"
+  integrity sha512-T6wZuQrzXAdZfqGJg2Q1qNJ8mULd1HaMuxe5Py1twTbLAVFk0PmG8RTzCt2eZjJvr74WyXhGUDXGug1AOFQyJw==
   dependencies:
     "@types/node" "^14.14.10"
     "@types/react" "^17.0.0"
