@@ -16,9 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       
       const response = await axios({
         method: "get",
-        url: `https://kidsliving.vendhq.com/api/products?since=${twoYearsAgo}${page
-                                                                               ? `&page=${page}`
-                                                                               : ""}&active=1&order_by=id&page_size=50`,
+        url: `https://kidsliving.vendhq.com/api/products?since=${twoYearsAgo}${page ? `&page=${page}` : ""}&active=1&order_by=id&page_size`,
         headers: {
           "Accept": "application/json",
           "Authorization": "Bearer 5OtjwgBqfHJZh1Ed36qBb_JUDDKnjwlAJ7l8fBmg",
@@ -36,7 +34,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         for (let i = 2; i <= pages; i++) {
           promises.push(getMorePromise(i, twoYearsAgo));
         }
-        
+  
         const test = await Promise.all(promises);
         additional_products = [
           ...test.reduce((acc, value): unknown[] => {
@@ -44,11 +42,11 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
             return acc;
           }, [])
         ];
-        
+  
       }
-      
+  
       return [...products, ...additional_products];
-      
+  
     } catch ({ response }) {
       const { config } = response;
       console.log(config?.url);

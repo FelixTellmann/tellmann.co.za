@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       
       const { pagination, register_sales } = response.data;
       console.log(pagination);
-      
+  
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return register_sales;
     } catch (err) {

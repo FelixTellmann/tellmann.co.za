@@ -35,7 +35,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         for (let i = 2; i <= pages; i++) {
           promises.push(getMoreSales(i, threeMonthAgo));
         }
-        
+  
         console.log(promises);
         const test = await Promise.all(promises);
         additional_sales = [
