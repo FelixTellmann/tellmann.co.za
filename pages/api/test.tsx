@@ -43,15 +43,6 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     return [];
   };
   
-  /* const tags = (await getData(`https://kidsliving.vendhq.com/api/2.0/tags?after=`, "0", ["name"]));
-  console.log(tags);
-  const products = (await getData(`https://kidsliving.vendhq.com/api/2.0/products?after=`, "0", [
-    "active",
-    "id"
-  ])).filter(({ active }) => active);
-  console.log(products); */
-  /* const consignments = (await getData(`https://kidsliving.vendhq.com/api/2.0/consignments?page_size=50000&after=`, "0")).filter(({ status }) => status === "OPEN");
-  console.log(consignments.length); */
   const sales = (await getData(`https://kidsliving.vendhq.com/api/2.0/sales?page_size=30000&after=`, "0", [
     "id",
     "status",
