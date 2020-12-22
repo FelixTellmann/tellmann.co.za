@@ -18,7 +18,6 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       });
       
       let { data } = response.data;
-      console.log(response.data.version.max);
       
       if (keys) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return

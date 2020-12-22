@@ -1,22 +1,36 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
+type ProductData = {
+  id: string
+  inventory_cpt: number
+  inventory_jhb: number
+  inventory_total: number
+  name: string
+  variant_parent_id?: string
+  has_variants: boolean
+  source_id?: string
+  variant_source_id?: string
+  tags?: string
+}
+
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { page, since } = req.query;
-  console.log(page, since);
   
   function getMorePromise(i, sinceDate) {
     return axios(`http://${req.headers.host}/api/getProducts?since=${sinceDate}&page=${i}`);
   }
   
-  const getData = async (hasPageRequest?, hasSinceDate?): Promise<unknown[]> => {
+  const getData = async (hasPageRequest?, hasSinceDate?): Promise<any[]> => {
     try {
       const date = new Date();
       const twoYearsAgo = hasSinceDate || `${date.getFullYear() - 2}-${date.getMonth()}-${date.getDate()}`;
       
       const response = await axios({
         method: "get",
-        url: `https://kidsliving.vendhq.com/api/products?since=${twoYearsAgo}${page ? `&page=${page}` : ""}&active=1&order_by=id&page_size`,
+        url: `https://kidsliving.vendhq.com/api/products?since=${twoYearsAgo}${page
+                                                                               ? `&page=${page}`
+                                                                               : ""}&active=1&order_by=id&page_size=200`,
         headers: {
           "Accept": "application/json",
           "Authorization": "Bearer 5OtjwgBqfHJZh1Ed36qBb_JUDDKnjwlAJ7l8fBmg",
@@ -36,39 +50,59 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         }
   
         const test = await Promise.all(promises);
-        additional_products = [
-          ...test.reduce((acc, value): unknown[] => {
-            acc = [...acc, ...value.data];
-            return acc;
-          }, [])
-        ];
+        additional_products = test.reduce((acc: unknown[], value) => {
+          acc = [...acc, ...value.data];
+          return acc;
+        }, []);
   
       }
-  
+      
       return [...products, ...additional_products];
-  
+      
     } catch ({ response }) {
       const { config } = response;
-      console.log(config?.url);
     }
     return [];
   };
   
-  const result: any = await getData(page, since);
+  let products: any = await getData(page, since);
+  
   if (!page) {
-    result.length = 1;
-    /* sales = sales.reduce((acc, {register_sale_products}) => {
-      register_sale_products.forEach(({name, product_id, quantity}) => {
-        // @ts-ignore
-        if (product_id in acc) {
-          acc[product_id].quantity = +acc[product_id].quantity + +quantity
-        } else {
-          acc[product_id] = {name, quantity}
-        }
-      })
+    products = products.reduce((acc: ProductData[], {
+      id,
+      inventory,
+      name,
+      variant_parent_id,
+      has_variants,
+      source_id,
+      variant_source_id,
+      tags
+    }) => {
+      
+      let inventory_cpt = 0;
+      let inventory_jhb = 0;
+      let inventory_total = 0;
+      
+      if (inventory) {
+        inventory.forEach(({ outlet_name, count }) => {
+          inventory_total += +count;
+          if (outlet_name === `Cape Town Kids Living`) {
+            inventory_cpt = +count;
+          } else {
+            inventory_jhb = +count;
+          }
+        });
+      }
+      
+      acc = [
+        ...acc,
+        { id, inventory_total, inventory_cpt, inventory_jhb, name, variant_parent_id, has_variants, source_id, variant_source_id, tags }
+      ];
       return acc;
-    }, { }) */
+    }, []);
+    
+    /* products.length = 60 */
   }
-  console.log(Array.isArray(result) ? result.length : Object.keys(result).length);
-  res.status(200).json(result);
+  
+  res.status(200).json(products);
 }

@@ -94,7 +94,9 @@
         "jsx-a11y/click-events-have-key-events": 0,
         "import/no-cycle": 0,
         "jsx-a11y/label-has-associated-control": 0,
-        "no-plusplus": 0
+        "no-plusplus": 0,
+        "no-console": 0,
+        "@typescript-eslint/naming-convention": 0
       }
     }
   ]
