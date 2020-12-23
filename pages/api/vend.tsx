@@ -1,7 +1,4 @@
 import crypto from "crypto";
-import hex from "crypto-js/enc-hex";
-import hmacSha256 from "crypto-js/hmac-sha256";
-import sha256 from "crypto-js/sha256";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -25,7 +22,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // console.log(req.headers);
   // console.log(`https://tellmann.co.za/api/vend${body.toString()}`);
   // console.log(Base64.stringify(hmacSha256(sha256(`https://tellmann.co.za/api/vend${body}`), `8fac48e9737d41c5b9aa699fb00ae2e8`)));
-  console.log(hex.stringify(hmacSha256(sha256(`https://tellmann.co.za/api/vend${body}`), `8fac48e9737d41c5b9aa699fb00ae2e8`)));
   
   console.log(crypto.createHmac("sha256", `8fac48e9737d41c5b9aa699fb00ae2e8`).update(`https://tellmann.co.za/api/vend${body}`).digest("hex"));
   // console.log(crypto.createHmac('SHA256', `8fac48e9737d41c5b9aa699fb00ae2e8`).digest('hex'))
