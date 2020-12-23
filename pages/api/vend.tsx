@@ -19,9 +19,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     "order_item_id": -1,
     "quantity": -1
   }`;
-  // console.log(req.headers);
-  // console.log(`https://tellmann.co.za/api/vend${body.toString()}`);
-  // console.log(Base64.stringify(hmacSha256(sha256(`https://tellmann.co.za/api/vend${body}`), `8fac48e9737d41c5b9aa699fb00ae2e8`)));
   
   console.log(crypto.createHmac("sha256", `8fac48e9737d41c5b9aa699fb00ae2e8`).update(`https://tellmann.co.za/api/vend${body}`).digest("hex"));
   // console.log(crypto.createHmac('SHA256', `8fac48e9737d41c5b9aa699fb00ae2e8`).digest('hex'))
