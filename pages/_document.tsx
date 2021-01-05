@@ -1,7 +1,9 @@
+import { flushToReact } from "next-styled-system";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   render(): JSX.Element {
+    const styles = [...flushToReact()];
     return (
       <Html lang="en">
         <Head>
@@ -12,6 +14,7 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          {styles}
           <meta name="referrer" content="strict-origin-when-cross-origin" />
           <meta charSet="UTF-8" />
           <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
@@ -36,8 +39,8 @@ class MyDocument extends Document {
               <meta name="google-site-verification" content="ABRxARbtP_hcsbUThM6pn40bQryJhAnC9JqWMg7TidY" />
               <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0DB6MY3J4" />
               <script async src="/google-analytics.js" />
-  
-  
+              
+              
               {/* Global site tag (gtag.js) - Google Ads: 862366423 */}
               <script async src="https://www.googletagmanager.com/gtag/js?id=AW-862366423" />
               {/* eslint-disable-next-line react/no-danger */}
@@ -51,7 +54,7 @@ class MyDocument extends Document {
               }} />
             </>
           ) : null}
-
+        
         </Head>
         <body>
           <script src="/colorTheme.js" />
