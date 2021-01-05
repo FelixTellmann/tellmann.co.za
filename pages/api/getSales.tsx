@@ -18,9 +18,16 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
   
   const getData = async (hasPageRequest?, hasSinceDate?): Promise<unknown[]> => {
     try {
-      const date = new Date();
+      /* const date = new Date();
       const threeMonthAgo = hasSinceDate || `${date.getFullYear()}-${date.getMonth() - 3}-${date.getDate()}`;
-      
+      console.log(threeMonthAgo) */
+  
+      const date = new Date();
+      date.setMonth(date.getMonth() - 3);
+      // const twoYearsAgo = hasSinceDate || `${date.getFullYear() - 2}-${date.getMonth()}-${date.getDate()}`;
+  
+      const threeMonthAgo = hasSinceDate || date.toISOString().split("T")[0];
+  
       const response = await axios({
         method: "get",
         url: `https://kidsliving.vendhq.com/api/register_sales?since=${threeMonthAgo}${page ? `&page=${page}` : ""}`,

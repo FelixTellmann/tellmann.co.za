@@ -23,8 +23,14 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
   const getData = async (hasPageRequest?, hasSinceDate?): Promise<unknown[]> => {
     try {
       const date = new Date();
-      const fiveMonthAgo = hasSinceDate || `${date.getFullYear()}-${date.getMonth() - 5}-${date.getDate()}`;
-      
+      // const fiveMonthAgo = hasSinceDate || `${date.getFullYear()}-${date.getMonth() - 5}-${date.getDate()}`;
+      //
+      // const date = new Date();
+      date.setMonth(date.getMonth() - 5);
+      // const twoYearsAgo = hasSinceDate || `${date.getFullYear() - 2}-${date.getMonth()}-${date.getDate()}`;
+  
+      const fiveMonthAgo = hasSinceDate || date.toISOString().split("T")[0];
+  
       const response = await axios({
         method: "get",
         url: `https://kidsliving.vendhq.com/api/consignment?since=${fiveMonthAgo}${page ? `&page=${page}` : ""}&page_size=200`,

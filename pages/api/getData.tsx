@@ -30,14 +30,14 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     const consignment_products = await getData("getConsignments");
     const parent_id_used = [];
     
-    products.data.forEach(({ id, variant_parent_id, tags, source_id }) => {
+    products.data.forEach(({ id, variant_parent_id, tags, source_id, price }) => {
       if (id === `0643ed1c-3397-6905-49aa-cbfa10f6b0fe` || id === `a9bbc48c-5c22-8c47-fd3d-fb1bb664341d` || variant_parent_id === `a9bbc48c-5c22-8c47-fd3d-fb1bb664341d` || id === `1de484e9-9f60-d610-e8bc-f4ed36abd8f6` || variant_parent_id === `1de484e9-9f60-d610-e8bc-f4ed36abd8f6`) {
         return;
       }
       const tagArray = tags.split(",").map((itm: string) => itm.trim());
       const oldTagArray = tags.split(",").map((itm: string) => itm.trim());
       let update = false;
-      
+  
       let hasSales = false;
       let incoming: boolean | number = false;
       let incomingId;
@@ -93,8 +93,8 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
           consignment_products.data[incomingId || id]?.name.forEach(name => {tagArray.push(`FX_incoming_name__${name}`);});
           update = true;
         }
-        
-        if (!tagArray.includes("FX_add_to_shopify") && !source_id) {
+  
+        if (!tagArray.includes("FX_add_to_shopify") && !source_id && +price !== 0) {
           tagArray.push("FX_add_to_shopify");
           update = true;
         }
@@ -109,7 +109,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         if (index3 > -1) {
           tagArray.splice(index3, 1);
         }
-        
+  
         for (let i = 0; i < tagArray.length; i++) {
           const index2 = tagArray.findIndex((itm: string) => itm.includes("FX_incoming_name__"));
           if (index2 > -1) {
@@ -120,7 +120,14 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         }
         update = true;
       }
-      
+      if (tagArray.includes("FX_add_to_shopify") && +price === 0) {
+        const index = tagArray.indexOf("FX_add_to_shopify");
+        if (index > -1) {
+          tagArray.splice(index, 1);
+        }
+        update = true;
+      }
+  
       if (tagArray.includes("FX_add_to_shopify") && source_id) {
         const index = tagArray.indexOf("FX_add_to_shopify");
         if (index > -1) {
@@ -128,7 +135,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         }
         update = true;
       }
-      
+  
       if (tagArray.join(",").replace(/^,/, "") === oldTagArray.join(",").replace(/^,/, "")) {
         update = false;
       }

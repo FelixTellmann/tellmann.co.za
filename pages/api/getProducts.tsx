@@ -12,6 +12,7 @@ type ProductData = {
   source_id?: string
   variant_source_id?: string
   tags?: string
+  price?: number
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -24,8 +25,11 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
   const getData = async (hasPageRequest?, hasSinceDate?): Promise<any[]> => {
     try {
       const date = new Date();
-      const twoYearsAgo = hasSinceDate || `${date.getFullYear() - 2}-${date.getMonth()}-${date.getDate()}`;
-      
+      date.setFullYear(date.getFullYear() - 2);
+      // const twoYearsAgo = hasSinceDate || `${date.getFullYear() - 2}-${date.getMonth()}-${date.getDate()}`;
+  
+      const twoYearsAgo = hasSinceDate || date.toISOString().split("T")[0];
+  
       const response = await axios({
         method: "get",
         url: `https://kidsliving.vendhq.com/api/products?since=${twoYearsAgo}${page
@@ -76,7 +80,8 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       has_variants,
       source_id,
       variant_source_id,
-      tags
+      tags,
+      price
     }) => {
       
       let inventory_cpt = 0;
@@ -96,7 +101,19 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       
       acc = [
         ...acc,
-        { id, inventory_total, inventory_cpt, inventory_jhb, name, variant_parent_id, has_variants, source_id, variant_source_id, tags }
+        {
+          id,
+          inventory_total,
+          inventory_cpt,
+          inventory_jhb,
+          name,
+          variant_parent_id,
+          has_variants,
+          source_id,
+          variant_source_id,
+          tags,
+          price
+        }
       ];
       return acc;
     }, []);
