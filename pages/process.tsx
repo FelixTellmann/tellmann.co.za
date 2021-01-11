@@ -1,7 +1,9 @@
-import { LayoutProps, PseudoSelectorProps } from "next-styled-system";
+import { Element, LayoutProps, PseudoSelectorProps } from "next-styled-system";
 import { FC, ForwardRefExoticComponent, HTMLAttributes, RefAttributes } from "react";
 
-const Box: ForwardRefExoticComponent<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string } & RefAttributes<unknown>>;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const Box: ForwardRefExoticComponent<LayoutProps & PseudoSelectorProps & HTMLAttributes<any> & { as?: string } & RefAttributes<unknown>> = Element("div");
 
 type ProcessProps = {};
 
