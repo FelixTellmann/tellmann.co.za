@@ -1,9 +1,6 @@
-/* eslint-disable react/jsx-fragments */
-import cn from "classnames";
-import { CssProps, useJsxSystem } from "integrated-ui";
-import React, { createElement, FC, HTMLAttributes } from "react";
-import _JSXStyle from "styled-jsx/style";
+import { Element } from "next-styled-system";
 
+/*
 type FactoryProps = {
   className?: string
   type?: string
@@ -20,7 +17,7 @@ export const FactoryWithRef = (as: string): FC<any & FactoryProps & CssProps> =>
   const { id, styles, filteredProps } = useJsxSystem(props);
   return <>
     {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref }, children)}
-    {/* eslint-disable-next-line react/jsx-pascal-case */}
+    {/!* eslint-disable-next-line react/jsx-pascal-case *!/}
     {id ? <_JSXStyle id={id}>{styles}</_JSXStyle> : null}
   </>;
 });
@@ -30,52 +27,52 @@ export const Factory = (as: string): FC<any & FactoryProps & CssProps> => ({ typ
   const { id, styles, filteredProps } = useJsxSystem(props);
   return <>
     {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref: forwardRef }, children)}
-    {/* eslint-disable-next-line react/jsx-pascal-case */}
+    {/!* eslint-disable-next-line react/jsx-pascal-case *!/}
     {id ? <_JSXStyle id={id}>{styles}</_JSXStyle> : null}
   </>;
 };
 
-type HtmlElementProps = HTMLAttributes<any> & FactoryProps & CssProps
+type HtmlElementProps = HTMLAttributes<any> & FactoryProps & CssProps */
 
-export const ANoRef: FC<HtmlElementProps> = Factory("a");
-export const A: FC<HtmlElementProps> = FactoryWithRef("a");
-export const Article: FC<HtmlElementProps> = Factory("article");
-export const Aside: FC<HtmlElementProps> = Factory("aside");
-export const B: FC<HtmlElementProps> = Factory("b");
-export const Br: FC<HtmlElementProps> = Factory("br");
-export const Blockquote: FC<HtmlElementProps> = Factory("blockquote");
-export const Button: FC<HtmlElementProps> = Factory("button");
-export const Code: FC<HtmlElementProps> = Factory("code");
-export const Div: FC<HtmlElementProps> = Factory("div");
-export const Figure: FC<HtmlElementProps> = Factory("figure");
-export const Footer: FC<HtmlElementProps> = Factory("footer");
-export const Form: FC<HtmlElementProps> = Factory("form");
-export const H1: FC<HtmlElementProps> = Factory("h1");
-export const H2: FC<HtmlElementProps> = Factory("h2");
-export const H3: FC<HtmlElementProps> = Factory("h3");
-export const H4: FC<HtmlElementProps> = Factory("h4");
-export const H5: FC<HtmlElementProps> = Factory("h5");
-export const H6: FC<HtmlElementProps> = Factory("h6");
-export const Header: FC<HtmlElementProps> = Factory("header");
-export const Hr: FC<HtmlElementProps> = Factory("hr");
-export const I: FC<HtmlElementProps> = Factory("i");
-export const Input: FC<HtmlElementProps> = Factory("input");
-export const Label: FC<HtmlElementProps> = Factory("label");
-export const Li: FC<HtmlElementProps> = Factory("li");
-export const Main: FC<HtmlElementProps> = Factory("main");
-export const Mark: FC<HtmlElementProps> = Factory("mark");
-export const Nav: FC<HtmlElementProps> = Factory("nav");
-export const Ol: FC<HtmlElementProps> = Factory("ol");
-export const P: FC<HtmlElementProps> = Factory("p");
-export const Picture: FC<HtmlElementProps> = Factory("picture");
-export const Pre: FC<HtmlElementProps> = Factory("pre");
-export const Q: FC<HtmlElementProps> = Factory("q");
-export const S: FC<HtmlElementProps> = Factory("s");
-export const Section: FC<HtmlElementProps> = Factory("section");
-export const Select: FC<HtmlElementProps> = Factory("select");
-export const Small: FC<HtmlElementProps> = Factory("small");
-export const Span: FC<HtmlElementProps> = Factory("span");
-export const Strong: FC<HtmlElementProps> = Factory("strong");
-export const U: FC<HtmlElementProps> = Factory("u");
-export const Ul: FC<HtmlElementProps> = Factory("ul");
+export const ANoRef = Element("a");
+export const A = Element("a");
+export const Article = Element("article");
+export const Aside = Element("aside");
+export const B = Element("b");
+export const Br = Element("br");
+export const Blockquote = Element("blockquote");
+export const Button = Element("button");
+export const Code = Element("code");
+export const Div = Element("div");
+export const Figure = Element("figure");
+export const Footer = Element("footer");
+export const Form = Element("form");
+export const H1 = Element("h1");
+export const H2 = Element("h2");
+export const H3 = Element("h3");
+export const H4 = Element("h4");
+export const H5 = Element("h5");
+export const H6 = Element("h6");
+export const Header = Element("header");
+export const Hr = Element("hr");
+export const I = Element("i");
+export const Input = Element("input");
+export const Label = Element("label");
+export const Li = Element("li");
+export const Main = Element("main");
+export const Mark = Element("mark");
+export const Nav = Element("nav");
+export const Ol = Element("ol");
+export const P = Element("p");
+export const Picture = Element("picture");
+export const Pre = Element("pre");
+export const Q = Element("q");
+export const S = Element("s");
+export const Section = Element("section");
+export const Select = Element("select");
+export const Small = Element("small");
+export const Span = Element("span");
+export const Strong = Element("strong");
+export const U = Element("u");
+export const Ul = Element("ul");
 

@@ -90,7 +90,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
            flex={1}
            align="center"
            justify="flex-end"
-           _forwardSelector={{ selector: `a, & button:not(:last-of-type)`, transition: `opacity ease-in-out 0.1s 0.4s` }}
+        /* _forwardSelector={{ selector: `a, & button:not(:last-of-type)`, transition: `opacity ease-in-out 0.1s 0.4s` }} */
            _lastChild={{ ml: 4 }}
            className="topbar">
         <NavIcon href={`mailto:${email}`}><IoIosMail /></NavIcon>
@@ -139,6 +139,11 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
       </div>
       <NavBackground active={showMobileNav} />
     </Div>
+    <style jsx global>{`
+      .topbar a, .topbar button:not(:last-of-type) {
+        transition: opacity ease-in-out 0.1s 0.4s;
+      }
+    `}</style>
     <style jsx>{`
 
       .dropdown {

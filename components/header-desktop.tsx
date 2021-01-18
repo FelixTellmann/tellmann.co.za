@@ -43,8 +43,8 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
          align="center"
          justify="space-between"
          mx="auto"
-         px={[`--page-margin`, `calc(var(--header-nav-height) + var(--page-margin) / 2)`, `--page-margin`]}
-         _forwardSelector={{ selector: `.toggle`, ml: 3 }}
+         px={[`--page-margin`, `--page-margin`, `calc(var(--header-nav-height) + var(--page-margin) / 2)`, `--page-margin`]}
+      /* _forwardSelector={{ selector: `.toggle`, ml: 3 }} */
          className="desktop">
       <Link href="/#hero"><a role="link" tabIndex={0} aria-label="Logo" className="logo"><Logo width={105} height={56} /></a></Link>
       <Nav d="flex"
@@ -72,5 +72,10 @@ export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav,
         {theme === "dark-theme" ? <FiSun /> : null}
       </Button>
     </Div>
+    <style jsx global>{`
+      .toggle {
+        margin-left: 16px;
+      }
+    `}</style>
   </>;
 };

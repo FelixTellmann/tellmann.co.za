@@ -31,7 +31,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     const parent_id_used = [];
     
     products.data.forEach(({ id, variant_parent_id, tags, source_id, price }) => {
-      if (id === `0643ed1c-3397-6905-49aa-cbfa10f6b0fe` || id === `a9bbc48c-5c22-8c47-fd3d-fb1bb664341d` || variant_parent_id === `a9bbc48c-5c22-8c47-fd3d-fb1bb664341d` || id === `1de484e9-9f60-d610-e8bc-f4ed36abd8f6` || variant_parent_id === `1de484e9-9f60-d610-e8bc-f4ed36abd8f6`) {
+      if (id === `985692e2-9081-e9ef-a2d6-f23fd39e7324` || id === `0643ed1c-3397-6905-49aa-cbfa10f6b0fe` || id === `a9bbc48c-5c22-8c47-fd3d-fb1bb664341d` || variant_parent_id === `a9bbc48c-5c22-8c47-fd3d-fb1bb664341d` || id === `1de484e9-9f60-d610-e8bc-f4ed36abd8f6` || variant_parent_id === `1de484e9-9f60-d610-e8bc-f4ed36abd8f6`) {
         return;
       }
       const tagArray = tags.split(",").map((itm: string) => itm.trim());

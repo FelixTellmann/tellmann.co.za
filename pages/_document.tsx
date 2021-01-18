@@ -1,9 +1,12 @@
 import { flushToReact } from "next-styled-system";
+
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import flushToReact3 from "styled-jsx/server";
 
 class MyDocument extends Document {
   render(): JSX.Element {
     const styles = [...flushToReact()];
+    const styles2 = [...flushToReact3()];
     return (
       <Html lang="en">
         <Head>
@@ -15,6 +18,7 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           {styles}
+          {styles2}
           <meta name="referrer" content="strict-origin-when-cross-origin" />
           <meta charSet="UTF-8" />
           <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
