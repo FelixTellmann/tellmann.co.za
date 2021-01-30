@@ -61,4 +61,9 @@ module.exports.env = {
   MAIL_USERNAME: process.env.MAIL_USERNAME,
   MAIL_PASSWORD: process.env.MAIL_PASSWORD,
   MAIL_CONTACT_FORM_RECEIVER: process.env.MAIL_CONTACT_FORM_RECEIVER,
+  MYSQL_HOST: process.env.MYSQL_HOST,
+  MYSQL_DATABASE: process.env.MYSQL_DATABASE,
+  MYSQL_USERNAME: process.env.MYSQL_USERNAME,
+  MYSQL_PASSWORD: process.env.MYSQL_PASSWORD,
+  DOMAIN: process.env.NODE_ENV === `development` ? `http://localhost:3000` : `https://tellmann.co.za`,
 };
