@@ -15,6 +15,7 @@ export const getYears = async (req: NextApiRequest, res: NextApiResponse<GetVwFo
     
     return res.json(results);
   } catch (e) {
+  
     res.status(500).json({ message: e.message });
   }
 };
