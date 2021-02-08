@@ -1,3 +1,5 @@
+export default () => <div>hello</div>
+/*
 import axios from "axios";
 import cn from "classnames";
 import { Button } from "components/button";
@@ -34,7 +36,7 @@ async function getModels(model_make_id) {
                   : `https://tellmann.co.za`}/api/ford-vw/getModels?make=${model_make_id}`, {
     method: "GET",
     headers: {
-      Accept: "application/json, text/plain, */*",
+      Accept: "application/json, text/plain, *!/!*",
       "Content-Type": "application/json"
     }
   });
@@ -44,7 +46,7 @@ async function getMakes() {
   return axios(`${process.env.DOMAIN}/api/ford-vw/getMakes`, {
     method: "GET",
     headers: {
-      Accept: "application/json, text/plain, */*",
+      Accept: "application/json, text/plain, *!/!*",
       "Content-Type": "application/json"
     }
   });
@@ -57,7 +59,7 @@ async function getYears(model_make_id, model_name) {
     {
       method: "GET",
       headers: {
-        Accept: "application/json, text/plain, */*",
+        Accept: "application/json, text/plain, *!/!*",
         "Content-Type": "application/json"
       }
     });
@@ -75,7 +77,7 @@ async function getCleanedTrims(model_make_id, model_name, year_start = `1990`, y
     {
       method: "GET",
       headers: {
-        Accept: "application/json, text/plain, */*",
+        Accept: "application/json, text/plain, *!/!*",
         "Content-Type": "application/json"
       }
     });
@@ -334,18 +336,19 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
 export default GetTags;
 
 export const getStaticProps: GetStaticProps = async () => {
-  /*= =============== Get Makes form DB ================ */
+  /!*= =============== Get Makes form DB ================ *!/
   const makeData = await getMakes();
   const makes: { model_make_id: string }[] = makeData.data;
   
-  /*= =============== Get Models from DB based on first make found ================ */
+  /!*= =============== Get Models from DB based on first make found ================ *!/
   const modelData = await getModels(makes[0].model_make_id);
   const models: { model_name: string }[] = modelData.data;
   
-  /*= =============== Get models for all years available from DB based on first model found - no limitations ================ */
+  /!*= =============== Get models for all years available from DB based on first model found - no limitations ================ *!/
   const trims: { model_trim: string, model_engine_fuel: string }[] = await getCleanedTrims(makes[0].model_make_id,
     models[0].model_name);
   return {
     props: { makes, models, trims } // will be passed to the page component as props
   };
 };
+*/
