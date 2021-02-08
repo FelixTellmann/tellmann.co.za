@@ -9,7 +9,7 @@ import { GoSettings } from "react-icons/go";
 import { ImMagicWand } from "react-icons/im";
 
 const WhatWeDoData = {
-  title: "What we Do",
+  title: "What we do",
   subtitle: "We specialise in E-commerce web development with a strong focus on Shopify and Vend POS. We believe in coming up with original ideas and turning them into digital work that is both innovative and interactive."
 };
 
