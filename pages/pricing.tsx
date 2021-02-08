@@ -9,7 +9,7 @@ import scrollTo from "../lib/scrollTo";
 const PricingData = [
   {
     packageName: `Shopify Starter Setup`,
-    price: `$ 1100 / R 16 500`,
+    price: `$ 1400 / R 19 800`,
     goal: <>
       Create a fully funtional ecommerce store that is branded to suit your unique identity. <b>Fastest and most cost-effective </b>
       solution to suit all essential needs for a great online shopping experience. <br /><br />
@@ -77,7 +77,7 @@ const PricingData = [
   {
     packageName: <><>Shopify Pro Store</>
     </>,
-    price: `$ 2700 / R 39 500`,
+    price: `$ 3300 / R 48 500`,
     goal: <>
       Create a Unique and fully functional ecommerce store, branded with your unique identity, and more advanced features.
       Creating a <b> user experience that stands out from the rest.</b>
@@ -155,7 +155,7 @@ const PricingData = [
   {
     packageName: <><>Shopify Custom Pro Store</>
     </>,
-    price: `$ 4200 / R 62 000`,
+    price: `$ 5000 / R 74 500`,
     goal: <>
       Our bespoke solution to create your unique online sales platform. Everything that the Pro Store offers plus
       budget allocations for <b>unique customizations in design, functionality</b>, data management & 3rd party integrations.
