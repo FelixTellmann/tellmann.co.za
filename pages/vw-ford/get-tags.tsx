@@ -2,12 +2,10 @@ import axios from "axios";
 import cn from "classnames";
 import { Button } from "components/button";
 import { FormSelect } from "components/form-select";
-import scrollTo from "lib/scrollTo";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import Loading from "public/icons/loading.svg";
-import React, { FC, useEffect, useRef, useState } from "react";
-import validator from "validator";
+import React, { FC, useRef, useState } from "react";
 import { FormCheckboxGroup } from "../../components";
 import { Div } from "../../components/html-elements";
 
@@ -65,11 +63,12 @@ async function getYears(model_make_id, model_name) {
     });
 }
 
+type CleanTrims = { model_trim: string, model_engine_fuel: string }
+
 async function getCleanedTrims(model_make_id, model_name, year_start = `1990`, year_end = `2025`) {
   if (year_start === "all years") year_start = `1990`;
   if (year_end === "all years" || year_end === `current`) year_end = `2025`;
   
-  console.log(year_start, year_end);
   const results = await axios(`${process.env.NODE_ENV === `development`
                                  ? `http://localhost:3000`
                                  : `https://tellmann.co.za`}/api/ford-vw/getTrims?make=${model_make_id}&model=${model_name}&year_start=${year_start}&year_end=${year_end}`,
@@ -81,7 +80,8 @@ async function getCleanedTrims(model_make_id, model_name, year_start = `1990`, y
       }
     });
   
-  return results.data.reduce((acc, item) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return results.data.reduce((acc: [string[], CleanTrims[]], item: CleanTrims) => {
     if (!acc[0].includes(item.model_trim) && item.model_trim !== "") {
       acc[0].push(item.model_trim);
       acc[1].push(item);
@@ -93,15 +93,13 @@ async function getCleanedTrims(model_make_id, model_name, year_start = `1990`, y
 
 export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
   
-  const message = useRef(null);
   const name = useRef(null);
   const carMakeRef = useRef(null);
   const carModelRef = useRef(null);
   const carFromYearRef = useRef(null);
   const carToYearRef = useRef(null);
   const website = useRef(null);
-  const [formData, setFormData] = useState({ email: "" });
-  const [validatorActive, setValidatorActive] = useState(false);
+  
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   
@@ -158,45 +156,9 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
     }
   };
   
-  const validateForm = (e) => {
-    e.preventDefault();
-    setValidatorActive(true);
-    return !!(validator.isEmail(carFromYearRef.current.value) && !validator.isEmpty(name.current.value) &&
-      (validator.isURL(website.current.value) || validator.isEmpty(website.current.value)));
-  };
-  
-  useEffect(() => {
-    document.getElementById("contact").querySelectorAll("input, textarea, select").forEach((item) => {
-      const e = { currentTarget: item };
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      updateFormData(e);
-    });
-  }, []);
   
   const submitForm = async (e) => {
     e.preventDefault();
-    let res;
-    if (validateForm(e)) {
-      setSubmitting(true);
-      try {
-        res = await fetch("/api/contact", {
-          method: "POST",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-        });
-      } catch (err) {
-        console.log("Fetch: ", err);
-      }
-    }
-    setSubmitting(false);
-    if (res && res.status === 200) {
-      setSubmitted(true);
-      scrollTo(400, document.getElementById("contact-section").offsetTop);
-    }
   };
   
   return <>
@@ -269,83 +231,6 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
             
             </div>
             
-            {/* <div className="form-group form-group--border">
-              <FormCheckboxGroup label="Interest" id="interest"
-                                 options={
-                                   [
-                                     `Basic Shopify Site`,
-                                     `Pro Shopify Site`,
-                                     `Pro+ Shopify Site`,
-                                     `Vend POS Integration`,
-                                     "Migrating Site",
-                                     "App Integrations",
-                                     `Maintenance Plan`,
-                                     `E-Mail Marketing`,
-                                     `Custom Design`,
-                                     `Custom Functionality`,
-                                     `Page Review & Analysis`,
-                                     `Sales Channel Setup`,
-                                     `Support`,
-                                     `General Question`
-                                   ]
-                                 } onChange={updateFormData} />
-            </div>
-            
-            <div className="form-group form-group--grid">
-              <FormInput id="website"
-                         label="Current Website"
-                         type="website"
-                         onBlur={updateFormData}
-                         error={validatorActive && !validator.isURL(website.current.value) &&
-                         !validator.isEmpty(website.current.value)}
-                         ref={website} />
-              <FormSelect id="current-platform"
-                          label="Current e-commerce platform"
-                          options={[
-                            `Please Select`,
-                            `I don't have a site yet.`,
-                            `Shopify`,
-                            `BigCommerce`,
-                            `Magento`,
-                            `PrestaShop`,
-                            `WooCommerce`,
-                            `Volusion`,
-                            `Other`
-                          ]}
-                          onBlur={updateFormData} />
-              <FormSelect id="budget"
-                          label="Budget"
-                          options={[
-                            `Please Select`,
-                            `less than R15,000`,
-                            `R15,000 - R25,000`,
-                            `R25,000 - R50,000`,
-                            `R50,000 - R75,000`,
-                            `R75,000 +`
-                          ]}
-                          onBlur={updateFormData} />
-              <FormSelect id="timeline"
-                          label="Timeline"
-                          options={[
-                            `Please Select`,
-                            `Yesterday!`,
-                            `0 - 2 Weeks`,
-                            `2 - 4 Weeks`,
-                            `4 - 8 Weeks`,
-                            `+8 Weeks`
-                          ]}
-                          onBlur={updateFormData} />
-            </div> */}
-            
-            {/* <div className="form-group">
-              <FormTextarea id="message"
-                            label="Send a Message"
-                            spellCheck="false"
-                            rows={5}
-                            required
-                            onBlur={updateFormData}
-                            error={validatorActive && validator.isEmpty(message.current.value)} ref={message} />
-            </div> */}
           </main>
           <footer className="card-form__footer">{submitted
                                                  ? <p style={{ flex: 1 }}>Thank you for your Message.</p>
