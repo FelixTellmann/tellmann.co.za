@@ -1,40 +1,5 @@
 import { Element } from "next-styled-system";
 
-/*
-type FactoryProps = {
-  className?: string
-  type?: string
-  children?
-  forwardRef?
-}
-
-export const FactoryWithRef = (as: string): FC<any & FactoryProps & CssProps> => React.forwardRef(({
-  type = as,
-  className,
-  children,
-  ...props
-}, ref) => {
-  const { id, styles, filteredProps } = useJsxSystem(props);
-  return <>
-    {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref }, children)}
-    {/!* eslint-disable-next-line react/jsx-pascal-case *!/}
-    {id ? <_JSXStyle id={id}>{styles}</_JSXStyle> : null}
-  </>;
-});
-
-export const Factory = (as: string): FC<any & FactoryProps & CssProps> => ({ type = as, className, children, forwardRef, ...props }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { id, styles, filteredProps } = useJsxSystem(props);
-  return <>
-    {createElement(type, { className: cn(id ? `jsx-${id}` : "", className), ...filteredProps, ref: forwardRef }, children)}
-    {/!* eslint-disable-next-line react/jsx-pascal-case *!/}
-    {id ? <_JSXStyle id={id}>{styles}</_JSXStyle> : null}
-  </>;
-};
-
-type HtmlElementProps = HTMLAttributes<any> & FactoryProps & CssProps */
-
-export const ANoRef = Element("a");
 export const A = Element("a");
 export const Article = Element("article");
 export const Aside = Element("aside");
