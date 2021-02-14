@@ -96,7 +96,21 @@
         "jsx-a11y/label-has-associated-control": 0,
         "no-plusplus": 0,
         "no-console": 0,
-        "@typescript-eslint/naming-convention": 0
+        "@typescript-eslint/naming-convention": 0,
+        "react/self-closing-comp": [
+          "error",
+          {
+            "component": true,
+            "html": false
+          }
+        ],
+        "react/jsx-curly-brace-presence": [
+          "error",
+          {
+            "props": "never",
+            "children": "never"
+          }
+        ]
       }
     }
   ]

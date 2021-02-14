@@ -1,12 +1,12 @@
 import { flushToReact } from "next-styled-system";
 
 import Document, { Head, Html, Main, NextScript } from "next/document";
-import flushToReact3 from "styled-jsx/server";
+import flushStyledJsx from "styled-jsx/server";
 
 class MyDocument extends Document {
   render(): JSX.Element {
     const styles = [...flushToReact()];
-    const styles2 = [...flushToReact3()];
+    const styles2 = [...flushStyledJsx()];
     return (
       <Html lang="en">
         <Head>

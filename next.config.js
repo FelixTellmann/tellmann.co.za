@@ -7,6 +7,7 @@ const mdxOptions = require('./lib/mdxOptions');
 
 /* [process.env.NODE_ENV === 'development' ? MdxEnhanced(mdxOptions) : []], */
 
+
 module.exports = withPlugins(
   [
     [SCSS],
@@ -52,6 +53,9 @@ module.exports = withPlugins(
 
       config.resolve.extensions = ['.ts', '.js', '.jsx', '.tsx', '.svg', '.scss'];
       return config;
+    },
+    images: {
+      domains: ['assets.vercel.com'],
     },
   },
 );
