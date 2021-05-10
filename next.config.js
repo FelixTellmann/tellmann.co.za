@@ -8,57 +8,60 @@ const mdxOptions = require('./lib/mdxOptions');
 /* [process.env.NODE_ENV === 'development' ? MdxEnhanced(mdxOptions) : []], */
 
 
-module.exports = withPlugins(
-  [
-    [SCSS],
-    [process.env.NODE_ENV === 'development' ? MdxEnhanced(mdxOptions) : []],
-  ],
-  {
-    webpack(config, { isServer }) {
-      config.module.rules.push(
-        {
-          test: /\.(png|eot|otf|ttf|woff|woff2)$/,
-          use: {
-            loader: 'url-loader',
-          },
-        },
-        {
-          loader: 'sass-loader',
-          test: /.scss$/,
-          options: {
-            sassOptions: {
-              outputStyle: 'expanded',
-              sourceMap: true,
+module.exports = {
+  future: { webpack5: true, strictPostcssConfiguration: true },
+  ...withPlugins(
+    [
+      [SCSS],
+      [process.env.NODE_ENV === 'development' ? MdxEnhanced(mdxOptions) : []],
+    ],
+    {
+      webpack(config, { isServer }) {
+        config.module.rules.push(
+          {
+            test: /\.(png|eot|otf|ttf|woff|woff2)$/,
+            use: {
+              loader: 'url-loader',
             },
           },
-        },
-        fs.readdirSync(path.join(process.cwd(), 'styles')).filter((file) => file.match(/^_.*\.scss$/)).length > 0 ? {
-          enforce: 'pre',
-          test: /.scss$/,
-          loader: 'sass-resources-loader',
-          options: {
-            resources:
-              fs
-                .readdirSync(path.join(process.cwd(), 'styles'))
-                .filter((file) => file.match(/^_.*\.scss$/))
-                .map((file) => `./styles/${file}`),
-
+          {
+            loader: 'sass-loader',
+            test: /.scss$/,
+            options: {
+              sassOptions: {
+                outputStyle: 'expanded',
+                sourceMap: true,
+              },
+            },
           },
-        } : {},
-      );
+          fs.readdirSync(path.join(process.cwd(), 'styles')).filter((file) => file.match(/^_.*\.scss$/)).length > 0 ? {
+            enforce: 'pre',
+            test: /.scss$/,
+            loader: 'sass-resources-loader',
+            options: {
+              resources:
+                fs
+                  .readdirSync(path.join(process.cwd(), 'styles'))
+                  .filter((file) => file.match(/^_.*\.scss$/))
+                  .map((file) => `./styles/${file}`),
 
-      if (isServer) {
-        require('./lib/createSitemap');
-      }
+            },
+          } : {},
+        );
 
-      config.resolve.extensions = ['.ts', '.js', '.jsx', '.tsx', '.svg', '.scss'];
-      return config;
+        if (isServer) {
+          require('./lib/createSitemap');
+        }
+
+        config.resolve.extensions = ['.ts', '.js', '.jsx', '.tsx', '.svg', '.scss'];
+        return config;
+      },
+      images: {
+        domains: ['assets.vercel.com'],
+      },
     },
-    images: {
-      domains: ['assets.vercel.com'],
-    },
-  },
-);
+  ),
+};
 
 module.exports.env = {
   BUTTONDOWN_API_KEY: process.env.BUTTONDOWN_API_KEY,

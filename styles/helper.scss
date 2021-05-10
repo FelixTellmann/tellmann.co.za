@@ -1,23 +1,24 @@
 .mobile {
-  @include responsive-min(600px) {
+  @media screen and (min-width: 600px) {
     display: none !important;
   }
 }
 
+
 .desktop {
-  @include responsive-max(600px) {
+  @media screen and (max-width: 600px) {
     display: none !important;
   }
 }
 
 .bp-0 {
-  @include responsive-min(600px) {
+  @media screen and (min-width: 600px) {
     display: none !important;
   }
 }
 
 .bp-1 {
-  @include responsive-max(600px) {
+  @media screen and (max-width: 600px) {
     display: none !important;
   }
 }

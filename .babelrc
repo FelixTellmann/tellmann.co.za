@@ -1,34 +1,34 @@
 {
-    "presets": [
-        [
-            "next/babel",
-            {
-                "preset-env": { },
-                "styled-jsx": {
-                    "plugins": [
-                        [
-                            "styled-jsx-plugin-sass",
-                            {
-                                "sassOptions": {
-                                    "outputStyle": "expanded"
-                                }
-                            }
-                        ]
-                    ]
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": { },
+        "styled-jsx": {
+          "plugins": [
+            [
+              "styled-jsx-plugin-sass",
+              {
+                "sassOptions": {
+                  "outputStyle": "expanded"
                 }
-            }
-        ]
-    ],
-    "plugins": [
-        "inline-react-svg",
-        [
-            "babel-plugin-module-resolver",
-            {
-                "alias": {
-                    "public": "./public"
-                }
-            }
-        ],
-        "react-optimized-image/plugin"
+              }
+            ]
+          ]
+        }
+      }
     ]
+  ],
+  "plugins": [
+    "inline-react-svg",
+    [
+      "babel-plugin-module-resolver",
+      {
+        "alias": {
+          "public": "./public"
+        }
+      }
+    ],
+    "react-optimized-image/plugin"
+  ]
 }
