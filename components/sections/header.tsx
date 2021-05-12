@@ -34,7 +34,7 @@ export const navData = {
   email: "info@tellmann.co.za",
   tel: "076 393 4356",
   socialNav: [
-    { href: "https://www.facebook.com/Tellmann.web", icon: <IoLogoFacebook title="Facebook" />, target: "_blank" },
+    { href: "https://www.facebook.com/tellmann.co.za", icon: <IoLogoFacebook title="Facebook" />, target: "_blank" },
     { href: "https://www.instagram.com/tellmann.web/", icon: <IoLogoInstagram title="Github" />, target: "_blank" },
     { href: "https://github.com/Tellmann", icon: <IoLogoGithub title="Github" />, target: "_blank" },
     { href: "https://g.page/tellmann-cpt?share", icon: <IoLogoGoogle title="Google" />, target: "_blank" }
