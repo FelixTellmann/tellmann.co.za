@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { createContext, FC, useEffect } from "react";
 import "reset-css/sass/_reset.scss";
-import { prism, typography, variables } from "styles";
+import { typography, variables } from "styles";
 import "styles/default.scss";
 import "styles/helper.scss";
 import "styles/mdx.scss";
@@ -110,9 +110,6 @@ export const Root: FC<AppProps> = ({ pageProps, Component }) => {
       </style>
       <style jsx global>
         {typography}
-      </style>
-      <style jsx global>
-        {prism}
       </style>
       <style jsx global>{`
         .example {
