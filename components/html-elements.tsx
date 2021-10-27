@@ -40,4 +40,3 @@ export const Span = Element("span");
 export const Strong = Element("strong");
 export const U = Element("u");
 export const Ul = Element("ul");
-

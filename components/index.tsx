@@ -33,4 +33,3 @@ export * from "./sections/get-started";
 export * from "./sections/statistics";
 export * from "./sections/team";
 export * from "./sidebar";
-

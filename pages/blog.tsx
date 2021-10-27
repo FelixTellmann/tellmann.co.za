@@ -5,13 +5,13 @@ import { FiSearch } from "react-icons/fi";
 import { getAllPostsSlug, getSinglePostData } from "../lib/getBlogPosts";
 
 type PostData = {
-  slug: string;
   frontMatter: {
-    published?: boolean;
-    title?: string;
     excerpt?: string;
+    published?: boolean;
     slug?: string;
+    title?: string;
   };
+  slug: string;
   matchCount?: number;
 }[];
 
@@ -21,60 +21,80 @@ export type BlogProps = {
 
 export const Blog: FC<BlogProps> = ({ postData }) => {
   const [filteredPostData, setFilteredPostData] = useState(postData);
-  
+
   const search = (event) => {
     if (event.currentTarget.value.replace(/\s/gi, "").length <= 2) {
       setFilteredPostData(postData);
       return;
     }
     const sanitize = (str: string) =>
-      str.toLowerCase().replace(/[^\w\s]/gi, "").replace(/\s+/gi, " ").trim();
-    
-    const values = sanitize(event.currentTarget.value).split(" ").filter((i) => i.length > 2);
+      str
+        .toLowerCase()
+        .replace(/[^\w\s]/gi, "")
+        .replace(/\s+/gi, " ")
+        .trim();
+
+    const values = sanitize(event.currentTarget.value)
+      .split(" ")
+      .filter((i) => i.length > 2);
     const matcher = new RegExp(`(${values.join("|")})`, "g");
     const wordCount = values.length;
-    
+
     let totalMatchCount = 0;
     setFilteredPostData(
-      postData.reduce((acc: PostData, item) => {
-        acc.push({
-          ...item,
-          matchCount: matcher.exec(sanitize(item.frontMatter.title)) ? matcher.exec(sanitize(item.frontMatter.title))?.length : 0
-        });
-        if (matcher.exec(sanitize(item.frontMatter.title))) {
-          totalMatchCount =
-            matcher.exec(sanitize(item.frontMatter.title))?.length > totalMatchCount
-            ? matcher.exec(sanitize(item.frontMatter.title))?.length
-            : totalMatchCount;
-        }
-        return acc;
-      }, []).filter(({ frontMatter: { title }, matchCount }) => {
-        if ((matchCount / totalMatchCount < 0.3 && totalMatchCount > 3) || (totalMatchCount / wordCount < 0.75 && wordCount > 6)) return false;
-        return matcher.exec(sanitize(title));
-      }).sort((a, b) => {
-        const x = matcher.exec(sanitize(a.frontMatter.title))?.length || 0;
-        const y = matcher.exec(sanitize(b.frontMatter.title))?.length || 0;
-        return y - x;
-      })
+      postData
+        .reduce((acc: PostData, item) => {
+          acc.push({
+            ...item,
+            matchCount: matcher.exec(sanitize(item.frontMatter.title))
+              ? matcher.exec(sanitize(item.frontMatter.title))?.length
+              : 0,
+          });
+          if (matcher.exec(sanitize(item.frontMatter.title))) {
+            totalMatchCount = matcher.exec(sanitize(item.frontMatter.title))?.length >
+            totalMatchCount
+              ? matcher.exec(sanitize(item.frontMatter.title))?.length
+              : totalMatchCount;
+          }
+          return acc;
+        }, [])
+        .filter(({ frontMatter: { title }, matchCount }) => {
+          if (
+            (matchCount / totalMatchCount < 0.3 && totalMatchCount > 3) ||
+            (totalMatchCount / wordCount < 0.75 && wordCount > 6)
+          )
+            return false;
+          return matcher.exec(sanitize(title));
+        })
+        .sort((a, b) => {
+          const x = matcher.exec(sanitize(a.frontMatter.title))?.length || 0;
+          const y = matcher.exec(sanitize(b.frontMatter.title))?.length || 0;
+          return y - x;
+        })
     );
   };
-  
+
   return (
     <>
       <article className="blog">
         <header>
-          <h1>
-            Blog
-          </h1>
+          <h1>Blog</h1>
           <p>
-            Get your latest info about Shopify, ecommerce tips & tricks, and insights about Vend POS.
+            Get your latest info about Shopify, ecommerce tips & tricks, and insights about Vend
+            POS.
           </p>
-          <Input placeholder="Search Articles" icon={<FiSearch />} onChange={search} />
+          <Input icon={<FiSearch />} placeholder="Search Articles" onChange={search} />
         </header>
         <main>
           <h2>Recent Posts</h2>
           {filteredPostData.map(({ slug, frontMatter: { title, excerpt, published } }) => (
-            <BlogPreview key={slug} slug={slug} title={title} excerpt={excerpt} published={published} />
+            <BlogPreview
+              key={slug}
+              excerpt={excerpt}
+              published={published}
+              slug={slug}
+              title={title}
+            />
           ))}
         </main>
         <footer>
@@ -122,12 +142,14 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
 export default Blog;
 
 export const getStaticProps = (): { props: { postData } } => {
-  const postData = getAllPostsSlug().map((slug) => {
-    return {
-      slug,
-      frontMatter: matter(getSinglePostData(slug)).data
-    };
-  }).filter((item) => process.env.NODE_ENV === "development" || item?.frontMatter?.published);
-  
+  const postData = getAllPostsSlug()
+    .map((slug) => {
+      return {
+        slug,
+        frontMatter: matter(getSinglePostData(slug)).data,
+      };
+    })
+    .filter((item) => process.env.NODE_ENV === "development" || item?.frontMatter?.published);
+
   return { props: { postData } };
 };

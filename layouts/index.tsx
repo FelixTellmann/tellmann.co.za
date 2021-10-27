@@ -6,48 +6,68 @@ import { useRouter } from "next/router";
 import React, { FC } from "react";
 
 type LayoutProps = {
-  slug: string;
   frontMatter: {
     title: string;
     author?: string;
-    authorUrl?: string;
     authorAvatarUrl?: string;
+    authorUrl?: string;
     excerpt?: string;
+    headings?: Headings;
+    image?: string;
     publishedAt?: string;
     readingTime?: {
+      minutes: number;
       text: string;
       time: number;
       words: number;
-      minutes: number;
     };
-    views?: string;
-    image?: string;
-    headings?: Headings;
     showHeadings?: 0 | 1 | 2;
     showHeadingsExpanded?: boolean;
+    showSubheading?: boolean;
+    views?: string;
   };
+  slug: string;
 };
 
-export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, author = "", authorAvatarUrl, publishedAt = Date.now().toString(), views, readingTime, excerpt, image, headings, showHeadings = 0, showHeadingsExpanded = false } }) => {
+export const Layout: FC<LayoutProps> = ({
+  children,
+  slug,
+  frontMatter: {
+    title,
+    author = "",
+    authorAvatarUrl,
+    publishedAt = Date.now().toString(),
+    views,
+    readingTime,
+    excerpt,
+    image,
+    headings,
+    showHeadings = 0,
+    showHeadingsExpanded = false,
+    showSubheading = true,
+  },
+}) => {
   const router = useRouter();
   let canonical = `https://felixtellmann.com/blog/${slug}`;
   if (!slug) {
     canonical = `https://felixtellmann.com${router.pathname}`;
   }
-  
-  const content = process.env.NODE_ENV === "production" ? hydrate(children, { components }) : children;
-  /* const content = hydrate(children, { components }); */
+
+  /* const content = process.env.NODE_ENV === "production"
+    ? hydrate(children, { components })
+    : children;*/
+  const content = hydrate(children, { components });
+
   return (
     <>
       <>
         <NextSeo
-          title={`${title} – Felix Tellmann`}
-          description={excerpt}
           canonical={canonical}
+          description={excerpt}
           openGraph={{
             type: "article",
             article: {
-              publishedTime: new Date(publishedAt).toISOString()
+              publishedTime: new Date(publishedAt).toISOString(),
             },
             url: canonical,
             title,
@@ -55,10 +75,11 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
             images: [
               {
                 url: `https://tellmann.co.za${image}`,
-                alt: title
-              }
-            ]
+                alt: title,
+              },
+            ],
           }}
+          title={`${title} – Felix Tellmann`}
         />
         <ArticleJsonLd
           authorName="Felix Tellmann"
@@ -75,28 +96,32 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
       <section>
         {/*= =============== CONTENT ================ */}
         <ArticleHeading
-          title={title}
-          authorAvatarUrl={authorAvatarUrl}
           author={author}
+          authorAvatarUrl={authorAvatarUrl}
           publishedAt={publishedAt}
           readingTime={readingTime}
+          showSubheading={showSubheading}
+          title={title}
           views={views}
         />
-        <article id="mdx-content" className="mdx">
-          {content}
+        <article className="mdx" id="mdx-content">
+          {[content]}
         </article>
-    
+
         {/*= =============== SIDEBAR ================ */}
-        {showHeadings > 0 && headings ? (
-          <ArticleSidebar showHeadings={showHeadings} headings={headings} showHeadingsExpanded={showHeadingsExpanded} />
-        ) : null}
-    
+        {showHeadings > 0 && headings
+          ? <ArticleSidebar
+              headings={headings}
+              showHeadings={showHeadings}
+              showHeadingsExpanded={showHeadingsExpanded}
+            />
+          : null}
+
         {/*= =============== NEWSLETTER SIGNUP ================ */}
         <NewsletterSignup />
       </section>
       <style jsx>{`
         section {
-
           position: relative;
           padding-top: var(--section-y-padding);
           padding-bottom: var(--section-y-padding);
@@ -106,7 +131,7 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           min-height: calc(100vh - 309px);
           display: flex;
           flex-direction: column;
-          margin: 0px auto;
+          margin: 0 auto;
 
           :global(img) {
             max-width: 100%;
@@ -116,7 +141,7 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           }
         }
       `}</style>
-      <style jsx global>{`
+      <style global jsx>{`
         code {
           padding: 0.1rem 0.6rem;
           border: 1px solid var(--color-remark-code-title-bg);
@@ -185,7 +210,7 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           border: 1px solid var(--color-remark-code-title-bg);
           background: var(--color-remark-code-title-bg);
           color: var(--color-header);
-          font-family: SFMono-Regular, Consolas, 'Liberation Mono', 'Courier New', monospace;
+          font-family: SFMono-Regular, Consolas, "Liberation Mono", "Courier New", monospace;
           font-size: 1.5rem;
           margin-left: calc(0px - var(--page-margin, 2.4rem));
           border-radius: 0;
@@ -210,12 +235,13 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           background: transparent;
         }
 
-        code[class*='language-'],
-        pre[class*='language-'] {
+        code[class*="language-"],
+        pre[class*="language-"] {
           width: 100%;
           background: none;
           color: var(--color-header);
-          font-family: 'Fira Code', SFMono-Regular, Consolas, 'Liberation Mono', 'Courier New', monospace;
+          font-family: "Fira Code", SFMono-Regular, Consolas, "Liberation Mono", "Courier New",
+            monospace;
           word-spacing: normal;
           text-align: left;
           word-wrap: normal;
@@ -234,7 +260,7 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
         }
 
         /* Code blocks */
-        pre[class*='language-'] {
+        pre[class*="language-"] {
           min-width: 100%;
           overflow: auto;
           margin: 2.4rem 0;
@@ -245,8 +271,8 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
           padding-right: 0.5rem;
         }
 
-        :not(pre) > code[class*='language-'],
-        pre[class*='language-'] {
+        :not(pre) > code[class*="language-"],
+        pre[class*="language-"] {
           border: 1px solid var(--color-remark-code-title-bg);
           background: var(--color-remark-code-bg);
           border-radius: 0;
@@ -260,7 +286,7 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
         }
 
         /* Inline code */
-        :not(pre) > code[class*='language-'] {
+        :not(pre) > code[class*="language-"] {
           padding: 0.1em;
           border-radius: 0.3em;
           white-space: normal;
@@ -371,7 +397,7 @@ export const Layout: FC<LayoutProps> = ({ children, slug, frontMatter: { title, 
         }
 
         .dark-theme {
-          :not(pre) > code[class*='language-'] {
+          :not(pre) > code[class*="language-"] {
             background: #011627;
           }
 

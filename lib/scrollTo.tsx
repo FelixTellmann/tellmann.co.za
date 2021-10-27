@@ -1,8 +1,8 @@
 type EaseInOutQuadOptions = {
-  currentTime: number;
-  start: number;
   change: number;
+  currentTime: number;
   duration: number;
+  start: number;
 };
 
 const easeInOutQuad = ({ currentTime, start, change, duration }: EaseInOutQuadOptions) => {
@@ -32,7 +32,7 @@ const scrollTo = (duration: number, to: number): void => {
         currentTime,
         start,
         change,
-        duration
+        duration,
       })
     );
 

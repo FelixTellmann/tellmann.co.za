@@ -3,14 +3,19 @@ import NextLink, { LinkProps } from "next/link";
 import { Children, cloneElement, FC, isValidElement } from "react";
 
 type LinkPropsAddons = {
-  scrollOffset?: number
-  scrollDuration?: number
-}
+  scrollDuration?: number;
+  scrollOffset?: number;
+};
 
-export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOffset = 0, scrollDuration = 1000, ...props }) => {
-  
+export const Link: FC<LinkPropsAddons & LinkProps> = ({
+  children,
+  href,
+  scrollOffset = 0,
+  scrollDuration = 1000,
+  ...props
+}) => {
   let anchorElement = children;
-  
+
   if (typeof href === "string" && (href.charAt(0) === "#" || href.includes("#"))) {
     const anchorReactElement = Children.only(children);
     const { onClick } = !isValidElement(anchorReactElement) || anchorReactElement.props;
@@ -24,11 +29,15 @@ export const Link: FC<LinkPropsAddons & LinkProps> = ({ children, href, scrollOf
           const to = document.getElementById(href.replace(/^.*?#/, ""))?.offsetTop || 0;
           scrollTo(scrollDuration, to + scrollOffset);
         }
-      }
+      },
     });
   }
-  
-  return <>
-    <NextLink href={href} passHref {...props}>{anchorElement}</NextLink>
-  </>;
+
+  return (
+    <>
+      <NextLink passHref href={href} {...props}>
+        {anchorElement}
+      </NextLink>
+    </>
+  );
 };

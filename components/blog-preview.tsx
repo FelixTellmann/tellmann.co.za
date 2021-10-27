@@ -3,14 +3,13 @@ import { FC } from "react";
 import { Link } from "./link";
 
 type BlogPreviewProps = {
+  excerpt: string;
   slug: string;
   title: string;
-  excerpt: string;
-  published?: boolean
+  published?: boolean;
 };
 
 export const BlogPreview: FC<BlogPreviewProps> = ({ slug, title, excerpt, published }) => {
-  
   return (
     <>
       <Link href={`blog/${slug}`}>

@@ -1,7 +1,7 @@
 import * as components from "components";
 import matter from "gray-matter";
 import Layout from "layouts";
-import { getAllPostsSlug, getSinglePostData } from "lib/getBlogPosts";
+import { getAllDocs, getAllPostsSlug, getSingleDocsData, getSinglePostData } from "lib/getBlogPosts";
 import { extractFrontMatter, mdxOptions } from "lib/mdxOptions";
 import { GetStaticProps } from "next";
 import renderToString from "next-mdx-remote/render-to-string";
@@ -17,7 +17,8 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props> = async ({
   params: { slug },
 }): Promise<{ props }> => {
-  const { content, data } = matter(getSinglePostData(typeof slug === "string" ? slug : ""));
+  console.log(slug);
+  const { content, data } = matter(getSingleDocsData("apps", typeof slug === "string" ? slug : ""));
   const extendedFrontMatter = extractFrontMatter(content);
 
   const mdxSource = await renderToString(
@@ -52,7 +53,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 };
 
 export const getStaticPaths = (): { fallback: boolean; paths } => {
-  const paths = getAllPostsSlug().map((slug) => ({ params: { slug } }));
+  const paths = getAllDocs("apps").map((slug) => ({ params: { slug } }));
 
   return {
     paths,

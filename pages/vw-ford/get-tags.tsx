@@ -1,4 +1,4 @@
-export default () => <div>hello</div>
+export default () => <div>hello</div>;
 /*
 import axios from "axios";
 import cn from "classnames";
@@ -70,7 +70,7 @@ type CleanTrims = { model_trim: string, model_engine_fuel: string }
 async function getCleanedTrims(model_make_id, model_name, year_start = `1990`, year_end = `2025`) {
   if (year_start === "all years") year_start = `1990`;
   if (year_end === "all years" || year_end === `current`) year_end = `2025`;
-  
+
   const results = await axios(`${process.env.NODE_ENV === `development`
                                  ? `http://localhost:3000`
                                  : `https://tellmann.co.za`}/api/ford-vw/getTrims?make=${model_make_id}&model=${model_name}&year_start=${year_start}&year_end=${year_end}`,
@@ -81,30 +81,30 @@ async function getCleanedTrims(model_make_id, model_name, year_start = `1990`, y
         "Content-Type": "application/json"
       }
     });
-  
+
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return results.data.reduce((acc: [string[], CleanTrims[]], item: CleanTrims) => {
     if (!acc[0].includes(item.model_trim) && item.model_trim !== "") {
       acc[0].push(item.model_trim);
       acc[1].push(item);
     }
-    
+
     return acc;
   }, [[], []])[1];
 }
 
 export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
-  
+
   const name = useRef(null);
   const carMakeRef = useRef(null);
   const carModelRef = useRef(null);
   const carFromYearRef = useRef(null);
   const carToYearRef = useRef(null);
   const website = useRef(null);
-  
+
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  
+
   const [formModels, setFormModels] = useState(models);
   const [currentFormMake, setCurrentFormMake] = useState("");
   const [currentFormModel, setCurrentFormModel] = useState("");
@@ -113,14 +113,14 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
   const [currentFromYear, setCurrentFromYear] = useState(defaultYears);
   const [formEndYears, setFormEndYears] = useState(defaultYears);
   const [formTrims, setFormTrims] = useState(trims);
-  
+
   const updateFormData = async () => {
     if (carMakeRef.current.value !== currentFormMake) {
       const dbModels = await getModels(carMakeRef.current.value);
       setFormModels(dbModels.data);
       setCurrentFormMake(carMakeRef.current.value);
     }
-    
+
     if (carModelRef.current.value !== currentFormModel) {
       const dbYears = await getYears(carMakeRef.current.value, carModelRef.current.value);
       const dbTrims = await getCleanedTrims(
@@ -134,7 +134,7 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
       setFormTrims(dbTrims);
       setCurrentFormModel(carModelRef.current.value);
     }
-    
+
     if (carToYearRef.current.value !== currentToYear) {
       const dbTrims = await getCleanedTrims(
         carMakeRef.current.value,
@@ -145,7 +145,7 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
       setFormTrims(dbTrims);
       setCurrentToYear(carToYearRef.current.value);
     }
-    
+
     if (carFromYearRef.current.value !== currentFromYear) {
       const dbTrims = await getCleanedTrims(
         carMakeRef.current.value,
@@ -157,12 +157,12 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
       setCurrentFromYear(carFromYearRef.current.value);
     }
   };
-  
-  
+
+
   const submitForm = async (e) => {
     e.preventDefault();
   };
-  
+
   return <>
     <Div p={8} maxW={800} m="auto">
       <div className="card-form">
@@ -203,8 +203,8 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
                           onClick={updateFormData}
                           onChange={updateFormData}
                           ref={carToYearRef} />
-            
-            
+
+
             </div>
             <div className="form-group form-group--border">
               {formTrims.filter(({ model_engine_fuel }) => model_engine_fuel !== "Diesel").length > 0
@@ -230,9 +230,9 @@ export const GetTags: FC<GetTagsProps> = ({ makes, models, trims }) => {
                                      onChange={updateFormData} />
                 : null
               }
-            
+
             </div>
-            
+
           </main>
           <footer className="card-form__footer">{submitted
                                                  ? <p style={{ flex: 1 }}>Thank you for your Message.</p>
@@ -339,11 +339,11 @@ export const getStaticProps: GetStaticProps = async () => {
   /!*= =============== Get Makes form DB ================ *!/
   const makeData = await getMakes();
   const makes: { model_make_id: string }[] = makeData.data;
-  
+
   /!*= =============== Get Models from DB based on first make found ================ *!/
   const modelData = await getModels(makes[0].model_make_id);
   const models: { model_name: string }[] = modelData.data;
-  
+
   /!*= =============== Get models for all years available from DB based on first model found - no limitations ================ *!/
   const trims: { model_trim: string, model_engine_fuel: string }[] = await getCleanedTrims(makes[0].model_make_id,
     models[0].model_name);

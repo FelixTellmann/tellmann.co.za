@@ -1,20 +1,26 @@
 import { WidthProperty } from "csstype";
 import { FC } from "react";
+import Image from "next/image";
 
 type AvatarProps = {
-  src: string;
   alt: string;
-  initials?: string;
   size: WidthProperty<string | number>;
+  src: string;
+  initials?: string;
 };
 
 export const Avatar: FC<AvatarProps> = ({ src, alt, initials = "", size }) => {
-  
   return (
     <>
       <picture>
-        <img src={src} alt={alt} />
-        <i>{initials.split(" ").map((i) => i.charAt(0)).join("")}</i>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img alt={alt} src={src} />
+        <i>
+          {initials
+            .split(" ")
+            .map((i) => i.charAt(0))
+            .join("")}
+        </i>
       </picture>
       <style jsx>{`
         picture {
@@ -51,5 +57,3 @@ export const Avatar: FC<AvatarProps> = ({ src, alt, initials = "", size }) => {
     </>
   );
 };
-
-

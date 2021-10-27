@@ -8,15 +8,22 @@ type IframeExampleProps = {
 
 export const IframeExample: FC<IframeExampleProps> = ({ src, title, ...props }) => {
   const iframeRef = useRef(null);
-  
+
   const setHeight = (ref) => {
     ref.current.style.height = `${ref.current.contentWindow.document.documentElement.offsetHeight}px`;
     ref.current.contentWindow.document.body.style = "overflow:hidden;";
   };
-  
+
   return (
     <>
-      <iframe src={src} frameBorder="0" title={title} ref={iframeRef} {...props} onLoad={() => setHeight(iframeRef)} />
+      <iframe
+        ref={iframeRef}
+        frameBorder="0"
+        src={src}
+        title={title}
+        {...props}
+        onLoad={() => setHeight(iframeRef)}
+      />
       <style jsx>{`
         iframe {
           border: 1px solid var(--color-remark-code-title-bg);

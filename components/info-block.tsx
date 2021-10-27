@@ -4,33 +4,47 @@ import { CSSProperties, FC, useEffect, useRef, useState } from "react";
 import { FiAlertCircle, FiCheckCircle, FiHelpCircle, FiMinusCircle, FiPlusCircle, FiXCircle } from "react-icons/fi";
 
 type InfoBlockProps = {
-  type?: "attention" | "warning" | "positive" | "quote" | "help" | "pro" | "con" | "question";
   color?: string;
   style?: CSSProperties;
+  type?: "attention" | "warning" | "positive" | "quote" | "help" | "pro" | "con" | "question";
 };
 
 export const InfoBlock: FC<InfoBlockProps> = ({ children, type, color, style = {} }) => {
   const div = useRef();
-  
+
   if (typeof color === `string` && color.length > 0) {
     style["--info-block-100"] = color;
-    style["--info-block-40"] = Color(color).alpha(0.4).hsl().string();
-    style["--info-block-10"] = Color(color).alpha(0.4).hsl().string();
+    style["--info-block-40"] = Color(color)
+      .alpha(0.4)
+      .hsl()
+      .string();
+    style["--info-block-10"] = Color(color)
+      .alpha(0.4)
+      .hsl()
+      .string();
   }
-  
+
   const [toCssStyle, setToCssStyle] = useState(style);
-  
+
   useEffect(() => {
     if (window && !color) {
-      const colorValue = getComputedStyle(div.current)?.getPropertyValue("--info-block-100")?.trim() || "#000";
+      const colorValue = getComputedStyle(div.current)
+        ?.getPropertyValue("--info-block-100")
+        ?.trim() || "#000";
       setToCssStyle((currentStyle) => ({
         ...currentStyle,
-        "--info-block-40": Color(colorValue).alpha(0.4).hsl().string(),
-        "--info-block-10": Color(colorValue).alpha(0.1).hsl().string()
+        "--info-block-40": Color(colorValue)
+          .alpha(0.4)
+          .hsl()
+          .string(),
+        "--info-block-10": Color(colorValue)
+          .alpha(0.1)
+          .hsl()
+          .string(),
       }));
     }
   }, [type, color]);
-  
+
   return (
     <>
       <div ref={div} style={toCssStyle}>

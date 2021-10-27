@@ -5,11 +5,14 @@ export const db = mysql({
     host: process.env.MYSQL_HOST,
     database: process.env.MYSQL_DATABASE,
     user: process.env.MYSQL_USERNAME,
-    password: process.env.MYSQL_PASSWORD
-  }
+    password: process.env.MYSQL_PASSWORD,
+  },
 });
 
-export async function query(q: string, values: (string | number)[] | string | number = []): Promise<any> {
+export async function query(
+  q: string,
+  values: (string | number)[] | string | number = []
+): Promise<any> {
   try {
     const results = await db.query(q, values);
     await db.end();

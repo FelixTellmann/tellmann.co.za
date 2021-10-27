@@ -3,39 +3,46 @@ import scrollTo from "../lib/scrollTo";
 
 export type Headings = {
   level: number;
-  title: string;
   slug: string;
   subheading: {
     subLevel: number;
     subSlug: string;
     subTitle: string;
   }[];
+  title: string;
 }[];
 
 export type ArticleSidebarProps = {
-  showHeadings: number;
   headings: Headings;
+  showHeadings: number;
   showHeadingsExpanded?: boolean;
 };
 
-export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings, showHeadingsExpanded }) => {
+export const ArticleSidebar: FC<ArticleSidebarProps> = ({
+  showHeadings,
+  headings,
+  showHeadingsExpanded,
+}) => {
   const [activeHeading, setActiveHeading] = useState(``);
   const [activeSubheading, setActiveSubheading] = useState(``);
   const [showSidebar, setShowSidebar] = useState(false);
-  
+
   const focusHeading = (event: React.MouseEvent<HTMLAnchorElement>, slug) => {
     event.preventDefault();
     scrollTo(200, document.getElementById(slug).offsetTop - 120);
     setActiveHeading(slug);
     setActiveSubheading("");
   };
-  
-  const focusSubHeading = (event: React.MouseEvent<HTMLAnchorElement> | React.KeyboardEvent<HTMLAnchorElement>, slug) => {
+
+  const focusSubHeading = (
+    event: React.MouseEvent<HTMLAnchorElement> | React.KeyboardEvent<HTMLAnchorElement>,
+    slug
+  ) => {
     event.preventDefault();
     scrollTo(200, document.getElementById(slug).offsetTop - 120);
     setActiveSubheading(slug);
   };
-  
+
   useEffect(() => {
     const ac = new AbortController();
     let loaded = false;
@@ -49,10 +56,10 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
       },
       {
         rootMargin: `0% 0% -60% 0%`,
-        threshold: 1.0
+        threshold: 1.0,
       }
     );
-    
+
     const observerB = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -66,7 +73,7 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
       },
       {
         rootMargin: `0% 0% -70% 0%`,
-        threshold: [0, 1]
+        threshold: [0, 1],
       }
     );
     headings?.forEach(({ slug, subheading }) => {
@@ -77,9 +84,9 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
         });
       }
     });
-    
+
     setShowSidebar(window.scrollY > 400);
-    
+
     window.addEventListener(
       "load",
       () => {
@@ -99,11 +106,14 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
       },
       { once: true }
     );
-    
+
     const scrollHandler = () => {
       if (document.getElementById("mdx-content") === null) return;
       const { offsetHeight, offsetTop } = document.getElementById("mdx-content");
-      setShowSidebar(window.scrollY > 400 && offsetHeight + offsetTop - window.innerHeight * 0.65 > window.scrollY);
+      setShowSidebar(
+        window.scrollY > 400 &&
+          offsetHeight + offsetTop - window.innerHeight * 0.65 > window.scrollY
+      );
       if (!loaded) {
         loaded = true;
         headings?.forEach(({ slug, subheading }) => {
@@ -116,9 +126,9 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
         });
       }
     };
-    
+
     window.addEventListener("scroll", scrollHandler);
-    
+
     return () => {
       observerA.disconnect();
       observerB.disconnect();
@@ -126,49 +136,49 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
       ac.abort();
     };
   }, [headings]);
-  
+
   return (
     <>
-      {showHeadings > 0 && headings.length > 0 ? (
-        <aside className={showSidebar ? "active" : ""}>
-          <div className="sidebar-wrapper">
-            <ul>
-              {headings.map(({ title, slug, subheading }) => (
-                <li key={slug} className="heading">
-                  <a
-                    tabIndex={0}
-                    role="button"
-                    className={slug === activeHeading ? "active" : ""}
-                    aria-label={title}
-                    onClick={(e) => focusHeading(e, slug)}
-                    onKeyDown={(e) => focusSubHeading(e, slug)}>
-                    {title}
-                  </a>
-                  {showHeadings > 1 && subheading.length > 0 ? (
-                    <ul className={`subheading ${showHeadingsExpanded ? "expanded" : ""}`}>
-                      {subheading.map(({ subLevel, subTitle, subSlug }) => (
-                        <li key={subSlug} className={`heading-${subLevel}`}>
-                          <a
-                            tabIndex={0}
-                            role="button"
-                            className={`${subSlug === activeSubheading ? "active" : ""}`}
-                            aria-label={subTitle}
-                            onClick={(e) => focusSubHeading(e, subSlug)}
-                            onKeyDown={(e) => focusSubHeading(e, subSlug)}>
-                            {subTitle}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                     ""
-                   )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
-      ) : null}
+      {showHeadings > 0 && headings.length > 0
+        ? <aside className={showSidebar ? "active" : ""}>
+            <div className="sidebar-wrapper">
+              <ul>
+                {headings.map(({ title, slug, subheading }) => (
+                  <li key={slug} className="heading">
+                    <a
+                      aria-label={title}
+                      className={slug === activeHeading ? "active" : ""}
+                      role="button"
+                      tabIndex={0}
+                      onClick={(e) => focusHeading(e, slug)}
+                      onKeyDown={(e) => focusSubHeading(e, slug)}
+                    >
+                      {title}
+                    </a>
+                    {showHeadings > 1 && subheading.length > 0
+                      ? <ul className={`subheading ${showHeadingsExpanded ? "expanded" : ""}`}>
+                          {subheading.map(({ subLevel, subTitle, subSlug }) => (
+                            <li key={subSlug} className={`heading-${subLevel}`}>
+                              <a
+                                aria-label={subTitle}
+                                className={`${subSlug === activeSubheading ? "active" : ""}`}
+                                role="button"
+                                tabIndex={0}
+                                onClick={(e) => focusSubHeading(e, subSlug)}
+                                onKeyDown={(e) => focusSubHeading(e, subSlug)}
+                              >
+                                {subTitle}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      : ""}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+        : null}
       <style jsx>{`
         aside {
           position: absolute;
@@ -219,7 +229,7 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
 
             &:before {
               position: absolute;
-              content: '';
+              content: "";
               left: -2.4rem;
               width: 8px;
               height: 8px;
@@ -228,7 +238,10 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
               transition: background-color 0.2s;
             }
 
-            &:hover, &:focus, &:active, &.active {
+            &:hover,
+            &:focus,
+            &:active,
+            &.active {
               color: var(--color-pro);
 
               &:before {
@@ -239,7 +252,7 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
 
           &:before {
             position: absolute;
-            content: '';
+            content: "";
             top: 19px;
             left: -3.5px;
             width: 1px;
@@ -285,7 +298,7 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
 
               &:before {
                 position: absolute;
-                content: '';
+                content: "";
                 left: -1.8rem;
                 width: 8px;
                 height: 8px;
@@ -294,7 +307,10 @@ export const ArticleSidebar: FC<ArticleSidebarProps> = ({ showHeadings, headings
                 transition: border 0.2s;
               }
 
-              &:hover, &:focus, &:active, &.active {
+              &:hover,
+              &:focus,
+              &:active,
+              &.active {
                 color: var(--color-pro);
 
                 &:before {
