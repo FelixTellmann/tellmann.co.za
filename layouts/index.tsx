@@ -105,7 +105,7 @@ export const Layout: FC<LayoutProps> = ({
           views={views}
         />
         <article className="mdx" id="mdx-content">
-          {[content]}
+          {content}
         </article>
 
         {/*= =============== SIDEBAR ================ */}
