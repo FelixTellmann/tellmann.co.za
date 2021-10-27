@@ -48,9 +48,9 @@ export const Layout: FC<LayoutProps> = ({
   },
 }) => {
   const router = useRouter();
-  let canonical = `https://felixtellmann.com/blog/${slug}`;
+  let canonical = `https://tellmann.co.za/blog/${slug}`;
   if (!slug) {
-    canonical = `https://felixtellmann.com${router.pathname}`;
+    canonical = `https://tellmann.co.za${router.pathname}`;
   }
 
   /* const content = process.env.NODE_ENV === "production"
@@ -79,16 +79,16 @@ export const Layout: FC<LayoutProps> = ({
               },
             ],
           }}
-          title={`${title} – Felix Tellmann`}
+          title={`${title} – Tellmann`}
         />
         <ArticleJsonLd
-          authorName="Felix Tellmann"
+          authorName="Tellmann"
           dateModified={new Date(publishedAt).toISOString()}
           datePublished={new Date(publishedAt).toISOString()}
           description={excerpt}
-          images={[`https://felixtellmann.com${image}`]}
+          images={[`https://tellmann.co/za/${image}`]}
           publisherLogo="/favicons/android-icon-192x192.png"
-          publisherName="Felix Tellmann"
+          publisherName="Tellmann"
           title={title}
           url={canonical}
         />
