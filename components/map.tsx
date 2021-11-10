@@ -397,8 +397,8 @@ export const Map: FC = () => {
           ? <GoogleMapReact
               bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
               defaultCenter={{
-                lat: -33.9183338,
-                lng: 18.4223969,
+                lat: -33.9243828,
+                lng: 18.4152467,
               }}
               defaultZoom={15}
               options={{
@@ -410,8 +410,8 @@ export const Map: FC = () => {
           : <GoogleMapReact
               bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
               defaultCenter={{
-                lat: -33.9183338,
-                lng: 18.4223969,
+                lat: -33.9243828,
+                lng: 18.4152467,
               }}
               defaultZoom={15}
               options={{

@@ -50,8 +50,9 @@ const Contact: FC = () => {
                     <IoIosPin />
                   </i>
                   <p>
-                    11th Floor Touchstone House <br />
-                    7 Bree Street <br />
+                    21 Pepper Street <br />
+                    3rd Floor - C/O Ademas Solutions
+                    <br />
                     Cape Town, 8001 <br />
                     South Africa
                   </p>
