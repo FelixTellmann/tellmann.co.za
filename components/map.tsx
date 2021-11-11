@@ -404,21 +404,21 @@ export const Map: FC = () => {
            defaultCenter={COORDINATES}
            defaultZoom={15}
            options={{
-                styles: lightMode,
-              }}
-            >
+             styles: lightMode,
+           }}
+         >
            <MapMarker lat={COORDINATES.lat} lng={COORDINATES.lng} text="My Marker" />
-            </GoogleMapReact>
+         </GoogleMapReact>
           : <GoogleMapReact
            bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
            defaultCenter={COORDINATES}
            defaultZoom={15}
            options={{
-                styles: darkMode,
-              }}
-            >
+             styles: darkMode,
+           }}
+         >
            <MapMarker lat={COORDINATES.lat} lng={COORDINATES.lng} text="My Marker" />
-            </GoogleMapReact>}
+         </GoogleMapReact>}
       </div>
       <style jsx>{`
         .map {
