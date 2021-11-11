@@ -400,25 +400,25 @@ export const Map: FC = () => {
       <div className="map">
         {theme.theme === "light-theme"
           ? <GoogleMapReact
-           bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
-           defaultCenter={COORDINATES}
-           defaultZoom={15}
-           options={{
-             styles: lightMode,
-           }}
-         >
-           <MapMarker lat={COORDINATES.lat} lng={COORDINATES.lng} text="My Marker" />
-         </GoogleMapReact>
+              bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
+              defaultCenter={COORDINATES}
+              defaultZoom={15}
+              options={{
+                styles: lightMode,
+              }}
+            >
+              <MapMarker lat={COORDINATES.lat} lng={COORDINATES.lng} text="My Marker" />
+            </GoogleMapReact>
           : <GoogleMapReact
-           bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
-           defaultCenter={COORDINATES}
-           defaultZoom={15}
-           options={{
-             styles: darkMode,
-           }}
-         >
-           <MapMarker lat={COORDINATES.lat} lng={COORDINATES.lng} text="My Marker" />
-         </GoogleMapReact>}
+              bootstrapURLKeys={{ key: "AIzaSyB1nUbJXlxsbvMJEyFojX0KQXLWeKjB5FM" }}
+              defaultCenter={COORDINATES}
+              defaultZoom={15}
+              options={{
+                styles: darkMode,
+              }}
+            >
+              <MapMarker lat={COORDINATES.lat} lng={COORDINATES.lng} text="My Marker" />
+            </GoogleMapReact>}
       </div>
       <style jsx>{`
         .map {
