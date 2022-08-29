@@ -3,6 +3,7 @@
   "description": "Tellmann Web Development Studio",
   "repository": "https://github.com/FelixTellmann/tellmann.co.za.git",
   "author": "FelixTellmann <felix@tellmann.co.za>",
+  "url": "https://tellmann.co.za",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
