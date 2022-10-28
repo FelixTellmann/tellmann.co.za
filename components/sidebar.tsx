@@ -5,12 +5,12 @@ import { Link } from "./link";
 import { NavIcon } from "./nav-icon";
 
 type SidebarProps = {
-  email: string;
-  socialNav: SocialNav[];
-  tel: string;
+  email?: string;
   left?: boolean;
   right?: boolean;
   slogan?: string;
+  socialNav?: SocialNav[];
+  tel?: string;
 };
 
 export const Sidebar: FC<SidebarProps> = ({
