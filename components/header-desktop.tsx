@@ -24,14 +24,14 @@ export type NavButton = {
 };
 
 type HeaderDesktopProps = {
-  email: string;
-  nav: NavItem[];
-  navButton: NavButton;
-  socialNav: SocialNav[];
-  tel: string;
-  theme: string;
   toggleColor;
+  email?: string;
+  nav?: NavItem[];
+  navButton?: NavButton;
   slogan?: string;
+  socialNav?: SocialNav[];
+  tel?: string;
+  theme?: string;
 };
 
 export const HeaderDesktop: FC<HeaderDesktopProps> = ({ theme, toggleColor, nav, navButton }) => {

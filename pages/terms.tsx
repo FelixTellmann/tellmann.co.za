@@ -225,7 +225,7 @@ const Terms: FC<TermsProps> = ({}) => {
       periodically for changes. Your continued use of or access to our website or the Service
       following the posting of any changes to these Terms of Service constitutes acceptance of those
       changes. <br /> <br /> <strong>SECTION 20 - CONTACT INFORMATION</strong> <br /> Questions
-      about the Terms of Service should be sent to us at info@tellmann.co.za.
+      about the Terms of Service should be sent to us at info (at) tellmann (dot) co (dot) za.
     </>
   );
 };

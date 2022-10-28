@@ -26,12 +26,12 @@ export const navData = {
   navButton: { href: "/contact", title: "Contact" },
   address: {
     title: `Visit our Office:`,
-    address1: "11th Floor Touchstone House",
-    address2: "7 Bree Street",
+    address1: "21 Pepper Street",
+    address2: "3rd Floor - C/O Ademas Solutions",
     city: "Cape Town",
     country: "South Africa",
   },
-  email: "info@tellmann.co.za",
+  // email: "info@tellmann.co.za",
   tel: "076 393 4356",
   socialNav: [
     {

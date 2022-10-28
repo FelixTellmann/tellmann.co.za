@@ -516,8 +516,8 @@ const Privacy: FC<PrivacyProps> = ({}) => {
         like to make a complaint, please contact us by e-mail at [email address] or by mail using
         the details provided below:
       </p>
-      <p>7th floor Touchstone House, Cape Town, Western Cape, 8001, South Africa</p>
-      Last updated: <i>[DATE]</i>
+      <p>21 Pepper Street, Cape Town, Western Cape, 8001, South Africa</p>
+      Last updated: <i>{new Date("2022-10-27").toLocaleDateString()}</i>
       <p>
         If you are not satisfied with our response to your complaint, you have the right to lodge
         your complaint with the relevant data protection authority. You can contact your local data

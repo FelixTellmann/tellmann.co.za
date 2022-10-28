@@ -58,22 +58,22 @@ const Contact: FC = () => {
                   </p>
                 </a>
               </Link>
-              <Link href="tel:0763934356">
-                <a className="contact-link" target="_blank">
-                  <i>
-                    <IoIosPhonePortrait />
-                  </i>
-                  <p>076 393 4356</p>
-                </a>
-              </Link>
-              <Link href="mailto:info@tellmann.co.za">
+              {/*<Link href="tel:0763934356">*/}
+              {/*  <a className="contact-link" target="_blank">*/}
+              {/*    <i>*/}
+              {/*      <IoIosPhonePortrait />*/}
+              {/*    </i>*/}
+              {/*    <p>076 393 4356</p>*/}
+              {/*  </a>*/}
+              {/*</Link>*/}
+              {/*<Link href="mailto:info@tellmann.co.za">
                 <a className="contact-link" target="_blank">
                   <i>
                     <IoIosMail />
                   </i>
                   <p>info@tellmann.co.za</p>
                 </a>
-              </Link>
+              </Link>*/}
               <span className="contact-link">
                 <i>
                   <IoIosClock />

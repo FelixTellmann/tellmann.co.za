@@ -30,15 +30,15 @@ export type SocialNav = {
 };
 
 type HeaderMobileProps = {
-  address: Address;
-  email: string;
-  nav: NavItem[];
-  showMobileNav: boolean;
-  socialNav: SocialNav[];
-  tel: string;
-  theme: string;
-  toggleColor: (e) => void;
-  toggleMobileNav: (e) => void;
+  address?: Address;
+  email?: string;
+  nav?: NavItem[];
+  showMobileNav?: boolean;
+  socialNav?: SocialNav[];
+  tel?: string;
+  theme?: string;
+  toggleColor?: (e) => void;
+  toggleMobileNav?: (e) => void;
 };
 
 export const HeaderMobile: FC<HeaderMobileProps> = ({
@@ -103,12 +103,12 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
           flex={1}
           justify="flex-end"
         >
-          <NavIcon href={`mailto:${email}`}>
+          {/*<NavIcon href={`mailto:${email}`}>
             <IoIosMail />
-          </NavIcon>
-          <NavIcon href={`tel:${tel.replace(" ", "")}`}>
+          </NavIcon>*/}
+          {/*<NavIcon href={`tel:${tel.replace(" ", "")}`}>
             <IoIosCall />
-          </NavIcon>
+          </NavIcon>*/}
           <NavIcon aria-label="Toggle Color Theme" onClick={changeColor}>
             {theme === "light-theme" ? <IoIosSunny /> : null}
             {theme === "dark-theme" ? <IoIosMoon /> : null}

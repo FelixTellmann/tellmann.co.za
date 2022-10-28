@@ -226,7 +226,8 @@ export const ContactForm: FC = () => {
               : <>
                   <p>
                     You can also email us directly at{" "}
-                    <Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link>
+                    <pre>info (at) tellmann (dot) co (dot) za</pre>
+                    {/*<Link href="mailto:info@tellmann.co.za">info@tellmann.co.za</Link>*/}
                   </p>
                   <Button branded medium secondary type="submit">
                     <i className={cn({ submitting })}>
