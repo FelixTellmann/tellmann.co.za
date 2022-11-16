@@ -32,7 +32,7 @@ export const navData = {
     country: "South Africa",
   },
   // email: "info@tellmann.co.za",
-  tel: "076 393 4356",
+  // tel: "076 393 4356",
   socialNav: [
     {
       href: "https://www.facebook.com/tellmann.co.za",
