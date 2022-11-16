@@ -7,7 +7,7 @@ export const getAllPostsSlug = (): string[] =>
     // Only include md(x) files
     .filter((p) => /\.mdx?$/.test(p))
     // Remove file extensions for page paths
-    .map((p) => p.replace(/\.mdx?$/, ""));
+    .map((p) => p?.replace(/\.mdx?$/, ""));
 
 export const getAllPostsData = (): string[] =>
   fs
@@ -15,7 +15,7 @@ export const getAllPostsData = (): string[] =>
     // Only include md(x) files
     .filter((p) => /\.mdx?$/.test(p))
     // Remove file extensions for page paths
-    .map((p) => p.replace(/\.mdx?$/, ""));
+    .map((p) => p?.replace(/\.mdx?$/, ""));
 
 export const getSinglePostData = (slug: string): Buffer =>
   fs.readFileSync(path.join(process.cwd(), `pages/blog/${slug}.mdx`));
@@ -29,4 +29,4 @@ export const getAllDocs = (route: string): string[] =>
     // Only include md(x) files
     .filter((p) => /\.mdx?$/.test(p))
     // Remove file extensions for page paths
-    .map((p) => p.replace(/\.mdx?$/, ""));
+    .map((p) => p?.replace(/\.mdx?$/, ""));

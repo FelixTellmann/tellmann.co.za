@@ -23,15 +23,15 @@ export const Blog: FC<BlogProps> = ({ postData }) => {
   const [filteredPostData, setFilteredPostData] = useState(postData);
 
   const search = (event) => {
-    if (event.currentTarget.value.replace(/\s/gi, "").length <= 2) {
+    if (event.currentTarget.value?.replace(/\s/gi, "").length <= 2) {
       setFilteredPostData(postData);
       return;
     }
     const sanitize = (str: string) =>
       str
         .toLowerCase()
-        .replace(/[^\w\s]/gi, "")
-        .replace(/\s+/gi, " ")
+        ?.replace(/[^\w\s]/gi, "")
+        ?.replace(/\s+/gi, " ")
         .trim();
 
     const values = sanitize(event.currentTarget.value)

@@ -36,7 +36,7 @@ export const Sidebar: FC<SidebarProps> = ({
                 {email}
               </a>
             </Link>
-            <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel.replace(/\s/g, "")}`}>
+            <NavIcon ariaLabel="Contact us via Phone" href={`tel:${tel?.replace(/\s/g, "")}`}>
               <IoIosCall />
             </NavIcon>
             {socialNav.map(({ href, icon }) => (

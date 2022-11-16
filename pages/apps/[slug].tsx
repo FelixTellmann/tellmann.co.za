@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   const extendedFrontMatter = extractFrontMatter(content);
 
   const mdxSource = await renderToString(
-    content.replace(
+    content?.replace(
       // eslint-disable-next-line max-len
       /(```)(.|\n)*(import\s+.*?\s+from\s+(['"`])[\w\d\-/.]+\4;?)(.|\n)*(\1)|import\s+.*?\s+from\s+(['"`])[\w\d\-/.]+\7;?/gi,
       (find) => {

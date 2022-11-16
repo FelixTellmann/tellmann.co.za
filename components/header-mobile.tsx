@@ -106,7 +106,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
           {/*<NavIcon href={`mailto:${email}`}>
             <IoIosMail />
           </NavIcon>*/}
-          {/*<NavIcon href={`tel:${tel.replace(" ", "")}`}>
+          {/*<NavIcon href={`tel:${tel?.replace(" ", "")}`}>
             <IoIosCall />
           </NavIcon>*/}
           <NavIcon aria-label="Toggle Color Theme" onClick={changeColor}>
@@ -148,7 +148,7 @@ export const HeaderMobile: FC<HeaderMobileProps> = ({
             <nav className="footer">
               <NavIcon
                 ariaLabel="Contact us via Phone"
-                href={`tel:${tel.replace(/\s/gi, "")}`}
+                href={`tel:${tel?.replace(/\s/gi, "")}`}
                 onClick={toggleMobileNav}
               >
                 <IoIosCall />

@@ -24,7 +24,7 @@ export const NewsletterSignup: FC = () => {
 
     const { error } = await res.json();
     if (error) {
-      setErrorMessage(error.replace(/(^\["|"]$)/gi, ""));
+      setErrorMessage(error?.replace(/(^\["|"]$)/gi, ""));
       return;
     }
     setSuccess(true);
