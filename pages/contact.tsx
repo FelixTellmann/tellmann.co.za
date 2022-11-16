@@ -44,7 +44,7 @@ const Contact: FC = () => {
             </div>
             <div className="contact__details">
               <h3>Cape Town Office</h3>
-              <Link href="https://g.page/tellmann-cpt?share">
+              <Link href="https://g.page/r/CdssFwfkia74EBA?share">
                 <a className="contact-link" target="_blank">
                   <i>
                     <IoIosPin />

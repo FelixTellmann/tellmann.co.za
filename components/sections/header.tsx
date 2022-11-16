@@ -35,22 +35,22 @@ export const navData = {
   // tel: "076 393 4356",
   socialNav: [
     {
-      href: "https://www.facebook.com/tellmann.co.za",
+      href: "https://www.facebook.com/Lunalemon.dev",
       icon: <IoLogoFacebook title="Facebook" />,
       target: "_blank",
     },
     {
-      href: "https://www.instagram.com/tellmann.web/",
+      href: "https://www.instagram.com/lunalemon.dev",
       icon: <IoLogoInstagram title="Github" />,
       target: "_blank",
     },
     {
-      href: "https://github.com/Tellmann",
+      href: "https://github.com/luna-lemon",
       icon: <IoLogoGithub title="Github" />,
       target: "_blank",
     },
     {
-      href: "https://g.page/tellmann-cpt?share",
+      href: "https://g.page/r/CdssFwfkia74EBA?share",
       icon: <IoLogoGoogle title="Google" />,
       target: "_blank",
     },
